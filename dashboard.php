@@ -70,21 +70,7 @@
           
   
 
-
-  
-<li class="nav-item">
-  <a class="nav-link text-white " href="pages/addproduct.php">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-        <!-- <i class="material-icons opacity-10">table_view</i> -->
-      </div>
-    
-    <span class="nav-link-text ms-1">Voeg Product toe</span>
-  </a>
-</li>
-
-  
-<li class="nav-item">
+    <li class="nav-item">
   <a class="nav-link text-white " href="pages/products/products.php">
     
       <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -94,16 +80,15 @@
     <span class="nav-link-text ms-1">producten</span>
   </a>
 </li>
-
   
 <li class="nav-item">
-  <a class="nav-link text-white " href="pages/employees/create-employee.php">
+  <a class="nav-link text-white " href="pages/addproduct.php">
     
       <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-       <!-- <i class="material-icons opacity-10">view_in_ar</i> -->
+        <!-- <i class="material-icons opacity-10">table_view</i> -->
       </div>
     
-    <span class="nav-link-text ms-1">Voeg medewerkers toe</span>
+    <span class="nav-link-text ms-1">Voeg Product toe</span>
   </a>
 </li>
 
@@ -121,6 +106,21 @@
 
   
 <li class="nav-item">
+  <a class="nav-link text-white " href="pages/employees/create-employee.php">
+    
+      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+       <!-- <i class="material-icons opacity-10">view_in_ar</i> -->
+      </div>
+    
+    <span class="nav-link-text ms-1">Voeg medewerkers toe</span>
+  </a>
+</li>
+
+  
+
+
+  
+<li class="nav-item">
   <a class="nav-link text-white " href="pages/invoices/invoices.php">
     
       <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -131,7 +131,7 @@
   </a>
 </li> 
 
-<li class="nav-item">
+<!-- <li class="nav-item">
   <a class="nav-link text-white " href="pages/invoices/view-invoice.php">
     
       <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -140,7 +140,7 @@
     
     <span class="nav-link-text ms-1">Factuur bijwerken</span>
   </a>
-</li>
+</li> -->
     </ul>
 </div>
   
