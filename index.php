@@ -46,9 +46,6 @@
                            <a class="nav-link" href="pages/product.php">Producten</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="pages/testimonial.php">Reviews</a>
-                        </li>
-                        <li class="nav-item">
                            <a class="nav-link" href="pages/contact.php">Contact</a>
                         </li>
                         <li class="nav-item">
