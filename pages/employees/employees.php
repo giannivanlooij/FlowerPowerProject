@@ -7,7 +7,6 @@
 
 <div class="event-schedule-area-two bg-color pad100">
     <div class="container">
-        <!-- row end-->
         <div class="row">
             <div class="col-lg-12">
                 <div class="tab-content" id="myTabContent">
@@ -49,7 +48,7 @@
                                                 //name
                                                 "<td>" .
                                                     "<div class='event-wrap'>" .
-                                                        "<h3>" . "<a href='#'>" . $Row['Employee_Name'] . "</a>" . "</h3>" .
+                                                        "<h4>" . "<a href='#'>" . $Row['Employee_Name'] . "</a>" . "</h4>" .
                                                     "</div>" .
                                                 "</td>" .
                                                 //middlename
@@ -101,7 +100,15 @@
                                                 "</tr>";
                                             }
                                         }
-                                        
-                                        ?>
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                                     
                                    
