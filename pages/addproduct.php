@@ -36,7 +36,7 @@
                                     <input id="Product_Name" type="text" class="form-control" name="Product_Name" placeholder="Product naam" required autocomplete="Product_Name" autofocus>
                                 </div>
                             </div>
-                            <!-- description   <textarea placeholder="Enter your message" required></textarea>  -->
+                            <!-- description  -->
                             <div class="row mb-3">
                                 <label for="Product_Description" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">

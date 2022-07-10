@@ -53,7 +53,7 @@
                                                 "</td>" .
                                                 "<td>" .
                                                     "<div class='r-no'>" .
-                                                    $Row['Product_Price'] .
+                                                    "$".$Row['Product_Price'] .
                                                     "</div>" .
                                                 "</td>" .
                                                 "<td>" .
