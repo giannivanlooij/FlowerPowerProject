@@ -1,3 +1,6 @@
+<?php
+    include_once "../includes/databasehandler-include.php"
+?>
 <!DOCTYPE html>
 <html>
    <head>
@@ -10,7 +13,7 @@
       <meta name="keywords" content="" />
       <meta name="description" content="" />
       <meta name="author" content="" />
-      <link rel="shortcut icon" href="../images/favicon.png" type="">
+      <!-- <link rel="shortcut icon" href="../images/favicon.png" type=""> -->
       <title>FlowerPower</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
@@ -21,6 +24,8 @@
       <!-- responsive style -->
       <link href="../css/responsive.css" rel="stylesheet" />
    </head>
+
+   
    <body class="sub_page">
       <div class="hero_area">
          <!-- header section strats -->
@@ -45,6 +50,11 @@
                         <li class="nav-item">
                            <a class="nav-link" href="contact.php">Contact</a>
                         </li>
+
+
+
+
+                        <!-- shopping cart -->
                         <li class="nav-item">
                            <a class="nav-link" href="shopping-cart.php">
                               <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
@@ -101,13 +111,15 @@
                               </svg>
                            </a>
                         </li>
+                        <!-- end of shopping cart -->
                      </ul>
                   </div>
                </nav>
             </div>
          </header>
-         <!-- end header section -->
       </div>
+      <!-- end header section -->
+      
       <!-- inner page section -->
       <section class="inner_page_head">
          <div class="container_fuild">
@@ -121,6 +133,9 @@
          </div>
       </section>
       <!-- end inner page section -->
+
+
+
       <!-- product section -->
       <section class="product_section layout_padding">
          <div class="container">
@@ -130,310 +145,46 @@
                </h2>
             </div>
             <div class="row">
-               <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                        <div class="options">  <!-- hover over card/flower -->
-                           <a href="" class="option1">
-                           voeg toe 
-                           </a>
-                           <a href="shopping-cart.php" class="option2">
-                           koop nu
-                           </a>
-                        </div>
-                     </div>
-                     <div class="img-box">
-                        <img src="../images/p1.png" alt="">
-                     </div>
-                     <div class="detail-box"> 
-                        <h5> <!-- title of object/flower -->
-                        Gemengd boeket roze/rood
-                        </h5>
-                        <h6> <!--- price -->
-                        €14,99
-                        </h6>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                        <div class="options">
-                           <a href="" class="option1">
-                           voeg toe
-                           </a>
-                           <a href="shopping-cart.php" class="option2">
-                           Koop nu
-                           </a>
-                        </div>
-                     </div>
-                     <div class="img-box">
-                        <img src="../images/p2.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                        Milou geel Vers Boeket Bloemen
-                        </h5>
-                        <h6>
-                        €12.50
-                        </h6>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                        <div class="options">
-                           <a href="" class="option1">
-                           voeg toe
-                           </a>
-                           <a href="shopping-cart.php" class="option2">
-                           Koop nu
-                           </a>
-                        </div>
-                     </div>
-                     <div class="img-box">
-                        <img src="../images/p3.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                        Milou oranje Vers Boeket Bloemen
-                        </h5>
-                        <h6>
-                        €13.65
-                        </h6>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                        <div class="options">
-                           <a href="" class="option1">
-                           Voeg toe
-                           </a>
-                           <a href="shopping-cart.php" class="option2">
-                           Koop nu
-                           </a>
-                        </div>
-                     </div>
-                     <div class="img-box">
-                        <img src="../images/p4.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                        Milou rood Vers Boeket Bloemen
-                        </h5>
-                        <h6>
-                        €12.50
-                        </h6>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                     <div class="options">
-                           <a href="" class="option1">
-                           Voeg toe
-                           </a>
-                           <a href="shopping-cart.php" class="option2">
-                           Koop nu
-                           </a>
-                        </div>
-                     </div>
-                     <div class="img-box">
-                        <img src="../images/p5.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                        Milou roze Vers Boeket Bloemen
-                        </h5>
-                        <h6>
-                        €12.66
-                        </h6>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                     <div class="options">
-                           <a href="" class="option1">
-                           Voeg toe
-                           </a>
-                           <a href="shopping-cart.php" class="option2">
-                           Koop nu
-                           </a>
-                        </div>
-                     </div>
-                     <div class="img-box">
-                        <img src="../images/p6.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                        Milou wit Vers Boeket Bloemen
-                        </h5>
-                        <h6>
-                        €9.55
-                        </h6>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                     <div class="options">
-                           <a href="" class="option1">
-                           Voeg toe
-                           </a>
-                           <a href="shopping-cart.php" class="option2">
-                           Koop nu
-                           </a>
-                        </div>
-                     </div>
-                     <div class="img-box">
-                        <img src="../images/p7.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                        Verse Pioenrozen mix
-                        </h5>
-                        <h6>
-                        €11.50
-                        </h6>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                     <div class="options">
-                           <a href="" class="option1">
-                           Voeg toe
-                           </a>
-                           <a href="shopping-cart.php" class="option2">
-                           Koop nu
-                           </a>
-                        </div>
-                     </div>
-                     <div class="img-box">
-                        <img src="../images/p8.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                        Boeket Sisal Large Lila
-                        </h5>
-                        <h6>
-                        €29.99
-                        </h6>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                     <div class="options">
-                           <a href="" class="option1">
-                           Voeg toe
-                           </a>
-                           <a href="shopping-cart.php" class="option2">
-                           Koop nu
-                           </a>
-                        </div>
-                     </div>
-                     <div class="img-box">
-                        <img src="../images/p9.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                        Bloemen boeket XL roze
-                        </h5>
-                        <h6>
-                        €19.99
-                        </h6>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                     <div class="options">
-                           <a href="" class="option1">
-                           Voeg toe
-                           </a>
-                           <a href="shopping-cart.php" class="option2">
-                           Koop nu
-                           </a>
-                        </div>
-                     </div>
-                     <div class="img-box">
-                        <img src="../images/p10.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                        Biedermeier mix boeketje bloemen   <!--place title of card here-->
-                        </h5>
-                        <h6>
-                        €18.50
-                        </h6>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                     <div class="options">
-                           <a href="" class="option1">
-                           Voeg toe
-                           </a>
-                           <a href="shopping-cart.php" class="option2">
-                           Koop nu
-                           </a>
-                        </div>
-                     </div>
-                     <div class="img-box">
-                        <img src="../images/p11.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                        Rozentaartjes
-                        </h5>
-                        <h6>
-                        €18.65
-                        </h6>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                     <div class="options">
-                           <a href="" class="option1">
-                           Voeg toe
-                           </a>
-                           <a href="shopping-cart.php" class="option2">
-                           Koop nu
-                           </a>
-                        </div>
-                     </div>
-                     <div class="img-box">
-                        <img src="../images/p12.png" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                        Tulpen Boeket
-                        </h5>
-                        <h6>
-                        €23.70
-                        </h6>
-                     </div>
-                  </div>
-               </div>
+               <?php
+                  $sql = "SELECT * FROM products;";
+                  $Result = mysqli_query($conn, $sql);
+                  $ResultCheck = mysqli_num_rows($Result);
+
+                  if ($ResultCheck > 0) {
+                     while ($Row = mysqli_fetch_assoc($Result)) {
+                  // card 
+                           echo "<div class='col-sm-6 col-md-4 col-lg-4'>" .
+                                 "<div class='box'>" .
+                  //hover over card options/
+                                    "<div class='option_container'>" .
+                                       "<div class='options'>".
+                                          "<a href='' class='option1'>" . 'voeg toe' . "</a>" .
+                                          "<a href='shopping-cart.php' class='option2'>" . 'koop nu' . "</a>" .
+                                       "</div>".
+                                    "</div>" .
+                                    "<div class='img-box'>" . 
+                                       "<img src='"  .  $Row['Product_ImgLocation'] . "'/>" . 
+                                    "</div>" .
+                                    "<div class='detail-box'>" .
+                  //item or product name
+                                       "<h5>" . $Row['Product_Name'] . "</h5>".
+                  //price
+                                       "<h6>" . $Row['Product_Price'] . "</h6>".
+                                    "</div>" . 
+                                 "</div>" .
+                              "</div>";
+                  //end card
+                     }
+                  }
+               ?>
             </div>
          </div>
       </section>
       <!-- end product section -->
+
+
+
+
       <!-- footer start -->
       <footer>
          <div class="container">

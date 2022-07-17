@@ -16,6 +16,7 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center" scope="col">ID</th>
+                                        <th scope="col">Foto</th>
                                         <th scope="col">Naam</th>
                                         <th scope="col">Beschrijving</th>
                                         <th scope="col">Prijs</th>
@@ -24,46 +25,8 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    
-                                        $sql = "SELECT * FROM products;";
-                                        $Result = mysqli_query($conn, $sql);
-                                        $ResultCheck = mysqli_num_rows($Result);
-
-                                        if ($ResultCheck > 0) {
-                                            while ($Row = mysqli_fetch_assoc($Result)) {
-                                                // begin row
-                                                echo "<tr class='inner-box'>" .
-                                                "<th scope='row'>" .
-                                                // event-date is the styling for the id 
-                                                    "<div class='event-date'>" .
-                                                        $Row['Product_ID'] .
-                                                    "</div>" .
-                                                "</th>" .
-                                                //name
-                                                "<td>" .
-                                                    "<div class='event-wrap'>" .
-                                                        "<h4>" . "<a href='#'>" . $Row['Product_Name'] . "</a>" . "</h4>" .
-                                                    "</div>" .
-                                                "</td>" .
-                                                //middlename
-                                                "<td>" .
-                                                    "<div class='r-no'>" .
-                                                    $Row['Product_Description'] .
-                                                    "</div>" .
-                                                "</td>" .
-                                                "<td>" .
-                                                    "<div class='r-no'>" .
-                                                    "$".$Row['Product_Price'] .
-                                                    "</div>" .
-                                                "</td>" .
-                                                "<td>" .
-                                                    "<div class='r-no'>" .
-                                                    $Row['Product_Stock'] .
-                                                    "</div>" .
-                                                "</td>" .
-                                                "</tr>";
-                                            }
-                                        }
+                                    // function that fetches table data from the database
+                                        include_once '../../includes/products-include.php';
                                     ?>
                                 </tbody>
                             </table>

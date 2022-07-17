@@ -196,6 +196,16 @@ function CreateUser($conn, $Customer_Name, $Customer_MiddleName, $Customer_LastN
 
 //add product functions
 
+function UploadProductImage($Product_Name, $Product_Description, $Product_Price, $Product_Stock) {
+    $Result;
+    if (empty($Product_Name) || empty($Product_Description) || empty($Product_Price) || empty($Product_Stock)  ) {
+        $Result = true;
+    } 
+    else {
+        $Result = false;
+    }
+    return $Result;
+}
 
 //checks for empty input fields
 function EmptyInputFieldProduct($Product_Name, $Product_Description, $Product_Price, $Product_Stock) {
@@ -235,15 +245,15 @@ function EmptyInputFieldProduct($Product_Name, $Product_Description, $Product_Pr
     mysql_stmt_close($stmt);
  }
 //adds the product to the database
- function CreateProduct($conn, $Product_Name, $Product_Description, $Product_Price, $Product_Stock) {
-    $sql = "INSERT INTO products (Product_Name, Product_Description, Product_Price, Product_Stock) VALUES (?, ?, ?, ?);";
+ function CreateProduct($conn, $Product_Name, $Product_Description, $Product_Price, $Product_Stock, $Temp_Location) {
+    $sql = "INSERT INTO products (Product_Name, Product_Description, Product_Price, Product_Stock, Product_ImgLocation) VALUES (?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
      header("location: ../index.php?error=stmt2failed");
      Exit();
     }
  
-    mysqli_stmt_bind_param($stmt, "ssii", $Product_Name, $Product_Description, $Product_Price, $Product_Stock);
+    mysqli_stmt_bind_param($stmt, "ssiis", $Product_Name, $Product_Description, $Product_Price, $Product_Stock, $Temp_Location);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../dashboard.php?error=none");

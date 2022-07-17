@@ -21,6 +21,8 @@
         <!-- responsive style -->
         <link rel="stylesheet" href= "../css/home/responsive.css">
     </head>
+
+
     <!-- add -->
     <div class="container">
         <div class="row justify-content-center">
@@ -28,7 +30,14 @@
                 <div class="card">
                     <div class="card-header"></div>
                     <div class="card-body">
-                        <form action="../includes/addproduct-include.php" method="POST">
+                        <form method="POST" action="../includes/addproduct-include.php" enctype="multipart/form-data">
+                            <!-- product image -->
+                            <div class="row mb-3">
+                                <label for="Product_Image" class="col-md-4 col-form-label text-md-end"></label>
+                                <div class="col-md-6">
+                                    <input type="file" class="form-control" name="Product_Image" placeholder="upload plaatje" autofocus>
+                                </div>
+                            </div>
                             <!-- product name -->
                             <div class="row mb-3">
                                 <label for="Product_Name" class="col-md-4 col-form-label text-md-end"></label>
