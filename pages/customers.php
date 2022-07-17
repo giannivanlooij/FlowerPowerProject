@@ -22,7 +22,7 @@
                                         <th class="text-center" scope="col">Adres</th>
                                         <th class="text-center" scope="col">Huisnummer</th>
                                         <th scope="col">Postcode</th>
-                                        <th scope="col">Provincie</th>
+                                        <th scope="col">Plaats</th>
                                         <th scope="col">Email</th>
                                         <th class="text-center" scope="col">Telefoonnummer</th>
                                         <th class="text-center" scope="col">Geboortedatum</th>

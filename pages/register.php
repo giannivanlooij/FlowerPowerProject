@@ -76,7 +76,7 @@
                             <div class="row mb-3">
                                 <label for="Customer_TownShip" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Customer_TownShip" type="text" class="form-control" name="Customer_TownShip" placeholder="Provincie" required autocomplete="Customer_TownShip" autofocus>                                   
+                                    <input id="Customer_TownShip" type="text" class="form-control" name="Customer_TownShip" placeholder="Plaats" required autocomplete="Customer_TownShip" autofocus>                                   
                                 </div>
                             </div>
                             <!-- Email -->
