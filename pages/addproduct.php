@@ -57,7 +57,7 @@
                                 <label for="Product_Price" class="col-md-4 col-form-label text-md-end"></label>
 
                                 <div class="col-md-6">
-                                    <input id="Product_Price" type="number" class="form-control" name="Product_Price" placeholder="prijs" required autocomplete="Product_Price" autofocus>                              
+                                    <input id="Product_Price" type="text" class="form-control" name="Product_Price" placeholder="prijs" required autocomplete="Product_Price" autofocus>                              
                                 </div>
                             </div>
                             <!-- Stock -->

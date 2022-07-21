@@ -17,7 +17,7 @@
                                     <tr>
                                         <th class="text-center" scope="col">ID</th>
                                         <th scope="col">Naam</th>
-                                        <th scope="col">Tussenvoegsel</th>
+                                        <th scope="col">Tussenvoegsels</th>
                                         <th scope="col">Achternaam</th>
                                         <th class="text-center" scope="col">Adres</th>
                                         <th class="text-center" scope="col">Huisnummer</th>

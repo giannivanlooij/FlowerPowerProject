@@ -40,7 +40,7 @@
                             <div class="row mb-3">
                                 <label for="Employee_MiddleName" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Employee_MiddleName" type="text" class="form-control" name="Employee_MiddleName" placeholder="Tussenvoegsel"  autofocus>
+                                    <input id="Employee_MiddleName" type="text" class="form-control" name="Employee_MiddleName" placeholder="Tussenvoegsels"  autofocus>
                                 </div>
                             </div>
                             <!-- Employee LastName -->

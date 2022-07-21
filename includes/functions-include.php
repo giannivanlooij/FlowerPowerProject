@@ -112,7 +112,7 @@ function CreateEmployee($conn, $Employee_Name, $Employee_MiddleName, $Employee_L
     mysqli_stmt_bind_param($stmt, "ssssssissss", $Employee_Name, $Employee_MiddleName, $Employee_LastName, $Employee_Addres, $Employee_HouseNumber, $Employee_PostcalCode, $Employee_TownShip, $Employee_Email, $Employee_Password, $Employee_PhoneNumber, $Employee_DateOfBirth);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../index.php?error=none");
+    header("location: ../dashboard.php?error=none");
     Exit();
  }
 
