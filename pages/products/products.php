@@ -74,9 +74,10 @@
                                                     "<div class='r-no'>" . $Product_Stock . "</div>" .
                                                 "</td>" .
                                                 "<td>" .
-                                                "<div class='btn-group'>" .
-                                                    "<a class='btn btn-secondary' href='../pages/products/view-product.php?id=" . $Product_ID . "''>" . "wijzig " . "</a>" .
-                                                    "<a class='btn btn-secondary' href='../../includes/delete-product-include.php?id=" . $Product_ID . "''>" . " verwijder" . "</a>" .
+                                                    "<div class='btn-group'>" .
+                                                        "<a class='btn btn-secondary' href='../pages/products/view-product.php?id=" . $Product_ID . "''>" . "wijzig " . "</a>" .
+                                                        "<a class='btn btn-secondary' href='../../includes/delete-product-include.php?id=" . $Product_ID . "''>" . " verwijder" . "</a>" .
+                                                 "</div>" .
                                                 "</td>" .
                                                 "</tr>";
                                             }
