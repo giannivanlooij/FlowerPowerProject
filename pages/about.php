@@ -10,7 +10,7 @@
       <meta name="keywords" content="" />
       <meta name="description" content="" />
       <meta name="author" content="" />
-      <link rel="shortcut icon" href="../images/favicon.png" type="">
+      <!-- <link rel="shortcut icon" href="../images/favicon.png" type=""> -->
       <title>FlowerPower</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
@@ -41,9 +41,6 @@
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="product.php">Producten</a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link" href="testimonial.php">Reviews</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="contact.php">Contact</a>

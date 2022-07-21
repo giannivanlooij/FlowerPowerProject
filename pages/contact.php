@@ -10,7 +10,7 @@
       <meta name="keywords" content="" />
       <meta name="description" content="" />
       <meta name="author" content="" />
-      <link rel="shortcut icon" href="../images/favicon.png" type="">
+      <!-- <link rel="shortcut icon" href="../images/favicon.png" type=""> -->
       <title>FlowerPower</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
@@ -41,9 +41,6 @@
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="product.php">Producten</a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link" href="testimonial.php">Reviews</a>
                         </li>
                         <li class="nav-item active">
                            <a class="nav-link" href="contact.php">Contact</a>
@@ -131,12 +128,12 @@
             <div class="row">
                <div class="col-lg-8 offset-lg-2">
                   <div class="full">
-                     <form action="../index.php">
+                     <form action="../includes/contactform.php">
                         <fieldset>
                            <input type="text" placeholder="Volledige naam " name="name" required />
                            <input type="email" placeholder="Email" name="email" required />
                            <input type="text" placeholder="Onderwerp" name="subject" required />
-                           <textarea placeholder="Bericht" required></textarea>
+                           <textarea placeholder="Bericht" name="message" required></textarea>
                            <input name="submit" type="submit" value="Verstuur" />
                         </fieldset>
                      </form>
