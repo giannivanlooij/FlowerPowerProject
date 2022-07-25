@@ -1,3 +1,19 @@
+<?php
+
+if (!isset($_GET['id'])) {
+    die('id not provided');
+}
+    include_once "../../includes/databasehandler-include.php";
+
+    $ID = $_GET['id'];
+    $sql = "SELECT * FROM products where Product_ID = $ID;";
+    $Result = mysqli_query($conn, $sql);
+    if ($Result->num_rows != 1) {
+        die('id not found');
+    }
+    $Data = mysqli_fetch_assoc($Result);
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,26 +46,26 @@
                 <div class="card">
                     <div class="card-header"></div>
                     <div class="card-body">
-                        <form method="POST" action="../../includes/addproduct-include.php" enctype="multipart/form-data">
+                        <form method="POST" action="../../includes/update-product-include.php?id=<?= $ID; ?> " enctype="multipart/form-data">
                             <!-- product image -->
                             <div class="row mb-3">
                                 <label for="Product_Image" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input type="file" class="form-control" name="Product_Image" placeholder="upload plaatje" autofocus>
+                                    <input type="file" class="form-control" name="Product_Image" placeholder="upload plaatje" value="<?= $Data['Product_ImgLocation']; ?>">
                                 </div>
                             </div>
                             <!-- product name -->
                             <div class="row mb-3">
                                 <label for="Product_Name" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Product_Name" type="text" class="form-control" name="Product_Name" placeholder="Product naam" required autocomplete="Product_Name" autofocus>
+                                    <input id="Product_Name" type="text" class="form-control" name="Product_Name" placeholder="Product naam" required value="<?= $Data['Product_Name']; ?>">
                                 </div>
                             </div>
                             <!-- description  -->
                             <div class="row mb-3">
                                 <label for="Product_Description" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Product_Description" type="text" class="form-control" name="Product_Description" placeholder="Beschrijving" required autocomplete="Product_Description" autofocus>
+                                    <input id="Product_Description" type="text" class="form-control" name="Product_Description" placeholder="Beschrijving" required value="<?= $Data['Product_Description']; ?>">
                                 </div>
                             </div>
                             <!-- price -->
@@ -57,19 +73,19 @@
                                 <label for="Product_Price" class="col-md-4 col-form-label text-md-end"></label>
 
                                 <div class="col-md-6">
-                                    <input id="Product_Price" type="text" class="form-control" name="Product_Price" placeholder="prijs" required autocomplete="Product_Price" autofocus>                              
+                                    <input id="Product_Price" type="text" class="form-control" name="Product_Price" placeholder="Prijs" required value="<?= $Data['Product_Price']; ?>">                              
                                 </div>
                             </div>
                             <!-- Stock -->
                             <div class="row mb-3">
                                 <label for="Product_Stock" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Product_Stock" type="number" class="form-control" name="Product_Stock" placeholder="Product_Stock" required autocomplete="Product_Stock" autofocus>
+                                    <input id="Product_Stock" type="number" class="form-control" name="Product_Stock" placeholder="Voorraad aantal" required value="<?= $Data['Product_Stock']; ?>">
                                 </div>
                             </div>
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button name="submit" type="submit" class="btn btn-primary">voeg product toe</button>
+                                    <button name="EditForm" type="submit" class="btn btn-primary">Bewerk</button>
                                 </div>
                             </div>
                         </form>
