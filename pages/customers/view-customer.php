@@ -12,7 +12,6 @@ if (!isset($_GET['id'])) {
         die('id not found');
     }
     $Data = mysqli_fetch_assoc($Result);
-    print_r($Data);
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +44,7 @@ if (!isset($_GET['id'])) {
                 <div class="card">
                     <div class="card-header"></div>
                     <div class="card-body">
-                        <form action="../../includes/update-customer-include.php?id=<?= $ID; ?>" method="POST">
+                        <form action="../../includes/update-customer-include.php?id=<?= $ID; ?> " method="POST">
                             <!-- name -->
                             <div class="row mb-3">
                                 <label for="Customer_Name" class="col-md-4 col-form-label text-md-end"></label>
