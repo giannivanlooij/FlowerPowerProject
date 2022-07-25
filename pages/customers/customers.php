@@ -113,7 +113,7 @@
                                                 "</td>" .
                                                 "<td>" .
                                                     "<div class='btn-group'>" .
-                                                        "<a class='btn btn-secondary' href='../../pages/customers/view-customer.php?id=" . $Customer_ID . "''>" . "wijzig " . "</a>" .
+                                                        "<a class='btn btn-secondary' href='view-customer.php?id=" . $Customer_ID . "''>" . "wijzig " . "</a>" .
                                                         "<a class='btn btn-secondary' href='../../includes/delete-customer-include.php?id=" . $Customer_ID . "''>" . " verwijder" . "</a>" .
                                                  "</div>" .
                                                 "</td>" .
