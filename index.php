@@ -45,16 +45,16 @@
                            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="pages/about.php">Over ons</a>
+                           <a class="nav-link" href="pages/customerpages/about.php">Over ons</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="pages/product.php">Producten</a>
+                           <a class="nav-link" href="pages/customerpages/productpage.php">Producten</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="pages/contact.php">Contact</a>
+                           <a class="nav-link" href="pages/customerpages/contact.php">Contact</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="pages/shopping-cart.php">
+                           <a class="nav-link" href="pages/customerpages/shopping-cart.php">
                               <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                                  <g>
                                     <g>
@@ -111,12 +111,12 @@
                         </li>
                         <li class="nav-item">
                          <form class="form-inline" >
-                           <a class="btn btn-primary" href="pages/login.php" role="button">login</a>
+                           <a class="btn btn-primary" href="pages/customerpages/login.php" role="button">login</a>
                         </form>
                         </li>
                         <li class="nav-item">
                         <form class="form-inline" style="padding-left: 5px;">
-                        <a class="btn btn-primary"  href="pages/register.php" role="button">registreer</a>
+                        <a class="btn btn-primary"  href="pages/customerpages/register.php" role="button">registreer</a>
                         </form>
                         </li>
                      </ul>
@@ -262,7 +262,7 @@
                   
                ?>
             <div style = "margin-left: 480px;" class="btn-box">
-               <a href="pages/product.php"> Alle producten </a>
+               <a href="pages/customerpages/productpage.php"> Alle producten </a>
             </div>
          </div>
       </section>

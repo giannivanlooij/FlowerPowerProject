@@ -1,3 +1,6 @@
+<?php
+    include_once "../../includes/databasehandler-include.php"
+?>
 <!DOCTYPE html>
 <html>
    <head>
@@ -13,38 +16,45 @@
       <!-- <link rel="shortcut icon" href="../images/favicon.png" type=""> -->
       <title>FlowerPower</title>
       <!-- bootstrap core css -->
-      <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css" />
       <!-- font awesome style -->
-      <link href="../css/font-awesome.min.css" rel="stylesheet" />
+      <link href="../../css/font-awesome.min.css" rel="stylesheet" />
       <!-- Custom styles for this template -->
-      <link href="../css/style.css" rel="stylesheet" />
+      <link href="../../css/style.css" rel="stylesheet" />
       <!-- responsive style -->
-      <link href="../css/responsive.css" rel="stylesheet" />
+      <link href="../../css/responsive.css" rel="stylesheet" />
    </head>
+
+   
    <body class="sub_page">
       <div class="hero_area">
          <!-- header section strats -->
          <header class="header_section">
             <div class="container">
                <nav class="navbar navbar-expand-lg custom_nav-container ">
-                  <a class="navbar-brand" href="../index.php"><img width="250" src="../images/logo.png" alt="#" /></a>
+                  <a class="navbar-brand" href="../../index.php"><img width="250" src="../../images/logo.png" alt="#" /></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class=""> </span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                      <ul class="navbar-nav">
                         <li class="nav-item">
-                           <a class="nav-link" href="../index.php">Home <span class="sr-only">(current)</span></a>   
-                        </li>
+                           <a class="nav-link" href="../../index.php">Home</a>
+                           </li>
                         <li class="nav-item">
                            <a class="nav-link" href="about.php">Over ons</a>
                         </li>
-                        <li class="nav-item">
-                           <a class="nav-link" href="product.php">Producten</a>
-                        </li>
                         <li class="nav-item active">
+                           <a class="nav-link" href="productpage.php">Producten <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
                            <a class="nav-link" href="contact.php">Contact</a>
                         </li>
+
+
+
+
+                        <!-- shopping cart -->
                         <li class="nav-item">
                            <a class="nav-link" href="shopping-cart.php">
                               <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
@@ -100,49 +110,91 @@
                                  </g>
                               </svg>
                            </a>
+                           <li class="nav-item">
+                         <form class="form-inline" >
+                           <a class="btn btn-primary" href="login.php" role="button">login</a>
+                        </form>
                         </li>
+                        <li class="nav-item">
+                        <form class="form-inline" style="padding-left: 5px;">
+                        <a class="btn btn-primary"  href="register.php" role="button">registreer</a>
+                        </form>
+                        </li>
+                        </li>
+                        <!-- end of shopping cart -->
                      </ul>
                   </div>
                </nav>
             </div>
          </header>
-         <!-- end header section -->
       </div>
+      <!-- end header section -->
+      
       <!-- inner page section -->
       <section class="inner_page_head">
          <div class="container_fuild">
             <div class="row">
                <div class="col-md-12">
                   <div class="full">
-                     <h3>Neem contact op</h3>
+                     <h3>Producten</h3>
                   </div>
                </div>
             </div>
          </div>
       </section>
       <!-- end inner page section -->
-      <!-- why section -->
-      <section class="why_section layout_padding">
+
+
+
+      <!-- product section -->
+      <section class="product_section layout_padding">
          <div class="container">
-         
+            <div class="heading_container heading_center">
+               <h2>
+                  Onze <span>producten</span>
+               </h2>
+            </div>
             <div class="row">
-               <div class="col-lg-8 offset-lg-2">
-                  <div class="full">
-                     <form action="../includes/contactform.php">
-                        <fieldset>
-                           <input type="text" placeholder="Volledige naam " name="name" required />
-                           <input type="email" placeholder="Email" name="email" required />
-                           <input type="text" placeholder="Onderwerp" name="subject" required />
-                           <textarea placeholder="Bericht" name="message" required></textarea>
-                           <input name="submit" type="submit" value="Verstuur" />
-                        </fieldset>
-                     </form>
-                  </div>
-               </div>
+               <?php
+                  $sql = "SELECT * FROM products;";
+                  $Result = mysqli_query($conn, $sql);
+                  $ResultCheck = mysqli_num_rows($Result);
+
+                  if ($ResultCheck > 0) {
+                     while ($Row = mysqli_fetch_assoc($Result)) {
+                  // card 
+                           echo "<div class='col-sm-6 col-md-4 col-lg-4'>" .
+                                 "<div class='box'>" .
+                  //hover over card options/
+                                    "<div class='option_container'>" .
+                                       "<div class='options'>".
+                                          "<a href='' class='option1'>" . 'voeg toe' . "</a>" .
+                                          "<a href='shopping-cart.php' class='option2'>" . 'koop nu' . "</a>" .
+                                       "</div>".
+                                    "</div>" .
+                                    "<div class='img-box'>" . 
+                                       "<img src='" .'../' .  $Row['Product_ImgLocation'] . "'/>" . 
+                                    "</div>" .
+                                    "<div class='detail-box'>" .
+                  //item or product name
+                                       "<h5>" . $Row['Product_Name'] . "</h5>".
+                  //price
+                                       "<h6>" . $Row['Product_Price'] . "</h6>".
+                                    "</div>" . 
+                                 "</div>" .
+                              "</div>";
+                  //end card
+                     }
+                  }
+               ?>
             </div>
          </div>
       </section>
-      <!-- end why section -->
+      <!-- end product section -->
+
+
+
+
       <!-- footer start -->
       <footer>
          <div class="container">
@@ -150,7 +202,7 @@
                <div class="col-md-4">
                    <div class="full">
                       <div class="logo_footer">
-                        <a href="#"><img width="210" src="../images/logo.png" alt="#" /></a>
+                        <a href="#"><img width="210" src="../../images/logo.png" alt="#" /></a>
                       </div>
                       
                    </div>
@@ -192,14 +244,13 @@
             </div>
          </div>
       </footer>
-      <!-- footer section -->
       <!-- jQery -->
-      <script src="../js/jquery-3.4.1.min.js"></script>
+      <script src="../../js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->
-      <script src="../js/popper.min.js"></script>
+      <script src="../../js/popper.min.js"></script>
       <!-- bootstrap js -->
-      <script src="../js/bootstrap.js"></script>
+      <script src="../../js/bootstrap.js"></script>
       <!-- custom js -->
-      <script src="../js/custom.js"></script>
+      <script src="../../js/custom.js"></script>
    </body>
 </html>
