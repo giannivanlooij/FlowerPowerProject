@@ -91,14 +91,14 @@
                                 <label for="Customer_Password" class="col-md-4 col-form-label text-md-end"></label>
 
                                 <div class="col-md-6">
-                                    <input id="Customer_Password" type="password" class="form-control" name="Customer_Password" placeholder="Password" required autocomplete="new-password">     
+                                    <input id="Customer_Password" type="password" class="form-control" name="Customer_Password" placeholder="Wachtwoord" required autocomplete="new-password">     
                                 </div>
                             </div>
                             <!-- password confirmation -->
                             <div class="row mb-3">
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Herhaal Wachtwoord" required autocomplete="new-password">
                                 </div>
                             </div>
                             <!-- phone number -->

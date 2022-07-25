@@ -57,14 +57,14 @@
                                 <label for="Product_Price" class="col-md-4 col-form-label text-md-end"></label>
 
                                 <div class="col-md-6">
-                                    <input id="Product_Price" type="text" class="form-control" name="Product_Price" placeholder="prijs" required autocomplete="Product_Price" autofocus>                              
+                                    <input id="Product_Price" type="text" class="form-control" name="Product_Price" placeholder="Prijs" required autocomplete="Product_Price" autofocus>                              
                                 </div>
                             </div>
                             <!-- Stock -->
                             <div class="row mb-3">
                                 <label for="Product_Stock" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Product_Stock" type="number" class="form-control" name="Product_Stock" placeholder="Product_Stock" required autocomplete="Product_Stock" autofocus>
+                                    <input id="Product_Stock" type="number" class="form-control" name="Product_Stock" placeholder="Voorraad aantal" required autocomplete="Product_Stock" autofocus>
                                 </div>
                             </div>
                             <div class="row mb-0">
