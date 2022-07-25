@@ -10,16 +10,16 @@
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <a rel="shortcut icon" type="" href= "/images/favicon.png"></a>
+        <a rel="shortcut icon" type="" href= "..//images/favicon.png"></a>
         <title>FlowerPower</title>
         <!-- bootstrap core css -->
-        <link rel="stylesheet" type="text/css" href= "../css/home/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href= "../../css/home/bootstrap.css">
         <!-- font awesome style -->
-        <link rel="stylesheet" href= "../css/home/font-awesome.min.css">
+        <link rel="stylesheet" href= "../../css/home/font-awesome.min.css">
         <!-- Custom styles for this template -->
-        <link rel="stylesheet" href= "../css/home/style.css">
+        <link rel="stylesheet" href= "../../css/home/style.css">
         <!-- responsive style -->
-        <link rel="stylesheet" href= "../css/home/responsive.css">
+        <link rel="stylesheet" href= "../../css/home/responsive.css">
     </head>
 
 
@@ -30,7 +30,7 @@
                 <div class="card">
                     <div class="card-header"></div>
                     <div class="card-body">
-                        <form method="POST" action="../includes/addproduct-include.php" enctype="multipart/form-data">
+                        <form method="POST" action="../../includes/addproduct-include.php" enctype="multipart/form-data">
                             <!-- product image -->
                             <div class="row mb-3">
                                 <label for="Product_Image" class="col-md-4 col-form-label text-md-end"></label>

@@ -1,9 +1,9 @@
 <?php
-    include_once "../includes/databasehandler-include.php"
+    include_once "../../includes/databasehandler-include.php"
 ?>
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-<link href="../css/customers.css" rel="stylesheet" />
+<link href="../../css/customers.css" rel="stylesheet" />
 
 <div class="event-schedule-area-two bg-color pad100">
     <div class="container">
@@ -113,8 +113,8 @@
                                                 "</td>" .
                                                 "<td>" .
                                                     "<div class='btn-group'>" .
-                                                        "<a class='btn btn-secondary' href='../pages/customers/view-customer.php?id=" . $Customer_ID . "''>" . "wijzig " . "</a>" .
-                                                        "<a class='btn btn-secondary' href='../includes/delete-customer-include.php?id=" . $Customer_ID . "''>" . " verwijder" . "</a>" .
+                                                        "<a class='btn btn-secondary' href='../../pages/customers/view-customer.php?id=" . $Customer_ID . "''>" . "wijzig " . "</a>" .
+                                                        "<a class='btn btn-secondary' href='../../includes/delete-customer-include.php?id=" . $Customer_ID . "''>" . " verwijder" . "</a>" .
                                                  "</div>" .
                                                 "</td>" .
                                                 "</tr>";
