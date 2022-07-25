@@ -10,16 +10,16 @@
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <a rel="shortcut icon" type="" href= "/images/favicon.png"></a>
+        <a rel="shortcut icon" type="" href= "../..//images/favicon.png"></a>
         <title>FlowerPower</title>
         <!-- bootstrap core css -->
-        <link rel="stylesheet" type="text/css" href= "../css/home/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href= "../../css/home/bootstrap.css">
         <!-- font awesome style -->
-        <link rel="stylesheet" href= "../css/home/font-awesome.min.css">
+        <link rel="stylesheet" href= "../../css/home/font-awesome.min.css">
         <!-- Custom styles for this template -->
-        <link rel="stylesheet" href= "../css/home/style.css">
+        <link rel="stylesheet" href= "../../css/home/style.css">
         <!-- responsive style -->
-        <link rel="stylesheet" href= "../css/home/responsive.css">
+        <link rel="stylesheet" href= "../../css/home/responsive.css">
     </head>
     <!-- Register -->
     <div class="container">
@@ -28,7 +28,7 @@
                 <div class="card">
                     <div class="card-header"></div>
                     <div class="card-body">
-                        <form action="../includes/register-include.php" method="POST">
+                        <form action="../../includes/register-include.php" method="POST">
                             <!-- name -->
                             <div class="row mb-3">
                                 <label for="Customer_Name" class="col-md-4 col-form-label text-md-end"></label>
@@ -62,14 +62,14 @@
                             <div class="row mb-3">
                                 <label for="Customer_HouseNumber" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Customer_HouseNumber" type="number" class="form-control" name="Customer_HouseNumber" placeholder="huisnummer" required autocomplete="Customer_HouseNumber" autofocus>
+                                    <input id="Customer_HouseNumber" type="number" class="form-control" name="Customer_HouseNumber" placeholder="Huisnummer" required autocomplete="Customer_HouseNumber" autofocus>
                                 </div>
                             </div>
                             <!-- postalcode -->
                             <div class="row mb-3">
                                 <label for="Customer_PostalCode" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Customer_PostalCode" type="text" class="form-control" name="Customer_PostalCode" placeholder="postcode" required autocomplete="Customer_PostalCode" autofocus>    
+                                    <input id="Customer_PostalCode" type="text" class="form-control" name="Customer_PostalCode" placeholder="Postcode" required autocomplete="Customer_PostalCode" autofocus>    
                                 </div>
                             </div>
                             <!-- township -->
@@ -91,14 +91,14 @@
                                 <label for="Customer_Password" class="col-md-4 col-form-label text-md-end"></label>
 
                                 <div class="col-md-6">
-                                    <input id="Customer_Password" type="password" class="form-control" name="Customer_Password" placeholder="password" required autocomplete="new-password">     
+                                    <input id="Customer_Password" type="password" class="form-control" name="Customer_Password" placeholder="Password" required autocomplete="new-password">     
                                 </div>
                             </div>
                             <!-- password confirmation -->
                             <div class="row mb-3">
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="confirm password" required autocomplete="new-password">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
                                 </div>
                             </div>
                             <!-- phone number -->

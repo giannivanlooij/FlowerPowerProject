@@ -186,7 +186,7 @@ function CreateUser($conn, $Customer_Name, $Customer_MiddleName, $Customer_LastN
 
     $HashedPassword = password_hash($Customer_Password, PASSWORD_DEFAULT);
  
-    mysqli_stmt_bind_param($stmt, "ssssssissss", $Customer_Name, $Customer_MiddleName, $Customer_LastName, $Customer_Addres, $Customer_HouseNumber, $Customer_PostcalCode, $Customer_TownShip, $Customer_Email, $Customer_Password, $Customer_PhoneNumber, $Customer_DateOfBirth);
+    mysqli_stmt_bind_param($stmt, "sssssssssss", $Customer_Name, $Customer_MiddleName, $Customer_LastName, $Customer_Addres, $Customer_HouseNumber, $Customer_PostcalCode, $Customer_TownShip, $Customer_Email, $Customer_Password, $Customer_PhoneNumber, $Customer_DateOfBirth);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../index.php?error=none");
