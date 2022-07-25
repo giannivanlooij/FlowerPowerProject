@@ -30,7 +30,7 @@
                 <div class="card">
                     <div class="card-header"></div>
                     <div class="card-body">
-                        <form method="POST" action="../../includes/addproduct-include.php" enctype="multipart/form-data">
+                        <form method="POST" action="../../includes/create-product-include.php" enctype="multipart/form-data">
                             <!-- product image -->
                             <div class="row mb-3">
                                 <label for="Product_Image" class="col-md-4 col-form-label text-md-end"></label>
