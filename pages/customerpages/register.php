@@ -33,7 +33,7 @@
                             <div class="row mb-3">
                                 <label for="Customer_Name" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Customer_Name" type="text" class="form-control" name="Customer_Name" placeholder="Naam" required autocomplete="customer_name" autofocus>
+                                    <input id="Customer_Name"  type="text" class="form-control" name="Customer_Name" placeholder="Naam" required autocomplete="customer_name" autofocus >
                                 </div>
                             </div>
                             <!-- middle name -->

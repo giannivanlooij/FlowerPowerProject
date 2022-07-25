@@ -109,7 +109,7 @@ function CreateEmployee($conn, $Employee_Name, $Employee_MiddleName, $Employee_L
 
     $HashedPassword = password_hash($Employee_Password, PASSWORD_DEFAULT);
  
-    mysqli_stmt_bind_param($stmt, "ssssssissss", $Employee_Name, $Employee_MiddleName, $Employee_LastName, $Employee_Addres, $Employee_HouseNumber, $Employee_PostcalCode, $Employee_TownShip, $Employee_Email, $Employee_Password, $Employee_PhoneNumber, $Employee_DateOfBirth);
+    mysqli_stmt_bind_param($stmt, "sssssssssss", $Employee_Name, $Employee_MiddleName, $Employee_LastName, $Employee_Addres, $Employee_HouseNumber, $Employee_PostcalCode, $Employee_TownShip, $Employee_Email, $HashedPassword , $Employee_PhoneNumber, $Employee_DateOfBirth);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../dashboard.php?error=none");
@@ -186,7 +186,7 @@ function CreateUser($conn, $Customer_Name, $Customer_MiddleName, $Customer_LastN
 
     $HashedPassword = password_hash($Customer_Password, PASSWORD_DEFAULT);
  
-    mysqli_stmt_bind_param($stmt, "sssssssssss", $Customer_Name, $Customer_MiddleName, $Customer_LastName, $Customer_Addres, $Customer_HouseNumber, $Customer_PostcalCode, $Customer_TownShip, $Customer_Email, $Customer_Password, $Customer_PhoneNumber, $Customer_DateOfBirth);
+    mysqli_stmt_bind_param($stmt, "sssssssssss", $Customer_Name, $Customer_MiddleName, $Customer_LastName, $Customer_Addres, $Customer_HouseNumber, $Customer_PostcalCode, $Customer_TownShip, $Customer_Email, $HashedPassword, $Customer_PhoneNumber, $Customer_DateOfBirth);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../index.php?error=none");
