@@ -1,5 +1,6 @@
 <?php
-    include_once "includes/databasehandler-include.php"
+   session_start();
+   include_once "includes/databasehandler-include.php"
 ?>
 
 
@@ -109,16 +110,36 @@
                               </svg>
                            </a>
                         </li>
-                        <li class="nav-item">
-                         <form class="form-inline" >
-                           <a class="btn btn-primary" href="pages/customerpages/login.php" role="button">login</a>
-                        </form>
-                        </li>
-                        <li class="nav-item">
-                        <form class="form-inline" style="padding-left: 5px;">
-                        <a class="btn btn-primary"  href="pages/customerpages/register.php" role="button">registreer</a>
-                        </form>
-                        </li>
+                        <?php
+                           if (isset($_SESSION['Customer_Id'])) {
+                              echo 
+                              "<li class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='' role='button'>profile</a>" .
+                                 "</form>" .
+                              "</li>";
+                              echo
+                              "<li class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='' role='button'>logout</a>" .
+                                 "</form>" .
+                              "</li>";
+                           }else {
+                              echo 
+                              "<li class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='pages/customerpages/login.php' role='button'>login</a>" .
+                                 "</form>" .
+                              "</li>";
+                              echo
+                              "<li class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='pages/customerpages/register.php' role='button'>registreer</a>" .
+                                 "</form>" .
+                              "</li>";
+                           }
+                           
+                        ?>
                      </ul>
                   </div>
                </nav>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if (!isset($_GET['id'])) {
     die('id not provided');
@@ -12,6 +13,8 @@ if (!isset($_GET['id'])) {
         die('id not found');
     }
     $Data = mysqli_fetch_assoc($Result);
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +54,7 @@ if (!isset($_GET['id'])) {
                             <div class="row mb-3">
                                 <label for="Product_Image" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input type="file" class="form-control" name="Product_Image" placeholder="upload plaatje" value="<?= $Data['Product_ImgLocation']; ?>">
+                                    <input type="file" class="form-control" name="Product_Image" placeholder="upload plaatje" >
                                 </div>
                             </div>
                             <!-- product name -->

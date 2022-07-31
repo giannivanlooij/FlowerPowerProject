@@ -1,3 +1,7 @@
+<?php
+   session_start();
+   include_once "../../includes/databasehandler-include.php"
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -83,7 +87,7 @@
                             <div class="row mb-3">
                                 <label for="Customer_Email" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Customer_Email" type="email" class="form-control" name="Customer_Email" placeholder="Email" required autocomplete="Customer_Email">          
+                                    <input id="Customer_Email" type="email" class="form-control" name="Customer_Email" placeholder="Email"  autocomplete="Customer_Email">          
                                 </div>
                             </div>
                             <!-- password -->

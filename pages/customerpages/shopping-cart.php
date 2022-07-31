@@ -1,3 +1,8 @@
+<?php
+   session_start();
+   include_once "../../includes/databasehandler-include.php"
+?>
+
 <head> 
     <link rel="stylesheet" href="../../css/allpages/shopping-cart.css">
 </head>

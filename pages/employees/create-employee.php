@@ -1,3 +1,8 @@
+<?php
+   session_start();
+   include_once "../../includes/databasehandler-include.php"
+?>
+
 <!DOCTYPE html>
 <html>
     <head>

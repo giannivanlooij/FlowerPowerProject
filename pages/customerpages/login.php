@@ -1,3 +1,7 @@
+<?php
+   session_start();
+   include_once "../../includes/databasehandler-include.php"
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,23 +32,23 @@
 			</div>
 			<div class="card-body">
 				<!-- form -->
-				<form action="../includes/login-include.php" method="Post">
+				<form action="../../includes/login-include.php" method="Post">
 					<!-- login input --> 
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="Email" name="Customer_Email">
+							<input type="text" class="form-control" placeholder="Email" name="Customer_Email">
 					</div>
 					<!-- password -->
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="Password" name="Customer_Password">
+							<input type="password" class="form-control" placeholder="Password" name="Customer_Password">
 					</div>
 					<div style="margin: 15px;" class="row align-items-center remember">
-						<input type="checkbox">&nbsp Remember Me
+						<!-- <input type="checkbox">&nbsp Remember Me -->
 					</div>
 					<div class="form-group">
 						<input name="submit" type="submit" value="submit" class="btn float-right login_btn">
@@ -53,10 +57,10 @@
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="#">&nbsp Sign Up</a>
+					Don't have an account?<a href="register.php">&nbsp Sign Up</a>
 				</div>
 				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
+					<!-- <a href="#">Forgot your password?</a> -->
 				</div>
 			</div>
 		</div>

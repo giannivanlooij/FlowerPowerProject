@@ -14,11 +14,11 @@ function EmptyInputLogin($Customer_Email, $Customer_Password) {
     return $Result;
 }
 
-function LoginUser($Customer_Email, $Customer_Password) {
+function LoginUser($conn, $Customer_Email, $Customer_Password) {
     $EmailAndPhoneExists = EmailAndPhoneExists($conn, $Customer_Email, $Customer_PhoneNumber);
 
     if ($EmailAndPhoneExists === false) {
-        header("location: ../pages/login.php?error=wronglogin");
+        header("location: ../pages/login.php?error=usernotexists");
         exit();
     }
 
@@ -26,10 +26,10 @@ function LoginUser($Customer_Email, $Customer_Password) {
     $CheckPassword = password_verify($Customer_Password, $HashedPassword);
 
     if ($CheckedPassword === false) {
-        header("location: ../pages/login.php?error=wronglogin");
+        header("location: ../pages/login.php?error=wrongpassword");
         exit();
     }
-    elseif ($CheckedPassword === true) {
+    else if ($CheckedPassword === true) {
         session_start();
         $_SESSION["Customer_Id"] = $EmailAndPhoneExists["Customer_Id"];
         $_SESSION["Customer_Email"] = $EmailAndPhoneExists["Customer_Email"];

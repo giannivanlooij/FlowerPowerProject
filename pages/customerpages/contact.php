@@ -1,3 +1,8 @@
+<?php
+   session_start();
+   include_once "../../includes/databasehandler-include.php"
+?>
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -68,36 +73,21 @@
                                           c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                                     </g>
                                  </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
                               </svg>
                            </a>
                            <li class="nav-item">
@@ -124,35 +114,72 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="full">
-                     <h3>Neem contact op</h3>
+                     <h3>Contact</h3>
                   </div>
                </div>
             </div>
          </div>
       </section>
       <!-- end inner page section -->
-      <!-- why section -->
-      <section class="why_section layout_padding">
-         <div class="container">
-         
-            <div class="row">
-               <div class="col-lg-8 offset-lg-2">
-                  <div class="full">
-                     <form action="../includes/contactform.php">
-                        <fieldset>
-                           <input type="text" placeholder="Volledige naam " name="name" required />
-                           <input type="email" placeholder="Email" name="email" required />
-                           <input type="text" placeholder="Onderwerp" name="subject" required />
-                           <textarea placeholder="Bericht" name="message" required></textarea>
-                           <input name="submit" type="submit" value="Verstuur" />
-                        </fieldset>
-                     </form>
+      
+                <section class="why_section layout_padding">
+                  <div class="container">
+                  
+                     <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                           <div class="full"> 
+                           <h3>Contact</h3>
+                           <?php
+                              $sql = "SELECT * FROM flowershops;";
+                              $Result = mysqli_query($conn, $sql);
+                              $ResultCheck = mysqli_num_rows($Result);
+
+                              if ($ResultCheck > 0) {
+                                  while ($Row = mysqli_fetch_assoc($Result)) {
+                                      //defined variables
+                                      $FlowerShop_Addres = $Row['FlowerShop_Addres'];
+                                      $FlowerShop_PostalCode = $Row['FlowerShop_PostalCode'];
+                                      $FlowerShop_TownShip = $Row['FlowerShop_TownShip'];
+                                      $FlowerShop_PhoneNumber = $Row['FlowerShop_PhoneNumber'];
+                                      $FlowerShop_Email = $Row['FlowerShop_Email'];
+
+                                      // begin row
+                                      echo "<tr class='inner-box'>" .
+                                      "<th scope='row'>" .
+                                      // event-date is the styling for the id 
+                                          "<div class='event-date'>" . '<h4>' . 'Winkel:' . '<br>' . $FlowerShop_Addres . ' ' .  $FlowerShop_PostalCode . ' ' . $FlowerShop_TownShip . '<br>' . 'Telefoonnummer:' . '<br>' .  $FlowerShop_PhoneNumber . ' Email: ' . '<br>' . $FlowerShop_Email . '</h4>' ."</div>" .
+                                      "</th>" .
+                                      "</tr>";
+                                    }  
+                                 }
+                           ?>
+                          
+
+
+
+
+
+                             <!-- contact form --> 
+                              <!--<form action="../includes/contactform.php">
+                                 <fieldset>
+                                    <input type="text" placeholder="Volledige naam " name="name" required />
+                                    <input type="email" placeholder="Email" name="email" required />
+                                    <input type="text" placeholder="Onderwerp" name="subject" required />
+                                    <textarea placeholder="Bericht" name="message" required></textarea>
+                                    <input name="submit" type="submit" value="Verstuur" />
+                                 </fieldset>
+                              </form> --> 
+                              <!-- end contact form --> 
+                           </div>
+                        </div>
+                     </div>
                   </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- end why section -->
+               </section> 
+      
+
+
+
+
       <!-- footer start -->
       <footer>
          <div class="container">
