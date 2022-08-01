@@ -14,8 +14,23 @@ if (isset($_POST["submit"])) {
     }
 
     LoginUser($conn, $Customer_Email, $Customer_Password);
-}
+} else if (isset($_POST["submitemployee"])) {
+        
+        $Employee_Email = $_POST["Employee_Email"];
+        $Employee_Password = $_POST["Employee_Password"];
+    
+        require_once "databasehandler-include.php";
+        require_once "functions-include.php";
+    
+        if (EmptyInputLoginEmployee($Employee_Email, $Employee_Password) !== False) {
+            header("location: ../login.php?error=emptyinput");
+            Exit();
+        }
+    
+        LoginEmployee($conn, $Employee_Email, $Employee_Password);
+    }
+
     else {
-        header("location: ../login.php");
+        header("location: ../index.php");
         Exit();
     }

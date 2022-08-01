@@ -1,5 +1,10 @@
+<?php
+   session_start();
+   include_once "../../includes/databasehandler-include.php"
+?>
+
 <head> 
-    <link rel="stylesheet" href="../css/allpages/shopping-cart.css">
+    <link rel="stylesheet" href="../../css/allpages/shopping-cart.css">
 </head>
 <div class="container">
   <div class="heading">
@@ -79,6 +84,6 @@
        </div>         
   </div>
     
-    <a href="../index.php" class="btn btn-update">Bestel</a>
+    <a href="../../index.php" class="btn btn-update">Bestel</a>
   
 </div>

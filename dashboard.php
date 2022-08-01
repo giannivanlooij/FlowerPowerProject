@@ -1,6 +1,3 @@
-
-
-
 <!--
 =========================================================
 * Material Dashboard 2 - v3.0.4
@@ -16,6 +13,18 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 
+<?php
+  session_start();
+  include_once "includes/databasehandler-include.php";
+
+  if (!isset($_SESSION['Employee_ID'])) {
+    header("location: pages/loginemployee.php");
+  }
+  $Employee_ID = $_SESSION['Employee_ID'];
+  $Name = $_SESSION['Employee_Name'];
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,25 +33,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
 <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-
 <!-- Material Dashboard 2  by Creative Tim -->
 <title>FlowerPower</title>
-
-
-
 <!--     Fonts and icons     -->
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
-
 <!-- Nucleo Icons -->
 <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
 <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-
 <!-- Font Awesome Icons -->
 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-
 <!-- Material Icons -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-
 <!-- CSS Files -->
 
 
@@ -58,275 +59,200 @@
       <span class="ms-1 font-weight-bold text-white">Flowerpower</span>
     </a>
   </div>
+
+
   <hr class="horizontal light mt-0 mb-2">
   <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
     <ul class="navbar-nav">
 
-      
-        
-
-          
-
-          
-  
-
-    <li class="nav-item">
-  <a class="nav-link text-white " href="pages/products/products.php">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link text-white " href="pages/products/products.php">
+        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
        <!-- <i class="material-icons opacity-10">receipt_long</i> -->
-      </div>
-    
-    <span class="nav-link-text ms-1">producten</span>
-  </a>
-</li>
+        </div>
+       <span class="nav-link-text ms-1">producten</span>
+       </a>
+      </li>
   
-<li class="nav-item">
-  <a class="nav-link text-white " href="pages/addproduct.php">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-        <!-- <i class="material-icons opacity-10">table_view</i> -->
-      </div>
-    
-    <span class="nav-link-text ms-1">Voeg Product toe</span>
-  </a>
-</li>
-
-  
-<li class="nav-item">
-  <a class="nav-link text-white " href="pages/employees/employees.php">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-      <!--  <i class="material-icons opacity-10">format_textdirection_r_to_l</i> -->
-      </div>
-    
-    <span class="nav-link-text ms-1">Medewerkers</span>
-  </a>
-</li>
-
-  
-<li class="nav-item">
-  <a class="nav-link text-white " href="pages/employees/create-employee.php">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-       <!-- <i class="material-icons opacity-10">view_in_ar</i> -->
-      </div>
-    
-    <span class="nav-link-text ms-1">Voeg medewerker toe</span>
-  </a>
-</li>
-
-<li class="nav-item">
-  <a class="nav-link text-white " href="pages/customers.php">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-       <!-- <i class="material-icons opacity-10">view_in_ar</i> -->
-      </div>
-    
-    <span class="nav-link-text ms-1">Klanten</span>
-  </a>
-</li>
-
-<li class="nav-item">
-  <a class="nav-link text-white " href="pages/register.php">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-       <!-- <i class="material-icons opacity-10">view_in_ar</i> -->
-      </div>
-    
-    <span class="nav-link-text ms-1">Voeg Klant toe</span>
-  </a>
-</li>
-
-  
-
-
-  
-<li class="nav-item">
-  <a class="nav-link text-white " href="pages/invoices/invoices.php">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-      <!--  <i class="material-icons opacity-10">notifications</i> -->
-      </div>
-    
-    <span class="nav-link-text ms-1">Facturen</span>
-  </a>
-</li> 
-
-<!-- <li class="nav-item">
-  <a class="nav-link text-white " href="pages/invoices/view-invoice.php">
-    
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-        <i class="material-icons opacity-10">dashboard</i>
-      </div>
-    
-    <span class="nav-link-text ms-1">Factuur bijwerken</span>
-  </a>
-</li> -->
-    </ul>
-</div>
-  
-</aside>
-
-      <main class="main-content border-radius-lg ">
-        <!-- Navbar -->
-
-<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
-  <div class="container-fluid py-1 px-3">
-    
-    <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-      <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+      <li class="nav-item">
+        <a class="nav-link text-white " href="pages/products/create-product.php">
           
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <!-- <i class="material-icons opacity-10">table_view</i> -->
+            </div>
           
-          
-      </div>
-      <ul class="navbar-nav  justify-content-end">
-        <li class="nav-item d-flex align-items-center">
-          <a href="./pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
-            <i class="fa fa-user me-sm-1"></i>
+          <span class="nav-link-text ms-1">Voeg Product toe</span>
+        </a>
+      </li>
+
+  
+        <li class="nav-item">
+          <a class="nav-link text-white " href="pages/employees/employees.php">
             
-            <span class="d-sm-inline d-none">Sign In</span>
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <!--  <i class="material-icons opacity-10">format_textdirection_r_to_l</i> -->
+              </div>
             
+            <span class="nav-link-text ms-1">Medewerkers</span>
           </a>
         </li>
-       
-        
-        
+
+  
+        <li class="nav-item">
+          <a class="nav-link text-white " href="pages/employees/create-employee.php">
             
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <!-- <i class="material-icons opacity-10">view_in_ar</i> -->
+              </div>
             
-          </ul>
+            <span class="nav-link-text ms-1">Voeg medewerker toe</span>
+          </a>
         </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 
-<!-- End Navbar -->
+        <li class="nav-item">
+          <a class="nav-link text-white " href="pages/customers/customers.php">
+            
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <!-- <i class="material-icons opacity-10">view_in_ar</i> -->
+              </div>
+            
+            <span class="nav-link-text ms-1">Klanten</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white " href="pages/customerpages/register.php">
+            
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <!-- <i class="material-icons opacity-10">view_in_ar</i> -->
+              </div>
+            
+            <span class="nav-link-text ms-1">Voeg Klant toe</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white " href="pages/invoices/invoices.php">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <!--  <i class="material-icons opacity-10">notifications</i> -->
+              </div>
+            <span class="nav-link-text ms-1">Facturen</span>
+          </a>
+        </li> 
+
+
+    </ul>
+  </div>
+</aside>
+
+<main class="main-content border-radius-lg ">
+
+    <!-- Navbar -->
+  <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
+    <div class="container-fluid py-1 px-3">
+      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
+        <ul class="navbar-nav  justify-content-end">
+          <li class="nav-item d-flex align-items-center">
+            <a href="./pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
+              <i class="fa fa-user me-sm-1"></i>
+              <span class="d-sm-inline d-none">Welkom <?=$Name ?> </span>
+            </a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <a href="includes/logoutemployee.php" class="nav-link text-body font-weight-bold px-0">
+              <i class="fa fa-user me-sm-1"></i>
+              <span class="d-sm-inline d-none">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+ <!-- End Navbar -->
 
 
         
 
 
-<div class="container-fluid py-4">
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="row">
-  <div class="col-lg-7 position-relative z-index-2">
-    <div class="card card-plain mb-4">
-      <div class="card-body p-3">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="d-flex flex-column h-100">
-  <h2 class="font-weight-bolder mb-0">Bestellingen</h2>
-</div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-
-  
-
-        
-
-  
-
-      </div>
-      
-    </div>
-
-    
-
-
-<div class="row">
-  <div class="col-12">
-    <div id="globe" class="position-absolute end-0 top-10 mt-sm-3 mt-7 me-lg-7">
-      <canvas width="700" height="600" class="w-lg-100 h-lg-100 w-75 h-75 me-lg-0 me-n10 mt-lg-5"></canvas>
-    </div>
-  </div>
-</div>
-
-
-                
-
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-lg-7 position-relative z-index-2">
+        <div class="card card-plain mb-4">
+          <div class="card-body p-3">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="d-flex flex-column h-100">
+                  <h2 class="font-weight-bolder mb-0">Bestellingen:</h2>
+                  <?php include_once "pages/orders/orders.php";     // all the orders are showed. but it needs to be location based. if a employee works at a certain location. the page should only show orders from that specefic area ?>
+                </div>
+              </div>
             </div>
-
-         
-       </main>
-    
-
-      
-          <div class="fixed-plugin">
-    <div class="card shadow-lg">
-      <div class="card-header pb-0 pt-3">
-        <div class="float-start">
-          <h5 class="mt-3 mb-0">Material UI Configurator</h5>
-          <p>See our dashboard options.</p>
-        </div>
-        <div class="float-end mt-4">
-          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
-            <i class="material-icons">clear</i>
-          </button>
-        </div>
-        <!-- End Toggle Button -->
-      </div>
-      <hr class="horizontal dark my-1">
-      <div class="card-body pt-sm-3 pt-0">
-        <!-- Sidebar Backgrounds -->
-        <div>
-          <h6 class="mb-0">Sidebar Colors</h6>
-        </div>
-        <a href="javascript:void(0)" class="switch-trigger background-color">
-          <div class="badge-colors my-2 text-start">
-            <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
           </div>
-        </a>
-
-        <!-- Sidenav Type -->
-        
-        <div class="mt-3">
-          <h6 class="mb-0">Sidenav Type</h6>
-          <p class="text-sm">Choose between 2 different sidenav types.</p>
         </div>
-
-        <div class="d-flex">
-          <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
-          <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
-          <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div id="globe" class="position-absolute end-0 top-10 mt-sm-3 mt-7 me-lg-7">
+          <canvas width="700" height="600" class="w-lg-100 h-lg-100 w-75 h-75 me-lg-0 me-n10 mt-lg-5"></canvas>
         </div>
+      </div>
+    </div>
+  </div>
+</main>
 
-        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+<div class="fixed-plugin">
+  <div class="card shadow-lg">
+    <div class="card-header pb-0 pt-3">
+      <div class="float-start">
+        <h5 class="mt-3 mb-0">Material UI Configurator</h5>
+        <p>See our dashboard options.</p>
+      </div>
+      <div class="float-end mt-4">
+        <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+          <i class="material-icons">clear</i>
+        </button>
+      </div>
+        <!-- End Toggle Button -->
+    </div>
+    <hr class="horizontal dark my-1">
+    <div class="card-body pt-sm-3 pt-0">
+      <!-- Sidebar Backgrounds -->
+      <div>
+        <h6 class="mb-0">Sidebar Colors</h6>
+      </div>
+      <a href="javascript:void(0)" class="switch-trigger background-color">
+        <div class="badge-colors my-2 text-start">
+          <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
+          <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+          <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+          <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+          <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+          <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
+        </div>
+      </a>
+
+      <!-- Sidenav Type -->
+      <div class="mt-3">
+        <h6 class="mb-0">Sidenav Type</h6>
+        <p class="text-sm">Choose between 2 different sidenav types.</p>
+      </div>
+      <div class="d-flex">
+        <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
+        <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
+        <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
+      </div>
+      <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
         
-
         <!-- Navbar Fixed -->
-        
         <div class="mt-3 d-flex">
           <h6 class="mb-0">Navbar Fixed</h6>
           <div class="form-check form-switch ps-0 ms-auto my-auto">
             <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
           </div>
         </div>
-        
-
         
         <hr class="horizontal dark my-3">
         <div class="mt-2 d-flex">
@@ -336,8 +262,6 @@
           </div>
         </div>
         <hr class="horizontal dark my-sm-4">
-        
-        
         
         
         <a class="btn btn-outline-dark w-100" href="https://www.creative-tim.com/learning-lab/bootstrap/overview/material-dashboard">View documentation</a>

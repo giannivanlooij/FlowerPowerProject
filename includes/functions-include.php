@@ -2,7 +2,7 @@
 
 // functions made for customer login system
 
-//login
+//login customer
 function EmptyInputLogin($Customer_Email, $Customer_Password) {
     $Result;
     if (empty($Customer_Email) || empty($Customer_Password)) {
@@ -14,29 +14,92 @@ function EmptyInputLogin($Customer_Email, $Customer_Password) {
     return $Result;
 }
 
-function LoginUser($Customer_Email, $Customer_Password) {
-    $EmailAndPhoneExists = EmailAndPhoneExists($conn, $Customer_Email, $Customer_PhoneNumber);
+function LoginUser($conn, $Customer_Email, $Customer_Password) {
+    $EmailExists = EmailExists($conn, $Customer_Email);
 
-    if ($EmailAndPhoneExists === false) {
-        header("location: ../pages/login.php?error=wronglogin");
+    if ($EmailExists === false) {
+        header("location: ../pages/login.php?error=usernotexists");
         exit();
     }
 
-    $HashedPassword = $EmailAndPhoneExists["Customer_Password"];
-    $CheckPassword = password_verify($Customer_Password, $HashedPassword);
+    $HashedPassword = $EmailExists["Customer_Password"];
+    $CheckedPassword = password_verify($Customer_Password, $HashedPassword);
 
     if ($CheckedPassword === false) {
-        header("location: ../pages/login.php?error=wronglogin");
+        header("location: ../pages/login.php?error=wrongpassword");
         exit();
     }
-    elseif ($CheckedPassword === true) {
+    else if ($CheckedPassword === true) {
         session_start();
-        $_SESSION["Customer_Id"] = $EmailAndPhoneExists["Customer_Id"];
-        $_SESSION["Customer_Email"] = $EmailAndPhoneExists["Customer_Email"];
-        header("location: ../pages/index.php");
+        $_SESSION["Customer_ID"] = $EmailExists["Customer_ID"];
+        $_SESSION["Customer_Email"] = $EmailExists["Customer_Email"];
+        $_SESSION["Customer_Name"] = $EmailExists["Customer_Name"];
+        header("location: ../index.php");
         exit();
     }
 }
+
+//login employees
+function EmptyInputLoginEmployee($Employee_Email, $Employee_Password) {
+    $Result;
+    if (empty($Employee_Email) || empty($Employee_Password)) {
+        $Result = true;
+    } 
+    else {
+        $Result = false;
+    }
+    return $Result;
+}
+
+function LoginEmployee($conn, $Employee_Email, $Employee_Password) {
+    $EmailExistsEmployee = EmailExistsEmployee($conn, $Employee_Email);
+
+    if ($EmailExistsEmployee === false) {
+        header("location: ../pages/login.php?error=usernotexists");
+        exit();
+    }
+
+    $HashedPassword = $EmailExistsEmployee["Employee_Password"];
+    $CheckedPassword = password_verify($Employee_Password, $HashedPassword);
+
+    if ($CheckedPassword === false) {
+        header("location: ../pages/login.php?error=wrongpassword");
+        exit();
+    }
+    else if ($CheckedPassword === true) {
+        session_start();
+        $_SESSION["Employee_ID"] = $EmailExistsEmployee["Employee_ID"];
+        $_SESSION["Employee_Email"] = $EmailExistsEmployee["Employee_Email"];
+        $_SESSION["Employee_Name"] = $EmailExistsEmployee["Employee_Name"];
+        header("location: ../dashboard.php");
+        exit();
+    }
+}
+
+function EmailExistsEmployee($conn, $Employee_Email) {
+    $sql = "SELECT * FROM employees WHERE Employee_Email = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+     header("location: ../index.php?error=stmtfailed");
+     Exit();
+    }
+ 
+    mysqli_stmt_bind_param($stmt, "s", $Employee_Email);
+    mysqli_stmt_execute($stmt);
+ 
+    $ResultData = mysqli_stmt_get_result($stmt);
+ 
+    if($row  = mysqli_fetch_assoc($ResultData)) {
+     return $row;
+    }
+ 
+    else {
+     $Result = false;
+     return $Result;
+    }
+ 
+    mysql_stmt_close($stmt);
+ }
 
 
 //registration employees
@@ -109,14 +172,14 @@ function CreateEmployee($conn, $Employee_Name, $Employee_MiddleName, $Employee_L
 
     $HashedPassword = password_hash($Employee_Password, PASSWORD_DEFAULT);
  
-    mysqli_stmt_bind_param($stmt, "ssssssissss", $Employee_Name, $Employee_MiddleName, $Employee_LastName, $Employee_Addres, $Employee_HouseNumber, $Employee_PostcalCode, $Employee_TownShip, $Employee_Email, $Employee_Password, $Employee_PhoneNumber, $Employee_DateOfBirth);
+    mysqli_stmt_bind_param($stmt, "sssssssssss", $Employee_Name, $Employee_MiddleName, $Employee_LastName, $Employee_Addres, $Employee_HouseNumber, $Employee_PostcalCode, $Employee_TownShip, $Employee_Email, $HashedPassword , $Employee_PhoneNumber, $Employee_DateOfBirth);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../dashboard.php?error=none");
     Exit();
  }
 
- //registration
+ //registration customer
 function EmptyInputField($Customer_Name, $Customer_LastName, $Customer_Email, $Customer_Password, $password_confirmation, $Customer_Addres, $Customer_HouseNumber, $Customer_PostcalCode, $Customer_TownShip, $Customer_PhoneNumber, $Customer_DateOfBirth) {
     $Result;
     if (empty($Customer_Name) || empty($Customer_LastName) || empty($Customer_Email) || empty($Customer_Password) || empty($password_confirmation) || empty($Customer_Addres) || empty($Customer_HouseNumber) || empty($Customer_PostcalCode) || empty($Customer_TownShip) || empty($Customer_PhoneNumber) || empty($Customer_DateOfBirth) ) {
@@ -151,15 +214,15 @@ function PasswordMatch($Customer_Password, $password_confirmation) {
     return $Result;
 }
 
-function EmailAndPhoneExists($conn, $Customer_Email, $Customer_PhoneNumber) {
-   $sql = "SELECT * FROM customers WHERE Customer_PhoneNumber = ? OR Customer_Email = ?;";
+function EmailExists($conn, $Customer_Email) {
+   $sql = "SELECT * FROM customers WHERE Customer_Email = ?;";
    $stmt = mysqli_stmt_init($conn);
    if (!mysqli_stmt_prepare($stmt, $sql)) {
     header("location: ../index.php?error=stmtfailed");
     Exit();
    }
 
-   mysqli_stmt_bind_param($stmt, "ss", $Customer_Email, $Customer_PhoneNumber);
+   mysqli_stmt_bind_param($stmt, "s", $Customer_Email);
    mysqli_stmt_execute($stmt);
 
    $ResultData = mysqli_stmt_get_result($stmt);
@@ -186,7 +249,7 @@ function CreateUser($conn, $Customer_Name, $Customer_MiddleName, $Customer_LastN
 
     $HashedPassword = password_hash($Customer_Password, PASSWORD_DEFAULT);
  
-    mysqli_stmt_bind_param($stmt, "ssssssissss", $Customer_Name, $Customer_MiddleName, $Customer_LastName, $Customer_Addres, $Customer_HouseNumber, $Customer_PostcalCode, $Customer_TownShip, $Customer_Email, $Customer_Password, $Customer_PhoneNumber, $Customer_DateOfBirth);
+    mysqli_stmt_bind_param($stmt, "sssssssssss", $Customer_Name, $Customer_MiddleName, $Customer_LastName, $Customer_Addres, $Customer_HouseNumber, $Customer_PostcalCode, $Customer_TownShip, $Customer_Email, $HashedPassword, $Customer_PhoneNumber, $Customer_DateOfBirth);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../index.php?error=none");

@@ -1,13 +1,13 @@
 <?php
 
 if (isset($_POST['submit'])) {
-   $Customer_Name = $_POST["Customer_Name"];
-   $Customer_MiddleName = $_POST["Customer_MiddleName"];
-   $Customer_LastName = $_POST["Customer_LastName"];
-   $Customer_Addres = $_POST["Customer_Addres"];
+   $Customer_Name = ucwords($_POST["Customer_Name"]);
+   $Customer_MiddleName = ucwords($_POST["Customer_MiddleName"]);
+   $Customer_LastName = ucwords($_POST["Customer_LastName"]);
+   $Customer_Addres = ucwords($_POST["Customer_Addres"]);
    $Customer_HouseNumber = $_POST["Customer_HouseNumber"];
-   $Customer_PostcalCode = $_POST["Customer_PostalCode"];
-   $Customer_TownShip = $_POST["Customer_TownShip"];
+   $Customer_PostcalCode = strtoupper($_POST["Customer_PostalCode"]);
+   $Customer_TownShip = ucwords($_POST["Customer_TownShip"]);
    $Customer_Email = $_POST["Customer_Email"];
    $Customer_Password = $_POST["Customer_Password"];
    $password_confirmation = $_POST["password_confirmation"];
@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 
    
 
-   if (EmailAndPhoneExists($conn, $Customer_Email, $Customer_PhoneNumber) !== False) {
+   if (EmailExists($conn, $Customer_Email) !== False) {
     header("location: ../index.php?error=emailtaken");
     Exit();
    }
