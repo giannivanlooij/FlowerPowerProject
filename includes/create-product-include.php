@@ -5,7 +5,7 @@
 
 if (isset($_POST['submit'])) {
    $Product_Image = $_FILES["Product_Image"];
-   $Product_Name = $_POST["Product_Name"];
+   $Product_Name = ucwords($_POST["Product_Name"]);
    $Product_Description = $_POST["Product_Description"];
    $Product_Price = $_POST["Product_Price"];
    $Product_Stock = $_POST["Product_Stock"];
