@@ -22,6 +22,7 @@
 
             if ($conn->query($sql) === TRUE) {
                 echo "Update query successfull";
+                header("location: ../dashboard.php");
             } 
             
             
@@ -46,6 +47,7 @@
 
         if ($conn->query($sql2) === TRUE) {
             echo "image sent";
+            header("location: ../dashboard.php");
         } else  {
             echo "something went wrong";
         }
