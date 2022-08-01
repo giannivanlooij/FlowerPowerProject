@@ -34,11 +34,11 @@
                <nav class="navbar navbar-expand-lg custom_nav-container ">
                   <a class="navbar-brand" href="../../index.php"><img width="250" src="../../images/logo.png" alt="#" /></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class=""> </span>
+                     <span class=""> </span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                      <ul class="navbar-nav">
-                     <li class="nav-item">
+                        <li class="nav-item">
                            <a class="nav-link" href="../../index.php">Home</a>
                         </li>
                         <li class="nav-item active">
@@ -71,56 +71,65 @@
                                     <g>
                                        <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
                                           c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                    </g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
+                                    </g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
                               </svg>
                            </a>
-                           <li class="nav-item">
-                         <form class="form-inline" >
-                           <a class="btn btn-primary" href="login.php" role="button">login</a>
-                        </form>
                         </li>
-                        <li class="nav-item">
-                        <form class="form-inline" style="padding-left: 5px;">
-                        <a class="btn btn-primary"  href="register.php" role="button">registreer</a>
-                        </form>
-                        </li>
-                        </li>
+                           <?php
+                              if (isset($_SESSION['Customer_ID'])) {
+                                 echo 
+                                 "<li style='margin-right: 25px;' class='nav-item'>" .
+                                    "<h5>Welcome {$_SESSION['Customer_Name']}</h5>" .
+                                 "</li>";
+                                 echo 
+                                 "<li style='margin-right: 8px;' class='nav-item'>" .
+                                    "<form class='form-inline' >" .
+                                       "<a class='btn btn-primary' href='' role='button'>profile</a>" .
+                                    "</form>" .
+                                 "</li>";
+                                 echo
+                                 "<li class='nav-item'>" .
+                                    "<form class='form-inline' >" .
+                                       "<a class='btn btn-primary' href='includes/logoutuser.php' role='button'>logout</a>" .
+                                    "</form>" .
+                                 "</li>";
+                              }else {
+                                 echo 
+                                 "<li class='nav-item'>" .
+                                    "<form class='form-inline' >" .
+                                       "<a class='btn btn-primary' href='pages/customerpages/login.php' role='button'>login</a>" .
+                                    "</form>" .
+                                 "</li>";
+                                 echo
+                                 "<li class='nav-item'>" .
+                                    "<form class='form-inline' >" .
+                                       "<a class='btn btn-primary' href='pages/customerpages/register.php' role='button'>registreer</a>" .
+                                    "</form>" .
+                                 "</li>";
+
+                              }
+                           
+                           ?>
                      </ul>
                   </div>
                </nav>
             </div>
-         </header> 
+         </header>
          <!-- end header section -->   
       </div>
       <!-- inner page section -->

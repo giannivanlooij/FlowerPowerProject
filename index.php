@@ -1,9 +1,8 @@
 <?php
    session_start();
    include_once "includes/databasehandler-include.php";
-   echo "welcome";
-   print_r($_SESSION["Customer_Email"]);
-   print_r($_SESSION["Customer_ID"]);
+   $ID = $_SESSION['Customer_ID'];
+   $Name = $_SESSION['Customer_Name'];
 ?>
 
 
@@ -116,15 +115,19 @@
                         <?php
                            if (isset($_SESSION['Customer_ID'])) {
                               echo 
-                              "<li class='nav-item'>" .
+                              "<li style='margin-right: 25px;' class='nav-item'>" .
+                                 "<h1>Welcome {$Name}</h1>" .
+                              "</li>";
+                              echo 
+                              "<li style='margin-right: 8px;' class='nav-item'>" .
                                  "<form class='form-inline' >" .
-                                    "<a class='btn btn-primary' href='' role='button'>profile</a>" .
+                                    "<a class='btn btn-primary' href='pages/customers/view-customer.php?id=<?= $ID; ?>' role='button'>profile</a>" .
                                  "</form>" .
                               "</li>";
                               echo
                               "<li class='nav-item'>" .
                                  "<form class='form-inline' >" .
-                                    "<a class='btn btn-primary' href='' role='button'>logout</a>" .
+                                    "<a class='btn btn-primary' href='includes/logoutuser.php' role='button'>logout</a>" .
                                  "</form>" .
                               "</li>";
                            }else {

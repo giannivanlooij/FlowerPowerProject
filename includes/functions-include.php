@@ -33,6 +33,7 @@ function LoginUser($conn, $Customer_Email, $Customer_Password) {
         session_start();
         $_SESSION["Customer_ID"] = $EmailExists["Customer_ID"];
         $_SESSION["Customer_Email"] = $EmailExists["Customer_Email"];
+        $_SESSION["Customer_Name"] = $EmailExists["Customer_Name"];
         header("location: ../index.php");
         exit();
     }

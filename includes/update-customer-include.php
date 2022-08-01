@@ -16,6 +16,9 @@
         $Customer_DateOfBirth = $_POST['Customer_DateOfBirth'];
 
 
+        $HashedPassword = password_hash($Customer_Password, PASSWORD_DEFAULT);
+
+
         $sql = "UPDATE `customers` SET 
         `Customer_Name`='$Customer_Name',
         `Customer_MiddleName`='$Customer_MiddleName',
@@ -25,7 +28,7 @@
         `Customer_PostalCode`='$Customer_PostalCode',
         `Customer_TownShip`='$Customer_TownShip',
         `Customer_Email`='$Customer_Email',
-        `Customer_Password`='$Customer_Password',
+        `Customer_Password`='$HashedPassword',
         `Customer_PhoneNumber`='$Customer_PhoneNumber',
         `Customer_DateOfBirth`='$Customer_DateOfBirth' 
         WHERE Customer_ID = $Customer_ID";
