@@ -159,6 +159,12 @@
               <span class="d-sm-inline d-none">Welkom <?=$Name ?> </span>
             </a>
           </li>
+          <li class="nav-item d-flex align-items-center">
+            <a href="includes/logoutemployee.php" class="nav-link text-body font-weight-bold px-0">
+              <i class="fa fa-user me-sm-1"></i>
+              <span class="d-sm-inline d-none">Logout</span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
