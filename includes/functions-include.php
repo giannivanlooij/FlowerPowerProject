@@ -2,7 +2,7 @@
 
 // functions made for customer login system
 
-//login
+//login customer
 function EmptyInputLogin($Customer_Email, $Customer_Password) {
     $Result;
     if (empty($Customer_Email) || empty($Customer_Password)) {
@@ -38,6 +38,68 @@ function LoginUser($conn, $Customer_Email, $Customer_Password) {
         exit();
     }
 }
+
+//login employees
+function EmptyInputLoginEmployee($Employee_Email, $Employee_Password) {
+    $Result;
+    if (empty($Employee_Email) || empty($Employee_Password)) {
+        $Result = true;
+    } 
+    else {
+        $Result = false;
+    }
+    return $Result;
+}
+
+function LoginEmployee($conn, $Employee_Email, $Employee_Password) {
+    $EmailExistsEmployee = EmailExistsEmployee($conn, $Employee_Email);
+
+    if ($EmailExistsEmployee === false) {
+        header("location: ../pages/login.php?error=usernotexists");
+        exit();
+    }
+
+    $HashedPassword = $EmailExistsEmployee["Employee_Password"];
+    $CheckedPassword = password_verify($Employee_Password, $HashedPassword);
+
+    if ($CheckedPassword === false) {
+        header("location: ../pages/login.php?error=wrongpassword");
+        exit();
+    }
+    else if ($CheckedPassword === true) {
+        session_start();
+        $_SESSION["Employee_ID"] = $EmailExistsEmployee["Employee_ID"];
+        $_SESSION["Employee_Email"] = $EmailExistsEmployee["Employee_Email"];
+        $_SESSION["Employee_Name"] = $EmailExistsEmployee["Employee_Name"];
+        header("location: ../dashboard.php");
+        exit();
+    }
+}
+
+function EmailExistsEmployee($conn, $Employee_Email) {
+    $sql = "SELECT * FROM employees WHERE Employee_Email = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+     header("location: ../index.php?error=stmtfailed");
+     Exit();
+    }
+ 
+    mysqli_stmt_bind_param($stmt, "s", $Employee_Email);
+    mysqli_stmt_execute($stmt);
+ 
+    $ResultData = mysqli_stmt_get_result($stmt);
+ 
+    if($row  = mysqli_fetch_assoc($ResultData)) {
+     return $row;
+    }
+ 
+    else {
+     $Result = false;
+     return $Result;
+    }
+ 
+    mysql_stmt_close($stmt);
+ }
 
 
 //registration employees
@@ -117,7 +179,7 @@ function CreateEmployee($conn, $Employee_Name, $Employee_MiddleName, $Employee_L
     Exit();
  }
 
- //registration
+ //registration customer
 function EmptyInputField($Customer_Name, $Customer_LastName, $Customer_Email, $Customer_Password, $password_confirmation, $Customer_Addres, $Customer_HouseNumber, $Customer_PostcalCode, $Customer_TownShip, $Customer_PhoneNumber, $Customer_DateOfBirth) {
     $Result;
     if (empty($Customer_Name) || empty($Customer_LastName) || empty($Customer_Email) || empty($Customer_Password) || empty($password_confirmation) || empty($Customer_Addres) || empty($Customer_HouseNumber) || empty($Customer_PostcalCode) || empty($Customer_TownShip) || empty($Customer_PhoneNumber) || empty($Customer_DateOfBirth) ) {

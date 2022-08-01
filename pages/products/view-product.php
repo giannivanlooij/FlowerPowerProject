@@ -1,6 +1,16 @@
 <?php
 session_start();
 
+$Employee_ID = $_SESSION['Employee_ID'];
+$Name = $_SESSION['Employee_Name'];
+
+if (!isset($_SESSION['Employee_ID'])) {
+    header("location: ../loginemployee.php");
+  }
+
+  
+
+
 if (!isset($_GET['id'])) {
     die('id not provided');
 }

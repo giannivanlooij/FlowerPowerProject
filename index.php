@@ -1,8 +1,6 @@
 <?php
    session_start();
    include_once "includes/databasehandler-include.php";
-   $ID = $_SESSION['Customer_ID'];
-   $Name = $_SESSION['Customer_Name'];
 ?>
 
 
@@ -79,41 +77,17 @@
                                           c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                                     </g>
                                  </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
+                                 
                               </svg>
                            </a>
                         </li>
                         <?php
                            if (isset($_SESSION['Customer_ID'])) {
+
+                              $ID = $_SESSION['Customer_ID'];
+                              $Name = $_SESSION['Customer_Name'];
+
+
                               echo 
                               "<li style='margin-right: 25px;' class='nav-item'>" .
                                  "<h1>Welcome {$Name}</h1>" .
@@ -121,7 +95,7 @@
                               echo 
                               "<li style='margin-right: 8px;' class='nav-item'>" .
                                  "<form class='form-inline' >" .
-                                    "<a class='btn btn-primary' href='pages/customers/view-customer.php?id=<?= $ID; ?>' role='button'>profile</a>" .
+                                    "<a class='btn btn-primary' href='pages/customers/view-customer.php?id=$ID' role='button'>profile</a>" .
                                  "</form>" .
                               "</li>";
                               echo

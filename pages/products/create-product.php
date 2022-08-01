@@ -1,6 +1,15 @@
 <?php
-   session_start();
-?>
+    session_start();
+    include_once "../../includes/databasehandler-include.php";
+  
+    if (!isset($_SESSION['Employee_ID'])) {
+      header("location: ../loginemployee.php");
+    }
+    $Employee_ID = $_SESSION['Employee_ID'];
+    $Name = $_SESSION['Employee_Name'];
+  
+  ?>
+
 <!DOCTYPE html>
 <html>
     <head>

@@ -1,7 +1,6 @@
 <?php
    session_start();
    include_once "../../includes/databasehandler-include.php";
-   print_r($_SESSION["Customer_Email"]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -93,13 +92,18 @@
                            <?php
                               if (isset($_SESSION['Customer_ID'])) {
                                  echo 
+
+                                 $ID = $_SESSION['Customer_ID'];
+                                 $Name = $_SESSION['Customer_Name'];
+
+
                                  "<li style='margin-right: 25px;' class='nav-item'>" .
-                                    "<h5>Welcome {$_SESSION['Customer_Name']}</h5>" .
+                                 "<h5>Welcome {$Name}</h5>" .
                                  "</li>";
                                  echo 
                                  "<li style='margin-right: 8px;' class='nav-item'>" .
                                     "<form class='form-inline' >" .
-                                       "<a class='btn btn-primary' href='' role='button'>profile</a>" .
+                                       "<a class='btn btn-primary' href='../customers/view-customer.php?id=$ID' role='button'>profile</a>" .
                                     "</form>" .
                                  "</li>";
                                  echo

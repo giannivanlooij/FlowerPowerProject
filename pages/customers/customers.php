@@ -1,7 +1,14 @@
 <?php
-   session_start();
-   include_once "../../includes/databasehandler-include.php"
-?>
+    session_start();
+    include_once "../../includes/databasehandler-include.php";
+  
+    if (!isset($_SESSION['Employee_ID'])) {
+      header("location: ../loginemployee.php");
+    }
+    $Employee_ID = $_SESSION['Employee_ID'];
+    $Name = $_SESSION['Employee_Name'];
+  
+  ?>
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <link href="../../css/customers.css" rel="stylesheet" />

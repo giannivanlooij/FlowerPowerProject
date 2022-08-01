@@ -4,7 +4,7 @@ session_start();
 if (!isset($_GET['id'])) {
     die('id not provided');
 }
-    include_once "../../includes/databasehandler-include.php";
+    include_once "../includes/databasehandler-include.php";
 
     $ID = $_GET['id'];
     $sql = "SELECT * FROM employees where Employee_ID = $ID;";
