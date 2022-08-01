@@ -1,12 +1,18 @@
 <?php
 session_start();
 
+$Employee_ID = $_SESSION['Employee_ID'];
+
+
 if (!isset($_GET['id'])) {
     die('id not provided');
 }
-    include_once "../includes/databasehandler-include.php";
+    include_once "../../includes/databasehandler-include.php";
 
     $ID = $_GET['id'];
+    if ($Employee_ID != $ID) {
+        header('location: ../../dashboard.php?');
+    }
     $sql = "SELECT * FROM employees where Employee_ID = $ID;";
     $Result = mysqli_query($conn, $sql);
     if ($Result->num_rows != 1) {
