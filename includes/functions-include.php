@@ -15,15 +15,15 @@ function EmptyInputLogin($Customer_Email, $Customer_Password) {
 }
 
 function LoginUser($conn, $Customer_Email, $Customer_Password) {
-    $EmailAndPhoneExists = EmailAndPhoneExists($conn, $Customer_Email, $Customer_PhoneNumber);
+    $EmailExists = EmailExists($conn, $Customer_Email);
 
-    if ($EmailAndPhoneExists === false) {
+    if ($EmailExists === false) {
         header("location: ../pages/login.php?error=usernotexists");
         exit();
     }
 
-    $HashedPassword = $EmailAndPhoneExists["Customer_Password"];
-    $CheckPassword = password_verify($Customer_Password, $HashedPassword);
+    $HashedPassword = $EmailExists["Customer_Password"];
+    $CheckedPassword = password_verify($Customer_Password, $HashedPassword);
 
     if ($CheckedPassword === false) {
         header("location: ../pages/login.php?error=wrongpassword");
@@ -31,9 +31,9 @@ function LoginUser($conn, $Customer_Email, $Customer_Password) {
     }
     else if ($CheckedPassword === true) {
         session_start();
-        $_SESSION["Customer_Id"] = $EmailAndPhoneExists["Customer_Id"];
-        $_SESSION["Customer_Email"] = $EmailAndPhoneExists["Customer_Email"];
-        header("location: ../pages/index.php");
+        $_SESSION["Customer_ID"] = $EmailExists["Customer_ID"];
+        $_SESSION["Customer_Email"] = $EmailExists["Customer_Email"];
+        header("location: ../index.php");
         exit();
     }
 }
@@ -151,15 +151,15 @@ function PasswordMatch($Customer_Password, $password_confirmation) {
     return $Result;
 }
 
-function EmailAndPhoneExists($conn, $Customer_Email, $Customer_PhoneNumber) {
-   $sql = "SELECT * FROM customers WHERE Customer_PhoneNumber = ? OR Customer_Email = ?;";
+function EmailExists($conn, $Customer_Email) {
+   $sql = "SELECT * FROM customers WHERE Customer_Email = ?;";
    $stmt = mysqli_stmt_init($conn);
    if (!mysqli_stmt_prepare($stmt, $sql)) {
     header("location: ../index.php?error=stmtfailed");
     Exit();
    }
 
-   mysqli_stmt_bind_param($stmt, "ss", $Customer_Email, $Customer_PhoneNumber);
+   mysqli_stmt_bind_param($stmt, "s", $Customer_Email);
    mysqli_stmt_execute($stmt);
 
    $ResultData = mysqli_stmt_get_result($stmt);

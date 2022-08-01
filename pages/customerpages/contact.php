@@ -1,6 +1,7 @@
 <?php
    session_start();
-   include_once "../../includes/databasehandler-include.php"
+   include_once "../../includes/databasehandler-include.php";
+   print_r($_SESSION["Customer_Email"]);
 ?>
 
 <!DOCTYPE html>

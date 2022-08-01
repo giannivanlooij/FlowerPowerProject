@@ -1,6 +1,9 @@
 <?php
    session_start();
-   include_once "includes/databasehandler-include.php"
+   include_once "includes/databasehandler-include.php";
+   echo "welcome";
+   print_r($_SESSION["Customer_Email"]);
+   print_r($_SESSION["Customer_ID"]);
 ?>
 
 
@@ -111,7 +114,7 @@
                            </a>
                         </li>
                         <?php
-                           if (isset($_SESSION['Customer_Id'])) {
+                           if (isset($_SESSION['Customer_ID'])) {
                               echo 
                               "<li class='nav-item'>" .
                                  "<form class='form-inline' >" .
@@ -137,6 +140,7 @@
                                     "<a class='btn btn-primary' href='pages/customerpages/register.php' role='button'>registreer</a>" .
                                  "</form>" .
                               "</li>";
+
                            }
                            
                         ?>

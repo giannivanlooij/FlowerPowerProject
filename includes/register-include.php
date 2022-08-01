@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 
    
 
-   if (EmailAndPhoneExists($conn, $Customer_Email, $Customer_PhoneNumber) !== False) {
+   if (EmailExists($conn, $Customer_Email) !== False) {
     header("location: ../index.php?error=emailtaken");
     Exit();
    }
