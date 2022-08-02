@@ -131,6 +131,26 @@
           </a>
         </li>
 
+        
+
+        <li class="nav-item">
+          <a class="nav-link text-white " href="pages/shops/shops.php">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <!--  <i class="material-icons opacity-10">notifications</i> -->
+              </div>
+            <span class="nav-link-text ms-1">Winkel</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link text-white " href="pages/shops/create-shop.php">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <!--  <i class="material-icons opacity-10">notifications</i> -->
+              </div>
+            <span class="nav-link-text ms-1">Voeg Winkel toe</span>
+          </a>
+        </li> 
+
         <li class="nav-item">
           <a class="nav-link text-white " href="pages/invoices/invoices.php">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -189,7 +209,7 @@
                 </div>
                 <div class="d-flex flex-column h-100">
                   <h2 class="font-weight-bolder mb-0">Bijna jarig</h2>
-                  <?php include_once "pages/birthdays.php";     // all the orders are showed. but it needs to be location based. if a employee works at a certain location. the page should only show orders from that specefic area ?>
+                  <?php include_once "pages/birthdays.php";     // all birthdays are listed on the birthday itself. it should be 2 days in advance until the birthday is over?>
                 </div>
               </div>
             </div>

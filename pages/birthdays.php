@@ -9,7 +9,7 @@
     <tbody>
         <?php
                 //query succesfully gets the birthday if it is equal to the current date
-                ;
+                
         
             $sql = "SELECT * FROM customers
             WHERE MONTH(Customer_DateOfBirth) = MONTH(CURDATE())
