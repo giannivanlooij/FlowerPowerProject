@@ -106,7 +106,7 @@
                               "</li>";
                            }else {
                               echo 
-                              "<li class='nav-item'>" .
+                              "<li style='margin-right: 8px;' class='nav-item'>" .
                                  "<form class='form-inline' >" .
                                     "<a class='btn btn-primary' href='pages/customerpages/login.php' role='button'>login</a>" .
                                  "</form>" .

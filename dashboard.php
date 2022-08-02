@@ -187,6 +187,10 @@
                   <h2 class="font-weight-bolder mb-0">Bestellingen:</h2>
                   <?php include_once "pages/orders/orders.php";     // all the orders are showed. but it needs to be location based. if a employee works at a certain location. the page should only show orders from that specefic area ?>
                 </div>
+                <div class="d-flex flex-column h-100">
+                  <h2 class="font-weight-bolder mb-0">Bijna jarig</h2>
+                  <?php include_once "pages/birthdays.php";     // all the orders are showed. but it needs to be location based. if a employee works at a certain location. the page should only show orders from that specefic area ?>
+                </div>
               </div>
             </div>
           </div>
