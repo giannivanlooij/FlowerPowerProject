@@ -17,7 +17,7 @@ if (!isset($_GET['id'])) {
     include_once "../../includes/databasehandler-include.php";
 
     $ID = $_GET['id'];
-    $sql = "SELECT * FROM flowershops where FlowerShop = $ID;";
+    $sql = "SELECT * FROM flowershops where FlowerShop_ID = $ID;";
     $Result = mysqli_query($conn, $sql);
     if ($Result->num_rows != 1) {
         die('id not found');
@@ -59,41 +59,48 @@ if (!isset($_GET['id'])) {
                 <div class="card">
                     <div class="card-header"></div>
                     <div class="card-body">
-                        <form method="POST" action="../../includes/update-product-include.php?id=<?= $ID; ?> " enctype="multipart/form-data">
-                            <!-- product image -->
+                        <form method="POST" action="../../includes/update-shop-include.php?id=<?= $ID; ?>">
+                            <!-- FlowerShop Addres -->
                             <div class="row mb-3">
-                                <label for="Product_Image" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="FlowerShop_Addres" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input type="file" class="form-control" name="Product_Image" placeholder="upload plaatje" >
+                                    <input id="FlowerShop_Addres" type="text" class="form-control" name="FlowerShop_Addres" placeholder="Winkel adress" required value="<?= $Data['FlowerShop_Addres']; ?>">
                                 </div>
                             </div>
-                            <!-- product name -->
+                            <!-- housenumber  -->
                             <div class="row mb-3">
-                                <label for="Product_Name" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="FlowerShop_HouseNumber" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Product_Name" type="text" class="form-control" name="Product_Name" placeholder="Product naam" required value="<?= $Data['Product_Name']; ?>">
+                                    <input id="FlowerShop_HouseNumber" type="text" class="form-control" name="FlowerShop_HouseNumber" placeholder="huisnummer" required value="<?= $Data['FlowerShop_HouseNumber']; ?>">
                                 </div>
                             </div>
-                            <!-- description  -->
+                            <!-- postalcode -->
                             <div class="row mb-3">
-                                <label for="Product_Description" class="col-md-4 col-form-label text-md-end"></label>
-                                <div class="col-md-6">
-                                    <input id="Product_Description" type="text" class="form-control" name="Product_Description" placeholder="Beschrijving" required value="<?= $Data['Product_Description']; ?>">
-                                </div>
-                            </div>
-                            <!-- price -->
-                            <div class="row mb-3">
-                                <label for="Product_Price" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="FlowerShop_PostalCode" class="col-md-4 col-form-label text-md-end"></label>
 
                                 <div class="col-md-6">
-                                    <input id="Product_Price" type="text" class="form-control" name="Product_Price" placeholder="Prijs" required value="<?= $Data['Product_Price']; ?>">                              
+                                    <input id="FlowerShop_PostalCode" type="text" class="form-control" name="FlowerShop_PostalCode" placeholder="postcode" required value="<?= $Data['FlowerShop_PostalCode']; ?>">                              
                                 </div>
                             </div>
-                            <!-- Stock -->
+                            <!-- township -->
                             <div class="row mb-3">
-                                <label for="Product_Stock" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="FlowerShop_TownShip" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Product_Stock" type="number" class="form-control" name="Product_Stock" placeholder="Voorraad aantal" required value="<?= $Data['Product_Stock']; ?>">
+                                    <input id="FlowerShop_TownShip" type="text" class="form-control" name="FlowerShop_TownShip" placeholder="Winkel Plaats" required value="<?= $Data['FlowerShop_TownShip']; ?>">
+                                </div>
+                            </div>
+                            <!-- FlowerShop_PhoneNumber -->
+                            <div class="row mb-3">
+                                <label for="FlowerShop_PhoneNumber" class="col-md-4 col-form-label text-md-end"></label>
+                                <div class="col-md-6">
+                                    <input id="FlowerShop_PhoneNumber" type="text" class="form-control" name="FlowerShop_PhoneNumber" placeholder="Winkel Telefoonnummer" required value="<?= $Data['FlowerShop_PhoneNumber']; ?>">
+                                </div>
+                            </div>
+                            <!-- email -->
+                            <div class="row mb-3">
+                                <label for="FlowerShop_Email" class="col-md-4 col-form-label text-md-end"></label>
+                                <div class="col-md-6">
+                                    <input id="FlowerShop_Email" type="text" class="form-control" name="FlowerShop_Email" placeholder="Winkel email" required value="<?= $Data['FlowerShop_Email']; ?>">
                                 </div>
                             </div>
                             <div class="row mb-0">

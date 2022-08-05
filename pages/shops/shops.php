@@ -26,6 +26,7 @@
                                     <tr>
                                         <th class="text-center" scope="col">ID</th>
                                         <th scope="col">adress</th>
+                                        <th scope="col">huisnummer</th>
                                         <th scope="col">postcode</th>
                                         <th scope="col">provincie</th>
                                         <th scope="col">Telefoonnummer</th>
@@ -45,6 +46,7 @@
                                                 //defined variables
                                                 $FlowerShop_ID = $Row['FlowerShop_ID'];
                                                 $FlowerShop_Addres = $Row['FlowerShop_Addres'];
+                                                $FlowerShop_HouseNumber = $Row['FlowerShop_HouseNumber'];
                                                 $FlowerShop_PostalCode = $Row['FlowerShop_PostalCode'];
                                                 $FlowerShop_TownShip = $Row['FlowerShop_TownShip'];
                                                 $FlowerShop_PhoneNumber = $Row['FlowerShop_PhoneNumber'];
@@ -57,32 +59,39 @@
                                                 // event-date is the styling for the id 
                                                     "<div class='event-date'>" . $FlowerShop_ID ."</div>" .
                                                 "</th>" .
-                                                //image
+                                                //addres
                                                 "<td>" .
                                                     "<div class='event-wrap'>" .
                                                         "<h4>" . "<a href='#'>" . $FlowerShop_Addres . "</a>" . "</h4>" .
                                                     "</div>" .
                                                 "</td>" .
-                                                //name
+                                                //housenumber
+                                                "<td>" .
+                                                    "<div class='event-wrap'>" .
+                                                        "<h4>" . "<a href='#'>" . $FlowerShop_HouseNumber . "</a>" . "</h4>" .
+                                                    "</div>" .
+                                                "</td>" .
+                                                //postalcode
                                                 "<td>" .
                                                     "<div class='event-wrap'>" .
                                                         "<h4>" . "<a href='#'>" . $FlowerShop_PostalCode . "</a>" . "</h4>" .
                                                     "</div>" .
                                                 "</td>" .
-                                                //description
+                                                //township
                                                 "<td>" .
                                                     "<div class='r-no'>" . $FlowerShop_TownShip ."</div>" .
                                                 "</td>" .
-
+                                                //phonenumber
                                                 "<td>" .
                                                     "<div class='r-no'>" ."$". $FlowerShop_PhoneNumber . "</div>" .
                                                 "</td>" .
-
+                                                //email
                                                 "<td>" .
                                                     "<div class='r-no'>" . $FlowerShop_Email . "</div>" .
                                                 "</td>" .
                                                 "<td>" .
                                                     "<div class='btn-group'>" .
+                                                        // change and delete 
                                                         "<a class='btn btn-secondary' href='view-shop.php?id=" . $FlowerShop_ID . "''>" . "wijzig " . "</a>" .
                                                         "<a class='btn btn-secondary' href='../../includes/delete-shop-include.php?id=" . $FlowerShop_ID . "''>" . " verwijder" . "</a>" .
                                                  "</div>" .

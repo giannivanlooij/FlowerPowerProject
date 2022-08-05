@@ -50,6 +50,13 @@
                                     <input id="FlowerShop_Addres" type="text" class="form-control" name="FlowerShop_Addres" placeholder="Winkel Adress" required> 
                                 </div>
                             </div>
+                              <!-- shop housenumber -->
+                              <div class="row mb-3">
+                                <label for="FlowerShop_HouseNumber" class="col-md-4 col-form-label text-md-end"></label>
+                                <div class="col-md-6">
+                                    <input id="FlowerShop_HouseNumber" type="text" class="form-control" name="FlowerShop_HouseNumber" placeholder="huisnummer" required> 
+                                </div>
+                            </div>
                             <!-- flowershop postalcode  -->
                             <div class="row mb-3">
                                 <label for="FlowerShop_PostalCode" class="col-md-4 col-form-label text-md-end"></label>
@@ -62,7 +69,7 @@
                                 <label for="FlowerShop_TownShip" class="col-md-4 col-form-label text-md-end"></label>
 
                                 <div class="col-md-6">
-                                    <input id="FlowerShop_TownShip" type="text" class="form-control" name="FlowerShop_TownShip" placeholder="Winkel Provincie" required>                              
+                                    <input id="FlowerShop_TownShip" type="text" class="form-control" name="FlowerShop_TownShip" placeholder="Winkel Plaats" required>                              
                                 </div>
                             </div>
                             <!-- flowershop phonenumber -->

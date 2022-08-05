@@ -9,10 +9,13 @@ if (!isset($_GET['id'])) {
 }
     include_once "../../includes/databasehandler-include.php";
 
-    $ID = $_GET['id'];
-    if ($Employee_ID != $ID) {
-        header('location: ../../dashboard.php?');
-    }
+    
+     $ID = $_GET['id'];
+     // this piece of code makes sure no one but the emplyee himself can change his settings
+     
+    // if ($Employee_ID != $ID) {
+    //     header('location: ../../dashboard.php?sessionnotset');
+    //}
     $sql = "SELECT * FROM employees where Employee_ID = $ID;";
     $Result = mysqli_query($conn, $sql);
     if ($Result->num_rows != 1) {

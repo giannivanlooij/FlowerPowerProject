@@ -322,3 +322,57 @@ function EmptyInputFieldProduct($Product_Name, $Product_Description, $Product_Pr
     header("location: ../dashboard.php?error=none");
     Exit();
  }
+
+ //flower shop functions
+
+ //checks for empty input fields in create a shop 
+function EmptyInputFieldFlowerShop($FlowerShop_Addres, $FlowerShop_HouseNumber, $FlowerShop_PostalCode, $FlowerShop_TownShip, $FlowerShop_PhoneNumber, $FlowerShop_Email) {
+    $Result;
+    if (empty($FlowerShop_Addres) || empty($FlowerShop_HouseNumber) || empty($FlowerShop_PostalCode) || empty($FlowerShop_TownShip) || empty($FlowerShop_PhoneNumber) || empty($FlowerShop_Email)  ) {
+        $Result = true;
+    } 
+    else {
+        $Result = false;
+    }
+    return $Result;
+}
+
+ //checks if the flowershop already exists in the database
+ function FlowerShopExists($conn, $FlowerShop_Addres, $FlowerShop_HouseNumber) {
+    $sql = "SELECT * FROM flowershops WHERE FlowerShop_Addres = ? AND FlowerShop_HouseNumber = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+     header("location: ../index.php?error=stmtfailed");
+     Exit();
+    }
+ 
+    mysqli_stmt_bind_param($stmt, "ss", $FlowerShop_Addres, $FlowerShop_HouseNumber);
+    mysqli_stmt_execute($stmt);
+ 
+    $ResultData = mysqli_stmt_get_result($stmt);
+ 
+    if($row  = mysqli_fetch_assoc($ResultData)) {
+     return $row;
+    }
+ 
+    else {
+     $Result = false;
+     return $Result;
+    }
+}
+
+ //adds the flowershop to the database
+ function CreateFlowerShop($conn, $FlowerShop_Addres, $FlowerShop_HouseNumber, $FlowerShop_PostalCode, $FlowerShop_TownShip, $FlowerShop_PhoneNumber, $FlowerShop_Email) {
+    $sql = "INSERT INTO flowershops (FlowerShop_Addres, FlowerShop_HouseNumber, FlowerShop_PostalCode, FlowerShop_TownShip, FlowerShop_PhoneNumber, FlowerShop_Email) VALUES (?, ?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+     header("location: ../index.php?error=stmt2failed");
+     Exit();
+    }
+ 
+    mysqli_stmt_bind_param($stmt, "ssssss", $FlowerShop_Addres, $FlowerShop_HouseNumber, $FlowerShop_PostalCode, $FlowerShop_TownShip, $FlowerShop_PhoneNumber, $FlowerShop_Email);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../dashboard.php?error=none");
+    Exit();
+    }
