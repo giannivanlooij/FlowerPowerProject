@@ -91,13 +91,11 @@
                         </li>
                            <?php
                               if (isset($_SESSION['Customer_ID'])) {
-                                 echo 
-
                                  $ID = $_SESSION['Customer_ID'];
                                  $Name = $_SESSION['Customer_Name'];
 
-
-                                 "<li style='margin-right: 25px;' class='nav-item'>" .
+                                 echo
+                                 "<li style='margin-right: 25px; margin-left:5px;' class='nav-item'>" .
                                  "<h5>Welcome {$Name}</h5>" .
                                  "</li>";
                                  echo 

@@ -98,6 +98,12 @@
                                     "<a class='btn btn-primary' href='pages/customerpages/change-settings.php?id=$ID' role='button'>profile</a>" .
                                  "</form>" .
                               "</li>";
+                              echo 
+                              "<li style='margin-right: 8px;' class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='pages/customerpages/customerorders.php?id=$ID' role='button'>bestellingen</a>" .
+                                 "</form>" .
+                              "</li>";
                               echo
                               "<li class='nav-item'>" .
                                  "<form class='form-inline' >" .
