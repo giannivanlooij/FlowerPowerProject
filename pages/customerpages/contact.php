@@ -34,7 +34,7 @@
                <nav class="navbar navbar-expand-lg custom_nav-container ">
                   <a class="navbar-brand" href="../../index.php"><img width="250" src="../../images/logo.png" alt="#" /></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class=""> </span>
+                     <span class=""> </span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                      <ul class="navbar-nav">
@@ -90,46 +90,45 @@
                               </svg>
                            </a>
                         </li>
-                           <?php
-                              if (isset($_SESSION['Customer_ID'])) {
+                        <?php
+                        if (isset($_SESSION['Customer_ID'])) {
 
-                                 $ID = $_SESSION['Customer_ID'];
-                                 $Name = $_SESSION['Customer_Name'];
+                           $ID = $_SESSION['Customer_ID'];
+                           $Name = $_SESSION['Customer_Name'];
 
 
-                                 echo 
-                                 "<li style='margin-right: 25px;' class='nav-item'>" .
-                                    "<h5>Welcome {$Name}</h5>" .
-                                 "</li>";
-                                 echo 
-                                 "<li style='margin-right: 8px;' class='nav-item'>" .
-                                    "<form class='form-inline' >" .
-                                      "<a class='btn btn-primary' href='../customers/view-customer.php?id=$ID' role='button'>profile</a>" .
-                                    "</form>" .
-                                 "</li>";
-                                 echo
-                                 "<li class='nav-item'>" .
-                                    "<form class='form-inline' >" .
-                                       "<a class='btn btn-primary' href='includes/logoutuser.php' role='button'>logout</a>" .
-                                    "</form>" .
-                                 "</li>";
-                              }else {
-                                 echo 
-                                 "<li class='nav-item'>" .
-                                    "<form class='form-inline' >" .
-                                       "<a class='btn btn-primary' href='pages/customerpages/login.php' role='button'>login</a>" .
-                                    "</form>" .
-                                 "</li>";
-                                 echo
-                                 "<li class='nav-item'>" .
-                                    "<form class='form-inline' >" .
-                                       "<a class='btn btn-primary' href='pages/customerpages/register.php' role='button'>registreer</a>" .
-                                    "</form>" .
-                                 "</li>";
+                           echo 
+                           "<li style='margin-right: 25px;' class='nav-item'>" .
+                              "<h5>Welcome {$Name}</h5>" .
+                           "</li>";
+                           echo 
+                           "<li style='margin-right: 8px;' class='nav-item'>" .
+                              "<form class='form-inline' >" .
+                                 "<a class='btn btn-primary' href='../customers/view-customer.php?id=$ID' role='button'>profile</a>" .
+                              "</form>" .
+                           "</li>";
+                           echo
+                           "<li class='nav-item'>" .
+                              "<form class='form-inline' >" .
+                                 "<a class='btn btn-primary' href='includes/logoutuser.php' role='button'>logout</a>" .
+                              "</form>" .
+                           "</li>";
+                        }else {
+                           echo 
+                           "<li class='nav-item'>" .
+                              "<form class='form-inline' >" .
+                                 "<a class='btn btn-primary' href='pages/customerpages/login.php' role='button'>login</a>" .
+                              "</form>" .
+                           "</li>";
+                           echo
+                           "<li class='nav-item'>" .
+                              "<form class='form-inline' >" .
+                                 "<a class='btn btn-primary' href='pages/customerpages/register.php' role='button'>registreer</a>" .
+                              "</form>" .
+                           "</li>";
 
-                              }
-                           
-                           ?>
+                        }
+                        ?>
                      </ul>
                   </div>
                </nav>
@@ -139,90 +138,92 @@
       </div>
       <!-- inner page section -->
       <section class="inner_page_head">
-         <div class="container_fuild">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="full">
-                     <h3>Contact</h3>
+            <div class="container_fuild">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="full">
+                        <h3>Contact</h3>
+                     </div>
                   </div>
                </div>
             </div>
-         </div>
-      </section>
-      <!-- end inner page section -->
-      
-                <section class="why_section layout_padding">
-                  <div class="container">
-                  
-                     <div class="row">
-                        <div class="col-lg-8 offset-lg-2">
-                           <div class="full"> 
-                           <h3>Contact</h3>
-                           <?php
-                              $sql = "SELECT * FROM flowershops;";
-                              $Result = mysqli_query($conn, $sql);
-                              $ResultCheck = mysqli_num_rows($Result);
+         </section>
+         <!-- end inner page section -->               
+         <table class="table">
+               <thead>
+               <tr>
+                     <th scope="col">adress</th>
+                     <th scope="col">huisnummer</th>
+                     <th scope="col">postcode</th>
+                     <th scope="col">provincie</th>
+                     <th scope="col">Telefoonnummer</th>
+                     <th class="text-center" scope="col">Email</th>
+               </tr>
+            </thead>
+            <tbody>
+               <?php
+                                                   
+                     $sql = "SELECT * FROM flowershops;";
+                     $Result = mysqli_query($conn, $sql);
+                     $ResultCheck = mysqli_num_rows($Result);
 
-                              if ($ResultCheck > 0) {
-                                  while ($Row = mysqli_fetch_assoc($Result)) {
-                                      //defined variables
-                                      $FlowerShop_Addres = $Row['FlowerShop_Addres'];
-                                      $FlowerShop_PostalCode = $Row['FlowerShop_PostalCode'];
-                                      $FlowerShop_TownShip = $Row['FlowerShop_TownShip'];
-                                      $FlowerShop_PhoneNumber = $Row['FlowerShop_PhoneNumber'];
-                                      $FlowerShop_Email = $Row['FlowerShop_Email'];
+                     if ($ResultCheck > 0) {
+                        while ($Row = mysqli_fetch_assoc($Result)) {
+                           //defined variables
+                           
+                           $FlowerShop_Addres = $Row['FlowerShop_Addres'];
+                           $FlowerShop_HouseNumber = $Row['FlowerShop_HouseNumber'];
+                           $FlowerShop_PostalCode = $Row['FlowerShop_PostalCode'];
+                           $FlowerShop_TownShip = $Row['FlowerShop_TownShip'];
+                           $FlowerShop_PhoneNumber = $Row['FlowerShop_PhoneNumber'];
+                           $FlowerShop_Email = $Row['FlowerShop_Email'];
 
-                                      // begin row
-                                      echo "<tr class='inner-box'>" .
-                                      "<th scope='row'>" .
-                                      // event-date is the styling for the id 
-                                          "<div class='event-date'>" . '<h4>' . 'Winkel:' . '<br>' . $FlowerShop_Addres . ' ' .  $FlowerShop_PostalCode . ' ' . $FlowerShop_TownShip . '<br>' . 'Telefoonnummer:' . '<br>' .  $FlowerShop_PhoneNumber . ' Email: ' . '<br>' . $FlowerShop_Email . '</h4>' ."</div>" .
-                                      "</th>" .
-                                      "</tr>";
-                                    }  
-                                 }
-                           ?>
-                          
-
-
-
-
-
-                             <!-- contact form --> 
-                              <!--<form action="../includes/contactform.php">
-                                 <fieldset>
-                                    <input type="text" placeholder="Volledige naam " name="name" required />
-                                    <input type="email" placeholder="Email" name="email" required />
-                                    <input type="text" placeholder="Onderwerp" name="subject" required />
-                                    <textarea placeholder="Bericht" name="message" required></textarea>
-                                    <input name="submit" type="submit" value="Verstuur" />
-                                 </fieldset>
-                              </form> --> 
-                              <!-- end contact form --> 
-                           </div>
+                           
+                           // begin row
+                           echo 
+                           "<td>" .
+                                 "<div class='r-no'>" . $FlowerShop_Addres . "</div>" .
+                           "</td>" .
+                           //housenumber
+                           "<td>" .
+                                 "<div class='r-no'>" .$FlowerShop_HouseNumber ."</div>" .
+                           "</td>" .
+                           //postalcode
+                           "<td>" .
+                                 "<div class='r-no'>" .$FlowerShop_PostalCode ."</div>" .
+                           "</td>" .
+                           //township
+                           "<td>" .
+                                 "<div class='r-no'>" . $FlowerShop_TownShip ."</div>" .
+                           "</td>" .
+                           //phonenumber
+                           "<td>" .
+                                 "<div class='r-no'>" . $FlowerShop_PhoneNumber . "</div>" .
+                           "</td>" .
+                           //email
+                           "<td>" .
+                                 "<div class='r-no'>" . $FlowerShop_Email . "</div>" .
+                           "</td>" .
+                           "</tr>";
+                        }
+                     }
+               ?>
+            </tbody>
+         </table>
+         <!-- footer start -->
+         <footer>
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-4">
+                     <div class="full">
+                        <div class="logo_footer">
+                           <a href="#"><img width="210" src="../../images/logo.png" alt="#" /></a>
                         </div>
+                        
                      </div>
                   </div>
-               </section> 
-      
-
-
-
-
-      <!-- footer start -->
-      <footer>
-         <div class="container">
-            <div class="row">
-               <div class="col-md-4">
-                   <div class="full">
-                      <div class="logo_footer">
-                        <a href="#"><img width="210" src="../../images/logo.png" alt="#" /></a>
-                      </div>
-                      
-                   </div>
-               </div>
-               <div class="col-md-8">
-                  <div class="row">
+                  <div class="col-md-8">
+                     <div class="row">
                   <div class="col-md-7">
                      <div class="row">
                         <div class="col-md-6">
@@ -256,16 +257,30 @@
                   </div>
                </div>
             </div>
-         </div>
-      </footer>
-      <!-- footer section -->
-      <!-- jQery -->
-      <script src="../../js/jquery-3.4.1.min.js"></script>
-      <!-- popper js -->
-      <script src="../../js/popper.min.js"></script>
-      <!-- bootstrap js -->
-      <script src="../../js/bootstrap.js"></script>
-      <!-- custom js -->
-      <script src="../../js/custom.js"></script>
-   </body>
+                      </div>
+            </footer>
+            <!-- footer section -->
+            <!-- jQery -->
+            <script src="../../js/jquery-3.4.1.min.js"></script>
+            <!-- popper js -->
+            <script src="../../js/popper.min.js"></script>
+            <!-- bootstrap js -->
+            <script src="../../js/bootstrap.js"></script>
+            <!-- custom js -->
+            <script src="../../js/custom.js"></script>
+    </body>
 </html>
+
+
+<!-- contact form --> 
+<!--<form action="../includes/contactform.php">
+   <fieldset>
+      <input type="text" placeholder="Volledige naam " name="name" required />
+      <input type="email" placeholder="Email" name="email" required />
+      <input type="text" placeholder="Onderwerp" name="subject" required />
+      <textarea placeholder="Bericht" name="message" required></textarea>
+      <input name="submit" type="submit" value="Verstuur" />
+   </fieldset>
+</form> --> 
+<!-- end contact form --> 
+                             
