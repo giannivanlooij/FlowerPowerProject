@@ -17,7 +17,7 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
       <!-- image directory --> 
-      <a rel="shortcut icon" type="" href= "/images/favicon.png"></a>
+      <link rel="icon" type="image/png" href="images/favicon.png">
       <title>FlowerPower</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href= "css/home/bootstrap.css">

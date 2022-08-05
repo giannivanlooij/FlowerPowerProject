@@ -39,6 +39,7 @@ if (!isset($_GET['id'])) {
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        <link rel="icon" type="image/png" href="../../images/favicon.png">
         <a rel="shortcut icon" type="" href= "..//images/favicon.png"></a>
         <title>FlowerPower</title>
         <!-- bootstrap core css -->

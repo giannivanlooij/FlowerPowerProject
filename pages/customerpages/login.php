@@ -17,6 +17,7 @@
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href= "../../css/login.css">
 	<link rel="stylesheet" type="text/css" href= "../../css/reset.css">
+	<link rel="icon" type="image/png" href="../../images/favicon.png">
 </head>
 <body>
 <div class="container">

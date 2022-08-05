@@ -39,7 +39,7 @@ if (!isset($_GET['id'])) {
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <a rel="shortcut icon" type="" href= "..//images/favicon.png"></a>
+        <link rel="icon" type="image/png" href="../../images/favicon.png">
         <title>FlowerPower</title>
         <!-- bootstrap core css -->
         <link rel="stylesheet" type="text/css" href= "../../css/home/bootstrap.css">

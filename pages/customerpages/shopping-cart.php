@@ -5,6 +5,7 @@
 
 <head> 
     <link rel="stylesheet" href="../../css/allpages/shopping-cart.css">
+    <link rel="icon" type="image/png" href="../../images/favicon.png">
 </head>
 <div class="container">
   <div class="heading">

@@ -14,6 +14,7 @@
       <meta name="keywords" content="" />
       <meta name="description" content="" />
       <meta name="author" content="" />
+      <link rel="icon" type="image/png" href="../../images/favicon.png">
       <!-- <link rel="shortcut icon" href="../../images/favicon.png" type=""> -->
       <title>FlowerPower</title>
       <!-- bootstrap core css -->
