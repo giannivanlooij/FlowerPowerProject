@@ -1,6 +1,26 @@
 <?php
    session_start();
    include_once "includes/databasehandler-include.php";
+
+   if (isset($_POST['AddToCart'])) {
+      echo "<Body 'style=background:red;'></body>";
+      if (isset($_SESSION['Customer_ID'])) {
+         if (isset($_SESSION['AddedToCart'])) {
+
+            $Product_Array_ID = array_column($_SESSION["ShoppingCart"], "Product_ID");
+
+         } else {
+            $Product_Array = array(
+               'Product_ID' => $_GET['Product_ID'],
+               'Product_Name' => $_POST['Product_Name'],
+               'Product_price' => $_POST['Product_Price'],
+               'Product_Quantity' => $_POST['1']
+            );
+
+            $_SESSION["ShoppingCart"] [0] = $Product_Array; 
+         }
+      }
+   }
 ?>
 
 
@@ -242,16 +262,19 @@
 
                   if ($ResultCheck > 0) {
                      while ($Row = mysqli_fetch_assoc($Result)) {
+                        $Product_ID = $Row['Product_ID'];
                         
                   // card 
                            echo "<div class='col-sm-6 col-md-4 col-lg-4'>" .
                                  "<div class='box'>" .
                   //hover over card options/
                                     "<div class='option_container'>" .
+                                    "<form>".
                                        "<div class='options'>".
-                                          "<a href='' class='option1'>" . 'voeg toe' . "</a>" .
-                                          "<a href='shopping-cart.php' class='option2'>" . 'koop nu' . "</a>" .
+                                          "<button type='submit' name='AddToCart'  style='border-radius: 12px; padding: 10px; margin-bottom:2px;' class='option1'>" . 'voeg toe' . "</button>" .
+                                          "<button type='submit' name='BuyNow' style='border-radius: 12px; padding: 10px;' class='option2'>" . 'koop nu' . "</button>" .
                                        "</div>".
+                                       "</form>".
                                     "</div>" .
                                     "<div class='img-box'>" . 
                                        "<img src='"  . "Images/" .  $Row['Product_ImgLocation'] . "'/>" . 
