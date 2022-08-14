@@ -30,7 +30,7 @@
       <div class="layout-inline row">
         
         <div class="col col-pro layout-inline">
-          <!-- <img src="" alt="kitten" /> -->
+          <img src="../../images/productimages/1658062437p2.png" alt="kitten" />
           <p>Bloem 1</p>
         </div>
         
@@ -42,7 +42,7 @@
       <div class="layout-inline row row-bg2">
 
         <div class="col col-pro layout-inline">
-          <!-- <img src="" alt="kitten" /> -->
+           <img src="../../images/productimages/1658062336p1.png" alt="kitten" /> 
           <p>Bloem 2</p>
         </div>
         
@@ -59,7 +59,7 @@
        <div class="layout-inline row">
         
         <div class="col col-pro layout-inline">
-          <!-- <img src="" alt="kitten" /> -->
+           <img src="../../images/productimages/1658837830825474895754938.png" alt="kitten" /> 
           <p>Boeket</p>
         </div>
         
