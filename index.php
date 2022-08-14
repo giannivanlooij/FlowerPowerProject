@@ -269,10 +269,15 @@
                   }
                   
                ?>
-            <div style = "margin-left: 480px;" class="btn-box">
+            <div style = "margin-left: 480px; margin-bottom: 50px;" class="btn-box">
                <a href="pages/customerpages/productpage.php"> Alle producten </a>
             </div>
          </div>
+         <div style="margin top 200px" class="heading_container heading_center">
+               <h2>Bezoek <span>ons</span></h2>
+               <a href="#"><img width="200" height="" src="images/winkel.jpg" alt="#" /></a>
+         </div>
+
       </section>
       <!-- end product section -->
 
