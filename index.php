@@ -41,6 +41,8 @@
 
                $_SESSION["AddedToCart"] [0] = $Product_Array; 
          }
+      } else {
+         echo "Please login";
       }
    }
 ?>

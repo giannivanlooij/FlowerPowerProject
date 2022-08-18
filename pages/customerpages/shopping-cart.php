@@ -15,7 +15,7 @@
   </div>
 
   <table class="table">
-      <div class="layout-inline  th">
+      <div class="layout-inline th">
         <div class="col"></div>
         <div class="col">Producten</div>
         <div class="col">Aantal</div>
@@ -25,10 +25,27 @@
       </div>
       <tbody>
           <?php
-          if (!empty($_SESSION['AddedToCart'])) {
+          if (isset($_GET['action'])) {
 
-            $total = 0;
-            foreach($_SESSION['AddedToCart'] as $keys => $Values) {
+             if ($_GET['action'] == 'delete') {
+              
+              foreach($_SESSION['AddedToCart'] as $Keys => $Values)
+              {
+                if ($Values['Product_ID'] == $_GET['id']) 
+                {  
+                  print_r($_SESSION['AddedToCart'] [$Keys]);
+                  unset($_SESSION['AddedToCart'] [$Keys]);
+                  header('location: shopping-cart.php');
+                }
+              }
+
+            }
+            
+          }
+          if (!empty($_SESSION['AddedToCart'])) {
+            foreach($_SESSION['AddedToCart'] as $Keys => $Values) {
+              $total = 0;
+              $total = $total + $Values['Product_Quantity'] * $Values['Product_price'];
               echo 
             "<div class='layout-inline row'>" .
                 // item row
@@ -49,7 +66,7 @@
                 "</div>" .
               //options
                 "<div class='col'>" .
-                  "<a style='margin-top:5px;' class='btn btn-secondary' href='../../includes/nothing.php?id=''>" . " verwijder" . "</a>" .
+                  "<a class='btn btn-secondary' href='shopping-cart.php?action=delete&id=" . $Values['Product_ID'] . "''>" . "verwijder " . "</a>" .
                 "</div>" .
               "</div>" .
             "</div>";
@@ -61,35 +78,17 @@
               
           ?>
       </tbody>
-  </table>
-  
-
-    
-    
-  
-      
-
-
-      
-      
-        <div class="col col-price col-numeric align-center ">
-          <p>€10.99</p>
-        </div>
-      </div>
-      
-    
-  
-       <div  class="tf">
-          <div  class="row layout-inline ">
-           <div class="col"><p>Totaal:</p></div>
-            <div class="col"></div> <!-- SPACE-->
-           <div class="col col-price col-numeric align-center "><p>€46.49</p></div>
-         </div>
-       </div>         
-    
-    <a href="../../index.php" class="btn btn-update">Bestel</a>
-  
+  </table>        
 </div>
+<div  class="tf">
+  <div  class="row layout-inline ">
+    <div class="col"><p>Totaal:</p></div>
+    <div class="col"></div> <!-- SPACE-->
+    <div class="col col-price col-numeric align-center "><?php echo number_format($total,2); ?></div>
+  </div>
+</div>         
+    
+    <a href="../../includes/shoppingcart-handler.php?action=checkout" class="btn btn-update">Bestel</a>
 
 
 
