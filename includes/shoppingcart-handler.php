@@ -42,10 +42,11 @@ if($_GET["action"] == 'checkout')
             while ($row = $ResultID->fetch_row()) {
                 $GeneratedID = $row[0] ?? false;
                 echo $GeneratedID;
+                
 
                 foreach($_SESSION["AddedToCart"] as $Keys => $values){
-        
-                    // die('so far so good');
+                    
+
                     $ProductQuery = "INSERT INTO productsoninvoices (Invoice_ID, Product_ID, ItemOnInvoice_Quantity) VALUES (?, ?, ?);";
                     $ProductStatement = mysqli_stmt_init($conn);
                     if (!mysqli_stmt_prepare($ProductStatement, $ProductQuery)) {
@@ -56,10 +57,9 @@ if($_GET["action"] == 'checkout')
                         mysqli_stmt_execute($ProductStatement);
                         mysqli_stmt_close($ProductStatement);
                         echo "productsoninvoices created";
-            
-                    //header("location: ../index.php?error=none");
-                    Exit();
-                    }
+                     }
+                        header("location: ../index.php?error=none");
+                        Exit();
             }
 
             // adds the products to the productsoninvoice
