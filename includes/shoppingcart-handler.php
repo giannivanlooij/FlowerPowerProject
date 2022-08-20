@@ -59,6 +59,7 @@ if($_GET["action"] == 'checkout')
                         echo "productsoninvoices created";
                      }
                         header("location: ../index.php?error=none");
+                        unset ($_SESSION["AddedToCart"]);
                         Exit();
             }
 
