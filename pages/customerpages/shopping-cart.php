@@ -13,78 +13,85 @@
       Shopping Cart
     </h1>
   </div>
-  
-  <div class="cart transition is-open">
-    
-    
-    
-    <div class="table">
-      
-      <div class="layout-inline row th">
-        <div class="col col-pro">Producten</div>
-        <div class="col col-price align-center "> 
-          Prijs
-        </div>
-      </div>
-      
-      <div class="layout-inline row">
-        
-        <div class="col col-pro layout-inline">
-          <img src="../../images/productimages/1658062437p2.png" alt="kitten" />
-          <p>Bloem 1</p>
-        </div>
-        
-        <div class="col col-price col-numeric align-center ">
-          <p>€10.99</p>
-        </div>
-      </div>
-      
-      <div class="layout-inline row row-bg2">
 
-        <div class="col col-pro layout-inline">
-           <img src="../../images/productimages/1658062336p1.png" alt="kitten" /> 
-          <p>Bloem 2</p>
-        </div>
-        
-        <div class="col col-price col-numeric align-center ">
-          <p>€10.50</p>
-        </div>
-
-        
-        
-        
-      
+  <table class="table">
+      <div class="layout-inline th">
+        <div class="col"></div>
+        <div class="col">Producten</div>
+        <div class="col">Aantal</div>
+        <div class="col">Prijs</div>
+        <div class="col">opties</div>
+        <div class="col"></div>
       </div>
-      
-       <div class="layout-inline row">
-        
-        <div class="col col-pro layout-inline">
-           <img src="../../images/productimages/1658837830825474895754938.png" alt="kitten" /> 
-          <p>Boeket</p>
-        </div>
-        
-        <div class="col col-price col-numeric align-center ">
-          <p>€25.00</p>
-        </div>
+      <tbody>
+          <?php
+          if (isset($_GET['action'])) {
 
-        
-      </div>
-  
-       <div class="tf">
-         
-         
-          <div class="row layout-inline">
-           <div class="col">
-             <p>Totaal:</p>
-           </div>
-           <div class="col"></div>
-           <div class="col col-price col-numeric align-center ">
-          <p>€46.49</p>
-        </div>
-         </div>
-       </div>         
-  </div>
-    
-    <a href="../../index.php" class="btn btn-update">Bestel</a>
-  
+             if ($_GET['action'] == 'delete') {
+              
+              foreach($_SESSION['AddedToCart'] as $Keys => $Values)
+              {
+                if ($Values['Product_ID'] == $_GET['id']) 
+                {  
+                  print_r($_SESSION['AddedToCart'] [$Keys]);
+                  unset($_SESSION['AddedToCart'] [$Keys]);
+                  header('location: shopping-cart.php');
+                }
+              }
+
+            }
+            
+          }
+          if (!empty($_SESSION['AddedToCart'])) {
+            foreach($_SESSION['AddedToCart'] as $Keys => $Values) {
+              $total = 0;
+              $total = $total + $Values['Product_Quantity'] * $Values['Product_price'];
+              echo 
+            "<div class='layout-inline row'>" .
+                // item row
+                "<div class='col'>" .
+                "<img src='"  . "../" .  $Values['Product_Image'] . "'/>" . 
+                "</div>" .
+               //product
+                "<div class='col'>" .
+                   $Values['Product_Name'].
+                "</div>" .
+              //quantity
+                "<div class='col'>" .
+                  $Values['Product_Quantity'].
+                "</div>" .
+              //price
+                "<div class='col'>" .
+                  $Values['Product_price'].
+                "</div>" .
+              //options
+                "<div class='col'>" .
+                  "<a class='btn btn-secondary' href='shopping-cart.php?action=delete&id=" . $Values['Product_ID'] . "''>" . "verwijder " . "</a>" .
+                "</div>" .
+              "</div>" .
+            "</div>";
+
+          };
+
+        };
+          
+              
+          ?>
+      </tbody>
+  </table>        
 </div>
+<div  class="tf">
+  <div  class="row layout-inline ">
+    <div class="col"><p>Totaal:</p></div>
+    <div class="col"></div> <!-- SPACE-->
+    <div class="col col-price col-numeric align-center "><?php echo number_format($total,2); ?></div>
+  </div>
+</div>         
+    
+    <a href="../../includes/shoppingcart-handler.php?action=checkout" class="btn btn-update">Bestel</a>
+
+
+
+                      
+
+

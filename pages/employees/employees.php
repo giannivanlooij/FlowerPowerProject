@@ -123,7 +123,7 @@
                                                 "<td>" .
                                                  "<div class='btn-group'>" .
                                                      "<a class='btn btn-secondary' href='view-employee.php?id=" . $Employee_ID . "''>" . "wijzig " . "</a>" .
-                                                     "<a class='btn btn-secondary' href='../../includes/delete-employee-include.php?id=" . $Employee_ID . "''>" . " verwijder" . "</a>" .
+                                                     "<a class='btn btn-secondary' href='../../includes/delete-session-item-include.php?id=" . $Product_Array['Product_ID'] . "''>" . " verwijder" . "</a>" .
                                                  "</div>" .
                                                 "</td>" .
                                                 "</tr>";

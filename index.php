@@ -1,6 +1,50 @@
 <?php
    session_start();
    include_once "includes/databasehandler-include.php";
+
+   //if the add to cart button is clicked do this
+   if (isset($_POST['AddToCart'])) {
+
+      //only execute this if the customer is signed in
+      if (isset($_SESSION['Customer_ID'])) {
+         //if there is a addedtocart session do this
+         if (isset($_SESSION['AddedToCart'])) {
+            $Product_Array_ID = array_column($_SESSION["AddedToCart"], "addedtocart");
+            //if item is not in array
+            if (!in_array($_GET['addedtocart'], $Product_Array_ID)) {
+               
+               $Count= count($_SESSION["AddedToCart"]);
+               $Product_Array = array(
+                  'Product_ID' => $_GET['addedtocart'],
+                  'Product_Image' => $_POST['hidden_imageurl'],
+                  'Product_Name' => $_POST['hidden_name'],
+                  'Product_price' => $_POST['hidden_price'],
+                  'Product_Quantity' => $_POST['hidden_quantity'],
+                  print_r($_SESSION["AddedToCart"]),
+               );
+               $_SESSION['AddedToCart'] [$Count] = $Product_Array;
+
+            // if item is already in array
+            } else {
+               echo 'Item already added';
+               header('index.php');
+            }
+         //if there is not a added to cart session do this
+         } else {
+            $Product_Array = array(
+               'Product_ID' => $_GET['addedtocart'],
+               'Product_Image' => $_POST['hidden_imageurl'],
+               'Product_Name' => $_POST['hidden_name'],
+               'Product_price' => $_POST['hidden_price'],
+               'Product_Quantity' => $_POST['hidden_quantity'],
+            );
+
+               $_SESSION["AddedToCart"] [0] = $Product_Array; 
+         }
+      } else {
+         echo "Please login";
+      }
+   }
 ?>
 
 
@@ -87,7 +131,13 @@
                               $ID = $_SESSION['Customer_ID'];
                               $Name = $_SESSION['Customer_Name'];
 
-
+                              if (isset($Count)) {
+                                 $Count++;
+                                 echo 
+                                 "<li style='margin-right: 25px;' class='nav-item'>" .
+                                    "<h1>{$Count}</h1>" .
+                                 "</li>";
+                              }
                               echo 
                               "<li style='margin-right: 25px;' class='nav-item'>" .
                                  "<h1>Welcome {$Name}</h1>" .
@@ -242,29 +292,41 @@
 
                   if ($ResultCheck > 0) {
                      while ($Row = mysqli_fetch_assoc($Result)) {
+                        $Product_ID = $Row['Product_ID'];
+                        $Product_Image = $Row['Product_ImgLocation'];
+                        $Product_Name = $Row['Product_Name'];
+                        $Product_Price = $Row['Product_Price'];
+                        $Product_Quantity = 1;
                         
-                  // card 
+                           // card 
                            echo "<div class='col-sm-6 col-md-4 col-lg-4'>" .
                                  "<div class='box'>" .
-                  //hover over card options/
+                                    //hover over card options/
                                     "<div class='option_container'>" .
+                                    //form that sends to input and buttons to the corresponding function
+                                    "<form method='post' action='"  . "index.php?addedtocart=" .  $Product_ID . "'/>" . 
                                        "<div class='options'>".
-                                          "<a href='' class='option1'>" . 'voeg toe' . "</a>" .
-                                          "<a href='shopping-cart.php' class='option2'>" . 'koop nu' . "</a>" .
+                                          "<button type='submit' name='AddToCart'  style='border-radius: 12px; padding: 10px; margin-bottom:2px;' class='option1'>" . 'voeg toe' . "</button>" .
+                                          "<button type='submit' name='BuyNow' style='border-radius: 12px; padding: 10px;' class='option2'>" . 'koop nu' . "</button>" .
+                                          "<input type='hidden' name='hidden_imageurl' value='$Product_Image'>".
+                                          "<input type='hidden' name='hidden_name' value='$Product_Name'>".
+                                          "<input type='hidden' name='hidden_price' value='$Product_Price'>".
+                                          "<input type='hidden' name='hidden_quantity' value='$Product_Quantity'>".
                                        "</div>".
+                                       "</form>".
                                     "</div>" .
                                     "<div class='img-box'>" . 
                                        "<img src='"  . "Images/" .  $Row['Product_ImgLocation'] . "'/>" . 
                                     "</div>" .
                                     "<div class='detail-box'>" .
-                  //item or product name
-                                       "<h5>" . $Row['Product_Name'] . "</h5>".
-                  //price
-                                       "<h6>" . $Row['Product_Price'] . "</h6>".
+                                       //product name
+                                       "<h5>" . $Product_Name . "</h5>".
+                                         //price
+                                       "<h6>" . $Product_Price . "</h6>".
                                     "</div>" . 
                                  "</div>" .
                               "</div>";
-                  //end card
+                              //end card
                      }
                   }
                   
