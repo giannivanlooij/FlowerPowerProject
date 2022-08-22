@@ -1,6 +1,11 @@
 <?php
 session_start();
 include_once "../../includes/databasehandler-include.php";
+
+if (isset($_SESSION['Customer_ID'])) {
+    $Customer_ID = $_SESSION['Customer_ID'];
+
+}
 ?>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <link href="../../css/employees/employees.css" rel="stylesheet" />
@@ -31,7 +36,8 @@ include_once "../../includes/databasehandler-include.php";
                                     INNER JOIN customers
                                     ON invoices.Customer_ID = customers.Customer_ID
                                     INNER JOIN flowershops
-                                    ON invoices.FlowerShop_ID = flowershops.FlowerShop_ID";
+                                    ON invoices.FlowerShop_ID = flowershops.FlowerShop_ID
+                                    WHERE invoices.Customer_ID = $Customer_ID";
                         
                         
                                     $Result = mysqli_query($conn, $sql);
@@ -81,10 +87,10 @@ include_once "../../includes/databasehandler-include.php";
                                                 $OrderPickedUp .
                                                 "</div>" .
                                             "</td>" .
-                                            //order picked up
+                                            //options
                                             "<td>" .
                                                 "<div class='r-no'>" .
-                                                    "<a href='changeorder.php?action=checkout' class='btn btn-update'>Bestel</a>" .
+                                                    "<a href='unkown' class='btn btn-update'>Bekijk</a>" .
                                                 "</div>" .
                                             "</td>" .
                                             
