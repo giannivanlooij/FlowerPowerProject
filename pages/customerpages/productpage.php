@@ -20,7 +20,6 @@
                   'Product_Name' => $_POST['hidden_name'],
                   'Product_price' => $_POST['hidden_price'],
                   'Product_Quantity' => $_POST['hidden_quantity'],
-                  print_r($_SESSION["AddedToCart"]),
                );
                $_SESSION['AddedToCart'] [$Count] = $Product_Array;
 
@@ -136,46 +135,58 @@
                               </svg>
                            </a>
                         </li>
-                           <?php
-                              if (isset($_SESSION['Customer_ID'])) {
+                        <?php
+                           if (isset($_SESSION['Customer_ID'])) {
 
-                                 $ID = $_SESSION['Customer_ID'];
-                                 $Name = $_SESSION['Customer_Name'];
+                              $ID = $_SESSION['Customer_ID'];
+                              $Name = $_SESSION['Customer_Name'];
 
-
+                              if (isset($Count)) {
+                                 $Count++;
                                  echo 
                                  "<li style='margin-right: 25px;' class='nav-item'>" .
-                                    "<h5>Welcome {$Name}</h5>" .
+                                    "<h5>{$Count}</h5>" .
                                  "</li>";
-                                 echo 
-                                 "<li style='margin-right: 8px;' class='nav-item'>" .
-                                    "<form class='form-inline' >" .
-                                       "<a class='btn btn-primary' href='../customers/view-customer.php?id=$ID' role='button'>profile</a>" .
-                                    "</form>" .
-                                 "</li>";
-                                 echo
-                                 "<li class='nav-item'>" .
-                                    "<form class='form-inline' >" .
-                                       "<a class='btn btn-primary' href='includes/logoutuser.php' role='button'>logout</a>" .
-                                    "</form>" .
-                                 "</li>";
-                              }else {
-                                 echo 
-                                 "<li class='nav-item'>" .
-                                    "<form class='form-inline' >" .
-                                       "<a class='btn btn-primary' href='pages/customerpages/login.php' role='button'>login</a>" .
-                                    "</form>" .
-                                 "</li>";
-                                 echo
-                                 "<li class='nav-item'>" .
-                                    "<form class='form-inline' >" .
-                                       "<a class='btn btn-primary' href='pages/customerpages/register.php' role='button'>registreer</a>" .
-                                    "</form>" .
-                                 "</li>";
-
                               }
+                              echo 
+                              "<li style='margin-right: 25px;' class='nav-item'>" .
+                                 "<h5>Welcome {$Name}</h5>" .
+                              "</li>";
+                              echo 
+                              "<li style='margin-right: 8px;' class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='change-settings.php?id=$ID' role='button'>profile</a>" .
+                                 "</form>" .
+                              "</li>";
+                              echo 
+                              "<li style='margin-right: 8px;' class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='customerorders.php?id=$ID' role='button'>bestellingen</a>" .
+                                 "</form>" .
+                              "</li>";
+                              echo
+                              "<li class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='../../includes/logoutuser.php' role='button'>logout</a>" .
+                                 "</form>" .
+                              "</li>";
+                           }else {
+                              echo 
+                              "<li style='margin-right: 8px;' class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='pages/customerpages/login.php' role='button'>login</a>" .
+                                 "</form>" .
+                              "</li>";
+                              echo
+                              "<li class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='pages/customerpages/register.php' role='button'>registreer</a>" .
+                                 "</form>" .
+                              "</li>";
+
+                           }
                            
-                           ?>
+                        ?>
                      </ul>
                   </div>
                </nav>
