@@ -20,7 +20,7 @@
                   'Product_Name' => $_POST['hidden_name'],
                   'Product_price' => $_POST['hidden_price'],
                   'Product_Quantity' => $_POST['hidden_quantity'],
-                  print_r($_SESSION["AddedToCart"]),
+                 
                );
                $_SESSION['AddedToCart'] [$Count] = $Product_Array;
 
