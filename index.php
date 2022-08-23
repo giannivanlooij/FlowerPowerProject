@@ -1,5 +1,50 @@
 <?php
-    include_once "includes/databasehandler-include.php"
+   session_start();
+   include_once "includes/databasehandler-include.php";
+
+   //if the add to cart button is clicked do this
+   if (isset($_POST['AddToCart'])) {
+
+      //only execute this if the customer is signed in
+      if (isset($_SESSION['Customer_ID'])) {
+         //if there is a addedtocart session do this
+         if (isset($_SESSION['AddedToCart'])) {
+            $Product_Array_ID = array_column($_SESSION["AddedToCart"], "addedtocart");
+            //if item is not in array
+            if (!in_array($_GET['addedtocart'], $Product_Array_ID)) {
+               
+               $Count= count($_SESSION["AddedToCart"]);
+               $Product_Array = array(
+                  'Product_ID' => $_GET['addedtocart'],
+                  'Product_Image' => $_POST['hidden_imageurl'],
+                  'Product_Name' => $_POST['hidden_name'],
+                  'Product_price' => $_POST['hidden_price'],
+                  'Product_Quantity' => $_POST['hidden_quantity'],
+                  print_r($_SESSION["AddedToCart"]),
+               );
+               $_SESSION['AddedToCart'] [$Count] = $Product_Array;
+
+            // if item is already in array
+            } else {
+               echo 'Item already added';
+               header('index.php');
+            }
+         //if there is not a added to cart session do this
+         } else {
+            $Product_Array = array(
+               'Product_ID' => $_GET['addedtocart'],
+               'Product_Image' => $_POST['hidden_imageurl'],
+               'Product_Name' => $_POST['hidden_name'],
+               'Product_price' => $_POST['hidden_price'],
+               'Product_Quantity' => $_POST['hidden_quantity'],
+            );
+
+               $_SESSION["AddedToCart"] [0] = $Product_Array; 
+         }
+      } else {
+         echo "Please login";
+      }
+   }
 ?>
 
 
@@ -16,7 +61,7 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
       <!-- image directory --> 
-      <a rel="shortcut icon" type="" href= "/images/favicon.png"></a>
+      <link rel="icon" type="image/png" href="images/favicon.png">
       <title>FlowerPower</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href= "css/home/bootstrap.css">
@@ -45,16 +90,16 @@
                            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="pages/about.php">Over ons</a>
+                           <a class="nav-link" href="pages/customerpages/about.php">Over ons</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="pages/product.php">Producten</a>
+                           <a class="nav-link" href="pages/customerpages/productpage.php">Producten</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="pages/contact.php">Contact</a>
+                           <a class="nav-link" href="pages/customerpages/contact.php">Contact</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="pages/shopping-cart.php">
+                           <a class="nav-link" href="pages/customerpages/shopping-cart.php">
                               <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                                  <g>
                                     <g>
@@ -76,49 +121,62 @@
                                           c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                                     </g>
                                  </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
+                                 
                               </svg>
                            </a>
                         </li>
-                        <li class="nav-item">
-                         <form class="form-inline" >
-                           <a class="btn btn-primary" href="pages/login.php" role="button">login</a>
-                        </form>
-                        </li>
-                        <li class="nav-item">
-                        <form class="form-inline" style="padding-left: 5px;">
-                        <a class="btn btn-primary"  href="pages/register.php" role="button">registreer</a>
-                        </form>
-                        </li>
+                        <?php
+                           if (isset($_SESSION['Customer_ID'])) {
+
+                              $ID = $_SESSION['Customer_ID'];
+                              $Name = $_SESSION['Customer_Name'];
+
+                              if (isset($Count)) {
+                                 $Count++;
+                                 echo 
+                                 "<li style='margin-right: 25px;' class='nav-item'>" .
+                                    "<h1>{$Count}</h1>" .
+                                 "</li>";
+                              }
+                              echo 
+                              "<li style='margin-right: 25px;' class='nav-item'>" .
+                                 "<h1>Welcome {$Name}</h1>" .
+                              "</li>";
+                              echo 
+                              "<li style='margin-right: 8px;' class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='pages/customerpages/change-settings.php?id=$ID' role='button'>profile</a>" .
+                                 "</form>" .
+                              "</li>";
+                              echo 
+                              "<li style='margin-right: 8px;' class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='pages/customerpages/customerorders.php?id=$ID' role='button'>bestellingen</a>" .
+                                 "</form>" .
+                              "</li>";
+                              echo
+                              "<li class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='includes/logoutuser.php' role='button'>logout</a>" .
+                                 "</form>" .
+                              "</li>";
+                           }else {
+                              echo 
+                              "<li style='margin-right: 8px;' class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='pages/customerpages/login.php' role='button'>login</a>" .
+                                 "</form>" .
+                              "</li>";
+                              echo
+                              "<li class='nav-item'>" .
+                                 "<form class='form-inline' >" .
+                                    "<a class='btn btn-primary' href='pages/customerpages/register.php' role='button'>registreer</a>" .
+                                 "</form>" .
+                              "</li>";
+
+                           }
+                           
+                        ?>
                      </ul>
                   </div>
                </nav>
@@ -234,37 +292,54 @@
 
                   if ($ResultCheck > 0) {
                      while ($Row = mysqli_fetch_assoc($Result)) {
+                        $Product_ID = $Row['Product_ID'];
+                        $Product_Image = $Row['Product_ImgLocation'];
+                        $Product_Name = $Row['Product_Name'];
+                        $Product_Price = $Row['Product_Price'];
+                        $Product_Quantity = 1;
                         
-                  // card 
+                           // card 
                            echo "<div class='col-sm-6 col-md-4 col-lg-4'>" .
                                  "<div class='box'>" .
-                  //hover over card options/
+                                    //hover over card options/
                                     "<div class='option_container'>" .
+                                    //form that sends to input and buttons to the corresponding function
+                                    "<form method='post' action='"  . "index.php?addedtocart=" .  $Product_ID . "'/>" . 
                                        "<div class='options'>".
-                                          "<a href='' class='option1'>" . 'voeg toe' . "</a>" .
-                                          "<a href='shopping-cart.php' class='option2'>" . 'koop nu' . "</a>" .
+                                          "<button type='submit' name='AddToCart'  style='border-radius: 12px; padding: 10px; margin-bottom:2px;' class='option1'>" . 'voeg toe' . "</button>" .
+                                          "<button type='submit' name='BuyNow' style='border-radius: 12px; padding: 10px;' class='option2'>" . 'koop nu' . "</button>" .
+                                          "<input type='hidden' name='hidden_imageurl' value='$Product_Image'>".
+                                          "<input type='hidden' name='hidden_name' value='$Product_Name'>".
+                                          "<input type='hidden' name='hidden_price' value='$Product_Price'>".
+                                          "<input type='hidden' name='hidden_quantity' value='$Product_Quantity'>".
                                        "</div>".
+                                       "</form>".
                                     "</div>" .
                                     "<div class='img-box'>" . 
                                        "<img src='"  . "Images/" .  $Row['Product_ImgLocation'] . "'/>" . 
                                     "</div>" .
                                     "<div class='detail-box'>" .
-                  //item or product name
-                                       "<h5>" . $Row['Product_Name'] . "</h5>".
-                  //price
-                                       "<h6>" . $Row['Product_Price'] . "</h6>".
+                                       //product name
+                                       "<h5>" . $Product_Name . "</h5>".
+                                         //price
+                                       "<h6>" . $Product_Price . "</h6>".
                                     "</div>" . 
                                  "</div>" .
                               "</div>";
-                  //end card
+                              //end card
                      }
                   }
                   
                ?>
-            <div style = "margin-left: 480px;" class="btn-box">
-               <a href="pages/product.php"> Alle producten </a>
+            <div style = "margin-left: 480px; margin-bottom: 50px;" class="btn-box">
+               <a href="pages/customerpages/productpage.php"> Alle producten </a>
             </div>
          </div>
+         <div style="margin top 200px" class="heading_container heading_center">
+               <h2>Bezoek <span>ons</span></h2>
+               <a href="#"><img width="200" height="" src="images/winkel.jpg" alt="#" /></a>
+         </div>
+
       </section>
       <!-- end product section -->
 

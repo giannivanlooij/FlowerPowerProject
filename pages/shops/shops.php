@@ -26,66 +26,75 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center" scope="col">ID</th>
-                                        <th scope="col">Foto</th>
-                                        <th scope="col">Naam</th>
-                                        <th scope="col">Beschrijving</th>
-                                        <th scope="col">Prijs</th>
-                                        <th class="text-center" scope="col">Voorraad</th>
+                                        <th scope="col">adress</th>
+                                        <th scope="col">huisnummer</th>
+                                        <th scope="col">postcode</th>
+                                        <th scope="col">provincie</th>
+                                        <th scope="col">Telefoonnummer</th>
+                                        <th class="text-center" scope="col">Email</th>
                                         <th class="text-center" scope="col">Opties</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                                                       
-                                        $sql = "SELECT * FROM products;";
+                                        $sql = "SELECT * FROM flowershops;";
                                         $Result = mysqli_query($conn, $sql);
                                         $ResultCheck = mysqli_num_rows($Result);
 
                                         if ($ResultCheck > 0) {
                                             while ($Row = mysqli_fetch_assoc($Result)) {
                                                 //defined variables
-                                                $Product_ID = $Row['Product_ID'];
-                                                $Product_Image = $Row['Product_ImgLocation'];
-                                                $Product_Name = $Row['Product_Name'];
-                                                $Product_Description = $Row['Product_Description'];
-                                                $Product_Price = $Row['Product_Price'];
-                                                $Product_Stock = $Row['Product_Stock'];
+                                                $FlowerShop_ID = $Row['FlowerShop_ID'];
+                                                $FlowerShop_Addres = $Row['FlowerShop_Addres'];
+                                                $FlowerShop_HouseNumber = $Row['FlowerShop_HouseNumber'];
+                                                $FlowerShop_PostalCode = $Row['FlowerShop_PostalCode'];
+                                                $FlowerShop_TownShip = $Row['FlowerShop_TownShip'];
+                                                $FlowerShop_PhoneNumber = $Row['FlowerShop_PhoneNumber'];
+                                                $FlowerShop_Email = $Row['FlowerShop_Email'];
 
                                                 
                                                 // begin row
                                                 echo "<tr class='inner-box'>" .
                                                 "<th scope='row'>" .
                                                 // event-date is the styling for the id 
-                                                    "<div class='event-date'>" . $Product_ID ."</div>" .
+                                                    "<div class='event-date'>" . $FlowerShop_ID ."</div>" .
                                                 "</th>" .
-                                                //image
+                                                //addres
                                                 "<td>" .
                                                     "<div class='event-wrap'>" .
-                                                        "<img width='50' height='50' src='" .'../' . $Product_Image . "'/>" .
+                                                        "<h4>" . "<a href='#'>" . $FlowerShop_Addres . "</a>" . "</h4>" .
                                                     "</div>" .
                                                 "</td>" .
-                                                //name
+                                                //housenumber
                                                 "<td>" .
                                                     "<div class='event-wrap'>" .
-                                                        "<h4>" . "<a href='#'>" . $Product_Name . "</a>" . "</h4>" .
+                                                        "<h4>" . "<a href='#'>" . $FlowerShop_HouseNumber . "</a>" . "</h4>" .
                                                     "</div>" .
                                                 "</td>" .
-                                                //description
+                                                //postalcode
                                                 "<td>" .
-                                                    "<div class='r-no'>" . $Product_Description ."</div>" .
+                                                    "<div class='event-wrap'>" .
+                                                        "<h4>" . "<a href='#'>" . $FlowerShop_PostalCode . "</a>" . "</h4>" .
+                                                    "</div>" .
                                                 "</td>" .
-
+                                                //township
                                                 "<td>" .
-                                                    "<div class='r-no'>" ."$". $Product_Price . "</div>" .
+                                                    "<div class='r-no'>" . $FlowerShop_TownShip ."</div>" .
                                                 "</td>" .
-
+                                                //phonenumber
                                                 "<td>" .
-                                                    "<div class='r-no'>" . $Product_Stock . "</div>" .
+                                                    "<div class='r-no'>" ."$". $FlowerShop_PhoneNumber . "</div>" .
+                                                "</td>" .
+                                                //email
+                                                "<td>" .
+                                                    "<div class='r-no'>" . $FlowerShop_Email . "</div>" .
                                                 "</td>" .
                                                 "<td>" .
                                                     "<div class='btn-group'>" .
-                                                        "<a class='btn btn-secondary' href='view-product.php?id=" . $Product_ID . "''>" . "wijzig " . "</a>" .
-                                                        "<a class='btn btn-secondary' href='../../includes/delete-product-include.php?id=" . $Product_ID . "''>" . " verwijder" . "</a>" .
+                                                        // change and delete 
+                                                        "<a class='btn btn-secondary' href='view-shop.php?id=" . $FlowerShop_ID . "''>" . "wijzig " . "</a>" .
+                                                        "<a class='btn btn-secondary' href='../../includes/delete-shop-include.php?id=" . $FlowerShop_ID . "''>" . " verwijder" . "</a>" .
                                                  "</div>" .
                                                 "</td>" .
                                                 "</tr>";
