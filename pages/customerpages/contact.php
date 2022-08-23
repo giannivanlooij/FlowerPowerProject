@@ -111,7 +111,7 @@
                               echo 
                               "<li style='margin-right: 8px;' class='nav-item'>" .
                                  "<form class='form-inline' >" .
-                                    "<a class='btn btn-primary' href='pages/customerpages/change-settings.php?id=$ID' role='button'>profile</a>" .
+                                    "<a class='btn btn-primary' href='change-settings.php?id=$ID' role='button'>profile</a>" .
                                  "</form>" .
                               "</li>";
                               echo 
