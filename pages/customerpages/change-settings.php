@@ -1,22 +1,21 @@
 <?php
 session_start();
 
-$Employee_ID = $_SESSION['Employee_ID'];
-
+    $Customer_ID = $_SESSION['Customer_ID'];
+    $Name = $_SESSION['Customer_Name'];
+  
 
 if (!isset($_GET['id'])) {
     die('id not provided');
 }
     include_once "../../includes/databasehandler-include.php";
 
-    
-     $ID = $_GET['id'];
-     // this piece of code makes sure no one but the emplyee himself can change his settings
-     
-    // if ($Employee_ID != $ID) {
-    //     header('location: ../../dashboard.php?sessionnotset');
-    //}
-    $sql = "SELECT * FROM employees where Employee_ID = $ID;";
+    $ID = $_GET['id'];
+    if ($Customer_ID != $ID) {
+        header('location: ../../index.php?');
+    }
+
+    $sql = "SELECT * FROM customers where Customer_ID = $ID;";
     $Result = mysqli_query($conn, $sql);
     if ($Result->num_rows != 1) {
         die('id not found');
@@ -54,70 +53,70 @@ if (!isset($_GET['id'])) {
                 <div class="card">
                     <div class="card-header"></div>
                     <div class="card-body">
-                        <form action="../../includes/update-employee-include.php?id=<?= $ID; ?> " method="POST">
+                        <form action="../../includes/update-customer-include.php?id=<?= $ID; ?> " method="POST">
                             <!-- name -->
                             <div class="row mb-3">
-                                <label for="Employee_Name" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="Customer_Name" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Employee_Name" type="text" class="form-control" name="Employee_Name" placeholder="Naam" required value="<?= $Data['Employee_Name']; ?>">
+                                    <input id="Customer_Name" type="text" class="form-control" name="Customer_Name" placeholder="Naam" required value="<?= $Data['Customer_Name']; ?>">
                                 </div>
                             </div>
                             <!-- middle name -->
                             <div class="row mb-3">
-                                <label for="Employee_MiddleName" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="Customer_MiddleName" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Employee_MiddleName" type="text" class="form-control" name="Employee_MiddleName" placeholder="Tussenvoegsels" value="<?= $Data['Employee_MiddleName']; ?>">
+                                    <input id="Customer_MiddleName" type="text" class="form-control" name="Customer_MiddleName" placeholder="Tussenvoegsels" value="<?= $Data['Customer_MiddleName']; ?>">
                                 </div>
                             </div>
                             <!-- last name -->
                             <div class="row mb-3">
-                                <label for="Employee_LastName" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="Customer_LastName" class="col-md-4 col-form-label text-md-end"></label>
 
                                 <div class="col-md-6">
-                                    <input id="Employee_LastName" type="text" class="form-control" name="Employee_LastName" placeholder="Achternaam" required value="<?= $Data['Employee_LastName']; ?>">                              
+                                    <input id="Customer_LastName" type="text" class="form-control" name="Customer_LastName" placeholder="Achternaam" required value="<?= $Data['Customer_LastName']; ?>">                              
                                 </div>
                             </div>
                             <!-- addres -->
                             <div class="row mb-3">
-                                <label for="Employee_Addres" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="Customer_Addres" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Employee_Addres" type="text" class="form-control" name="Employee_Addres" placeholder="Addres" required value="<?= $Data['Employee_Addres']; ?>">
+                                    <input id="Customer_Addres" type="text" class="form-control" name="Customer_Addres" placeholder="Addres" required value="<?= $Data['Customer_Addres']; ?>">
                                 </div>
                             </div>
                             <!-- house number -->
                             <div class="row mb-3">
-                                <label for="Employee_HouseNumber" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="Customer_HouseNumber" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Employee_HouseNumber" type="number" class="form-control" name="Employee_HouseNumber" placeholder="Huisnummer" required value="<?= $Data['Employee_HouseNumber']; ?>">
+                                    <input id="Customer_HouseNumber" type="number" class="form-control" name="Customer_HouseNumber" placeholder="Huisnummer" required value="<?= $Data['Customer_HouseNumber']; ?>">
                                 </div>
                             </div>
                             <!-- postalcode -->
                             <div class="row mb-3">
-                                <label for="Employee_PostalCode" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="Customer_PostalCode" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Employee_PostalCode" type="text" class="form-control" name="Employee_PostalCode" placeholder="Postcode" required value="<?= $Data['Employee_PostalCode']; ?>">    
+                                    <input id="Customer_PostalCode" type="text" class="form-control" name="Customer_PostalCode" placeholder="Postcode" required value="<?= $Data['Customer_PostalCode']; ?>">    
                                 </div>
                             </div>
                             <!-- township -->
                             <div class="row mb-3">
-                                <label for="Employee_TownShip" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="Customer_TownShip" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Employee_TownShip" type="text" class="form-control" name="Employee_TownShip" placeholder="Plaats" required value="<?= $Data['Employee_TownShip']; ?>">                                   
+                                    <input id="Customer_TownShip" type="text" class="form-control" name="Customer_TownShip" placeholder="Plaats" required value="<?= $Data['Customer_TownShip']; ?>">                                   
                                 </div>
                             </div>
                             <!-- Email -->
                             <div class="row mb-3">
-                                <label for="Employee_Email" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="Customer_Email" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Employee_Email" type="email" class="form-control" name="Employee_Email" placeholder="Email" required value="<?= $Data['Employee_Email']; ?>">          
+                                    <input id="Customer_Email" type="email" class="form-control" name="Customer_Email" placeholder="Email" required value="<?= $Data['Customer_Email']; ?>">          
                                 </div>
                             </div>
                             <!-- password -->
                             <div class="row mb-3">
-                                <label for="Employee_Password" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="Customer_Password" class="col-md-4 col-form-label text-md-end"></label>
 
                                 <div class="col-md-6">
-                                    <input id="Employee_Password" type="password" class="form-control" name="Employee_Password" placeholder="Wachtwoord" required>     
+                                    <input id="Customer_Password" type="password" class="form-control" name="Customer_Password" placeholder="Wachtwoord" required>     
                                 </div>
                             </div>
                             <!-- password confirmation -->
@@ -129,16 +128,16 @@ if (!isset($_GET['id'])) {
                             </div>
                             <!-- phone number -->
                             <div class="row mb-3">
-                                <label for="Employee_PhoneNumber" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="Customer_PhoneNumber" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Employee_PhoneNumber" type="text" class="form-control" name="Employee_PhoneNumber" placeholder="Telefoonnummer" required value="<?= $Data['Employee_PhoneNumber']; ?>"> 
+                                    <input id="Customer_PhoneNumber" type="text" class="form-control" name="Customer_PhoneNumber" placeholder="Telefoonnummer" required value="<?= $Data['Customer_PhoneNumber']; ?>"> 
                                 </div>
                             </div>
                             <!-- date of birth -->
                             <div class="row mb-3">
-                                <label for="Employee_DateOfBirth" class="col-md-4 col-form-label text-md-end"></label>
+                                <label for="Customer_DateOfBirth" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Employee_DateOfBirth" type="date" class="form-control" name="Employee_DateOfBirth" placeholder="{{ old('Employee_DateOfBirth') }}" required value="<?= $Data['Employee_DateOfBirth']; ?>">
+                                    <input id="Customer_DateOfBirth" type="date" class="form-control" name="Customer_DateOfBirth" placeholder="{{ old('Customer_DateOfBirth') }}" required value="<?= $Data['Customer_DateOfBirth']; ?>">
                                 </div>
                             </div>
                             <div class="row mb-0">

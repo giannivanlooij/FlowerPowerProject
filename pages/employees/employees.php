@@ -1,9 +1,18 @@
 <?php
-    include_once "../../includes/databasehandler-include.php"
-?>
+    session_start();
+    include_once "../../includes/databasehandler-include.php";
+  
+    if (!isset($_SESSION['Employee_ID'])) {
+      header("location: ../loginemployee.php");
+    }
+    $Employee_ID = $_SESSION['Employee_ID'];
+    $Name = $_SESSION['Employee_Name'];
+  
+  ?>
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <link href="../../css/employees/employees.css" rel="stylesheet" />
+<link rel="icon" type="image/png" href="../../images/favicon.png">
 
 <div class="event-schedule-area-two bg-color pad100">
     <div class="container">
@@ -26,6 +35,7 @@
                                         <th scope="col">Email</th>
                                         <th class="text-center" scope="col">Telefoonnummer</th>
                                         <th class="text-center" scope="col">Geboortedatum</th>
+                                        <th class="text-center" scope="col">Opties</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -37,65 +47,84 @@
 
                                         if ($ResultCheck > 0) {
                                             while ($Row = mysqli_fetch_assoc($Result)) {
+                                                //defined variables
+                                                $Employee_ID = $Row['Employee_ID'];
+                                                $Employee_Name = $Row['Employee_Name'];
+                                                $Employee_MiddleName = $Row['Employee_MiddleName'];
+                                                $Employee_LastName = $Row['Employee_LastName'];
+                                                $Employee_Addres = $Row['Employee_Addres'];
+                                                $Employee_HouseNumber = $Row['Employee_HouseNumber'];
+                                                $Employee_PostalCode = $Row['Employee_Addres'];
+                                                $Employee_TownShip = $Row['Employee_Addres'];
+                                                $Employee_Email = $Row['Employee_Addres'];
+                                                $Employee_PhoneNumber = $Row['Employee_Addres'];
+                                                $Employee_DateOfBirth = $Row['Employee_Addres'];
+
                                                 // begin row
                                                 echo "<tr class='inner-box'>" .
                                                 "<th scope='row'>" .
                                                 // event-date is the styling for the id 
                                                     "<div class='event-date'>" .
-                                                        $Row['Employee_ID'] .
+                                                        $Employee_ID .
                                                     "</div>" .
                                                 "</th>" .
                                                 //name
                                                 "<td>" .
                                                     "<div class='event-wrap'>" .
-                                                        "<h4>" . "<a href='#'>" . $Row['Employee_Name'] . "</a>" . "</h4>" .
+                                                        "<h4>" . "<a href='#'>" . $Employee_Name . "</a>" . "</h4>" .
                                                     "</div>" .
                                                 "</td>" .
                                                 //middlename
                                                 "<td>" .
                                                     "<div class='r-no'>" .
-                                                    $Row['Employee_MiddleName'] .
+                                                    $Employee_MiddleName .
                                                     "</div>" .
                                                 "</td>" .
                                                 "<td>" .
                                                     "<div class='r-no'>" .
-                                                    $Row['Employee_LastName'] .
+                                                    $Employee_LastName .
                                                     "</div>" .
                                                 "</td>" .
                                                 "<td>" .
                                                     "<div class='r-no'>" .
-                                                    $Row['Employee_Addres'] .
+                                                    $Employee_Addres .
                                                     "</div>" .
                                                 "</td>" .
                                                 "<td>" .
                                                     "<div class='r-no'>" .
-                                                    $Row['Employee_HouseNumber'] .
+                                                    $Employee_HouseNumber .
                                                     "</div>" .
                                                 "</td>" .
                                                 "<td>" .
                                                     "<div class='r-no'>" .
-                                                    $Row['Employee_PostalCode'] .
+                                                    $Employee_PostalCode .
                                                     "</div>" .
                                                 "</td>" .
                                                 "<td>" .
                                                     "<div class='r-no'>" .
-                                                    $Row['Employee_TownShip'] .
+                                                    $Employee_TownShip .
                                                     "</div>" .
                                                 "</td>" .
                                                 "<td>" .
                                                     "<div class='r-no'>" .
-                                                    $Row['Employee_Email'] .
+                                                    $Employee_Email .
                                                     "</div>" .
                                                 "</td>" .
                                                 "<td>" .
                                                     "<div class='r-no'>" .
-                                                    $Row['Employee_PhoneNumber'] .
+                                                    $Employee_PhoneNumber .
                                                     "</div>" .
                                                 "</td>" .
                                                 "<td>" .
                                                     "<div class='r-no'>" .
-                                                    $Row['Employee_DateOfBirth'] .
+                                                    $Employee_DateOfBirth .
                                                     "</div>" .
+                                                "</td>" .
+                                                "<td>" .
+                                                 "<div class='btn-group'>" .
+                                                     "<a class='btn btn-secondary' href='view-employee.php?id=" . $Employee_ID . "''>" . "wijzig " . "</a>" .
+                                                     "<a class='btn btn-secondary' href='../../includes/delete-session-item-include.php?id=" . $Product_Array['Product_ID'] . "''>" . " verwijder" . "</a>" .
+                                                 "</div>" .
                                                 "</td>" .
                                                 "</tr>";
                                             }
@@ -111,4 +140,3 @@
     </div>
 </div>
                                     
-                                   

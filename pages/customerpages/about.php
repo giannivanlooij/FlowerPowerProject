@@ -1,3 +1,7 @@
+<?php
+   session_start();
+   include_once "../../includes/databasehandler-include.php";
+?>
 <!DOCTYPE html>
 <html>
    <head>
@@ -10,16 +14,17 @@
       <meta name="keywords" content="" />
       <meta name="description" content="" />
       <meta name="author" content="" />
-      <!-- <link rel="shortcut icon" href="../images/favicon.png" type=""> -->
+      <link rel="icon" type="image/png" href="../../images/favicon.png">
+      <!-- <link rel="shortcut icon" href="../../images/favicon.png" type=""> -->
       <title>FlowerPower</title>
       <!-- bootstrap core css -->
-      <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css" />
       <!-- font awesome style -->
-      <link href="../css/font-awesome.min.css" rel="stylesheet" />
+      <link href="../../css/font-awesome.min.css" rel="stylesheet" />
       <!-- Custom styles for this template -->
-      <link href="../css/style.css" rel="stylesheet" />
+      <link href="../../css/style.css" rel="stylesheet" />
       <!-- responsive style -->
-      <link href="../css/responsive.css" rel="stylesheet" />
+      <link href="../../css/responsive.css" rel="stylesheet" />
    </head>
    <body class="sub_page">
       <div class="hero_area">
@@ -27,20 +32,20 @@
          <header class="header_section">
             <div class="container">
                <nav class="navbar navbar-expand-lg custom_nav-container ">
-                  <a class="navbar-brand" href="../index.php"><img width="250" src="../images/logo.png" alt="#" /></a>
+                  <a class="navbar-brand" href="../../index.php"><img width="250" src="../../images/logo.png" alt="#" /></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class=""> </span>
+                     <span class=""> </span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                      <ul class="navbar-nav">
-                     <li class="nav-item">
-                           <a class="nav-link" href="../index.php">Home <span class="sr-only">(current)</span></a>
+                        <li class="nav-item">
+                           <a class="nav-link" href="../../index.php">Home</a>
                         </li>
                         <li class="nav-item active">
-                           <a class="nav-link" href="about.php">Over ons</a>
+                           <a class="nav-link" href="about.php">Over ons <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="product.php">Producten</a>
+                           <a class="nav-link" href="productpage.php">Producten</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="contact.php">Contact</a>
@@ -66,46 +71,68 @@
                                     <g>
                                        <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
                                           c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                    </g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
-                                 <g>
-                                 </g>
+                                    </g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
+                                 <g></g>
                               </svg>
                            </a>
                         </li>
+                           <?php
+                              if (isset($_SESSION['Customer_ID'])) {
+                                 $ID = $_SESSION['Customer_ID'];
+                                 $Name = $_SESSION['Customer_Name'];
+
+                                 echo
+                                 "<li style='margin-right: 25px; margin-left:5px;' class='nav-item'>" .
+                                 "<h5>Welcome {$Name}</h5>" .
+                                 "</li>";
+                                 echo 
+                                 "<li style='margin-right: 8px;' class='nav-item'>" .
+                                    "<form class='form-inline' >" .
+                                       "<a class='btn btn-primary' href='../customers/view-customer.php?id=$ID' role='button'>profile</a>" .
+                                    "</form>" .
+                                 "</li>";
+                                 echo
+                                 "<li class='nav-item'>" .
+                                    "<form class='form-inline' >" .
+                                       "<a class='btn btn-primary' href='includes/logoutuser.php' role='button'>logout</a>" .
+                                    "</form>" .
+                                 "</li>";
+                              }else {
+                                 echo 
+                                 "<li class='nav-item'>" .
+                                    "<form class='form-inline' >" .
+                                       "<a class='btn btn-primary' href='pages/customerpages/login.php' role='button'>login</a>" .
+                                    "</form>" .
+                                 "</li>";
+                                 echo
+                                 "<li class='nav-item'>" .
+                                    "<form class='form-inline' >" .
+                                       "<a class='btn btn-primary' href='pages/customerpages/register.php' role='button'>registreer</a>" .
+                                    "</form>" .
+                                 "</li>";
+
+                              }
+                           
+                           ?>
                      </ul>
                   </div>
                </nav>
             </div>
-         </header> 
+         </header>
          <!-- end header section -->   
       </div>
       <!-- inner page section -->
@@ -232,7 +259,7 @@
                <div class="col-md-4">
                   <div class="box ">
                      <div class="img-box">
-                     <img src="../images/rose.png" alt="rose icon" width="56px" height="56px">
+                     <img src="../../images/rose.png" alt="rose icon" width="56px" height="56px">
                      </div>
                      <div class="detail-box">
                         <h5>
@@ -274,7 +301,7 @@
          <div class="container">
             <div class="box">
                <div class="arrival_bg_box">
-                  <img src="../images/arrival-bg.jpg" alt="Hello there!">
+                  <img src="../../images/arrival-bg.jpg" alt="Hello there!">
                </div>
                <div class="row">
                   <div class="col-md-6 ml-auto">
@@ -286,7 +313,7 @@
                      <p style="margin-top: 20px;margin-bottom: 30px;">
                         Vitae fugiat laboriosam officia perferendis provident aliquid voluptatibus dolorem, fugit ullam sit earum id eaque nisi hic? Tenetur commodi, nisi rem vel, ea eaque ab ipsa, autem similique ex unde!
                      </p>
-                     <a href="../index.php">Winkel nu</a>
+                     <a href="../../index.php">Winkel nu</a>
                   </div>
                </div>
             </div>
@@ -300,7 +327,7 @@
                <div class="col-md-4">
                    <div class="full">
                       <div class="logo_footer">
-                        <a href="#"><img width="210" src="../images/logo.png" alt="#" /></a>
+                        <a href="#"><img width="210" src="../../images/logo.png" alt="#" /></a>
                       </div>
                       
                    </div>
@@ -343,12 +370,12 @@
          </div>
       </footer>
       <!-- jQery -->
-      <script src="../js/jquery-3.4.1.min.js"></script>
+      <script src="../../js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->
-      <script src="../js/popper.min.js"></script>
+      <script src="../../js/popper.min.js"></script>
       <!-- bootstrap js -->
-      <script src="../js/bootstrap.js"></script>
+      <script src="../../js/bootstrap.js"></script>
       <!-- custom js -->
-      <script src="../js/custom.js"></script>
+      <script src="../../js/custom.js"></script>
    </body>
 </html>

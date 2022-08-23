@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    include_once "../../includes/databasehandler-include.php";
+  
+    if (!isset($_SESSION['Employee_ID'])) {
+      header("location: ../loginemployee.php");
+    }
+    $Employee_ID = $_SESSION['Employee_ID'];
+    $Name = $_SESSION['Employee_Name'];
+  
+  ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,7 +22,7 @@
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <a rel="shortcut icon" type="" href= "/images/favicon.png"></a>
+        <link rel="icon" type="image/png" href="../../images/favicon.png">
         <title>FlowerPower</title>
         <!-- bootstrap core css -->
         <link rel="stylesheet" type="text/css" href= "../../css/home/bootstrap.css">
@@ -55,14 +67,14 @@
                             <div class="row mb-3">
                                 <label for="Employee_Addres" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Employee_Addres" type="text" class="form-control" name="Employee_Addres" placeholder="adres" required autocomplete="Employee_Addres" autofocus>
+                                    <input id="Employee_Addres" type="text" class="form-control" name="Employee_Addres" placeholder="Adres" required autocomplete="Employee_Addres" autofocus>
                                 </div>
                             </div>
                             <!-- Employee HouseNumber -->
                             <div class="row mb-3">
                                 <label for="Employee_HouseNumber" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="Employee_HouseNumber" type="number" class="form-control" name="Employee_HouseNumber" placeholder="huisnummer" required autocomplete="Employee_HouseNumber" autofocus>
+                                    <input id="Employee_HouseNumber" type="number" class="form-control" name="Employee_HouseNumber" placeholder="Huisnummer" required autocomplete="Employee_HouseNumber" autofocus>
                                 </div>
                             </div>
                             <!-- Employee PostalCode -->
@@ -91,14 +103,14 @@
                                 <label for="Employee_Password" class="col-md-4 col-form-label text-md-end"></label>
 
                                 <div class="col-md-6">
-                                    <input id="Employee_Password" type="password" class="form-control" name="Employee_Password" placeholder="password" required autocomplete="new-password">     
+                                    <input id="Employee_Password" type="password" class="form-control" name="Employee_Password" placeholder="Wachtwoord" required autocomplete="new-password">     
                                 </div>
                             </div>
                             <!-- password confirmation -->
                             <div class="row mb-3">
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="confirm password" required autocomplete="new-password">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Herhaal wachtwoord" required autocomplete="new-password">
                                 </div>
                             </div>
                             <!-- Employee PhoneNumber -->

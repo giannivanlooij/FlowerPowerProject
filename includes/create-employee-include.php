@@ -1,13 +1,13 @@
 <?php
 
 if (isset($_POST['submit'])) {
-   $Employee_Name = $_POST["Employee_Name"];
-   $Employee_MiddleName = $_POST["Employee_MiddleName"];
-   $Employee_LastName = $_POST["Employee_LastName"];
-   $Employee_Addres = $_POST["Employee_Addres"];
+   $Employee_Name = ucwords($_POST["Employee_Name"]);
+   $Employee_MiddleName = ucwords($_POST["Employee_MiddleName"]);
+   $Employee_LastName = ucwords($_POST["Employee_LastName"]);
+   $Employee_Addres = ucwords($_POST["Employee_Addres"]);
    $Employee_HouseNumber = $_POST["Employee_HouseNumber"];
-   $Employee_PostcalCode = $_POST["Employee_PostalCode"];
-   $Employee_TownShip = $_POST["Employee_TownShip"];
+   $Employee_PostcalCode = strtoupper($_POST["Employee_PostalCode"]);
+   $Employee_TownShip = ucwords($_POST["Employee_TownShip"]);
    $Employee_Email = $_POST["Employee_Email"];
    $Employee_Password = $_POST["Employee_Password"];
    $password_confirmation = $_POST["password_confirmation"];
