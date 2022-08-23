@@ -1,6 +1,7 @@
 <?php
    session_start();
-   include_once "../../includes/databasehandler-include.php"
+   include_once "../../includes/databasehandler-include.php";
+   $total = 0;
 ?>
 
 <head> 
@@ -44,8 +45,7 @@
           }
           if (!empty($_SESSION['AddedToCart'])) {
             foreach($_SESSION['AddedToCart'] as $Keys => $Values) {
-              $total = 0;
-              $total = $total + $Values['Product_Quantity'] * $Values['Product_price'];
+              $total += $Values['Product_Quantity'] * $Values['Product_price'];
               echo 
             "<div class='layout-inline row'>" .
                 // item row
