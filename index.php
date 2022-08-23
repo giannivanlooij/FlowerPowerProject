@@ -232,7 +232,7 @@
                                     Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
                                  </p>
                                  <div class="btn-box">
-                                    <a href="pages/product.php" class="btn1">
+                                    <a href="pages/customerpages/productpage.php" class="btn1">
                                     Bekijk Producten
                                     </a>
                                  </div>
@@ -255,7 +255,7 @@
                                     wordt lid en krijg 10% korting op uw eerste bestelling.
                                  </p>
                                  <div class="btn-box">
-                                    <a href="pages/register.php" class="btn1">
+                                    <a href="pages/customerpages/register.php" class="btn1">
                                     Registreer nu
                                     </a>
                                  </div>
