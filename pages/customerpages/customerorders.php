@@ -90,7 +90,7 @@ if (isset($_SESSION['Customer_ID'])) {
                                             //options
                                             "<td>" .
                                                 "<div class='r-no'>" .
-                                                    "<a href='unkown' class='btn btn-update'>Bekijk</a>" .
+                                                    "<a class='btn btn-secondary' href='../../pdf/invoice-template.php?id=" . $Invoice_ID . "''>" . "bekijk " . "</a>" .
                                                 "</div>" .
                                             "</td>" .
                                             
