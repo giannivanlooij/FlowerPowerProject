@@ -56,7 +56,9 @@
 					</div>
 				</form>
 			</div>
-			
+			<div style='margin-bottom: 25px;' class="d-flex justify-content-center links">
+					Just want to visit the website?<a href="../index.php">&nbsp Click here</a>
+				</div>
 		</div>
 	</div>
 </div>

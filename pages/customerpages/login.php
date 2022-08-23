@@ -48,20 +48,18 @@
 						</div>
 							<input type="password" class="form-control" placeholder="Password" name="Customer_Password">
 					</div>
-					<div style="margin: 15px;" class="row align-items-center remember">
-						<!-- <input type="checkbox">&nbsp Remember Me -->
-					</div>
+					
 					<div class="form-group">
 						<input name="submit" type="submit" value="submit" class="btn float-right login_btn">
 					</div>
 				</form>
 			</div>
 			<div class="card-footer">
+			<div style='margin-bottom: 2px;' class="d-flex justify-content-center links">
+					Are you a employee?<a href="../../dashboard.php">&nbsp Sign in here</a>
+				</div>
 				<div class="d-flex justify-content-center links">
 					Don't have an account?<a href="register.php">&nbsp Sign Up</a>
-				</div>
-				<div class="d-flex justify-content-center">
-					<!-- <a href="#">Forgot your password?</a> -->
 				</div>
 			</div>
 		</div>
