@@ -23,9 +23,6 @@
             $Result = mysqli_query($conn, $sql);
             $ResultCheck = mysqli_num_rows($Result);
 
-            // make a join with customers for the name of the customer
-            //and a join for the name/location of the flowershop
-
             if ($ResultCheck > 0) {
                 while ($Row = mysqli_fetch_assoc($Result)) {
                     //defined variables
