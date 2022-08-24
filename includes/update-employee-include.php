@@ -14,6 +14,7 @@
         $Employee_Password= $_POST['Employee_Password'];
         $Employee_PhoneNumber = $_POST['Employee_PhoneNumber'];
         $Employee_DateOfBirth = $_POST['Employee_DateOfBirth'];
+        $FlowerShop_ID = $_POST['FlowerShop_ID'];
 
 
         $sql = "UPDATE `employees` SET 
@@ -27,7 +28,8 @@
         `Employee_Email`='$Employee_Email',
         `Employee_Password`='$Employee_Password',
         `Employee_PhoneNumber`='$Employee_PhoneNumber',
-        `Employee_DateOfBirth`='$Employee_DateOfBirth' 
+        `Employee_DateOfBirth`='$Employee_DateOfBirth',
+        `Employee_WorksAt`='$FlowerShop_ID' 
         WHERE Employee_ID = $Employee_ID";
 
         if ($conn->query($sql) === TRUE) {

@@ -13,9 +13,9 @@ if (!isset($_GET['id'])) {
      $ID = $_GET['id'];
      // this piece of code makes sure no one but the emplyee himself can change his settings
      
-    // if ($Employee_ID != $ID) {
-    //     header('location: ../../dashboard.php?sessionnotset');
-    //}
+    if ($Employee_ID != $ID) {
+        header('location: ../../dashboard.php?sessionnotset');
+    }
     $sql = "SELECT * FROM employees where Employee_ID = $ID;";
     $Result = mysqli_query($conn, $sql);
     if ($Result->num_rows != 1) {
@@ -139,6 +139,33 @@ if (!isset($_GET['id'])) {
                                 <label for="Employee_DateOfBirth" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
                                     <input id="Employee_DateOfBirth" type="date" class="form-control" name="Employee_DateOfBirth" placeholder="{{ old('Employee_DateOfBirth') }}" required value="<?= $Data['Employee_DateOfBirth']; ?>">
+                                </div>
+                            </div>
+                            <!-- works at -->
+                            <div class="row mb-3">
+                                <label for="Employee_WorksAt" class="col-md-4 col-form-label text-md-end"></label>
+                                <div class="col-md-6">
+                                <label>Werk locatie</label>
+                                <select id="FlowerShop_ID" class="form-control" name="FlowerShop_ID" placeholder="Werk locatie">
+                                    <?php
+                                        $FlowerShopQuery = "SELECT * FROM flowershops;";
+                                        $FlowerShopResult = mysqli_query($conn, $FlowerShopQuery);
+                                        $FlowerShopResultCheck = mysqli_num_rows($FlowerShopResult);
+
+                                        if ($FlowerShopResultCheck > 0) {
+                                            while ($Row = mysqli_fetch_assoc($FlowerShopResult)) {
+                                                //defined variables
+                                                $FlowerShop_ID = $Row['FlowerShop_ID'];
+                                                $FlowerShop_Addres = $Row['FlowerShop_Addres'];
+                                                
+                                                echo "<option value=$FlowerShop_ID>$FlowerShop_Addres</option>";
+
+                                                
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                                
                                 </div>
                             </div>
                             <div class="row mb-0">
