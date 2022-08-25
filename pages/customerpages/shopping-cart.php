@@ -78,6 +78,29 @@
               
           ?>
       </tbody>
+      <label style='font-size:15px; margin-left:5px;' for="Flowershop" class="col-md-4 col-form-label text-md-end"><b>Ophaal adress:</b></label>
+      <dropdown>
+      <SELECT>
+        <?php
+                $FlowerShopQuery = "SELECT * FROM flowershops;";
+                $FlowerShopResult = mysqli_query($conn, $FlowerShopQuery);
+                $FlowerShopResultCheck = mysqli_num_rows($FlowerShopResult); 
+
+                if ($FlowerShopResultCheck > 0) {
+                    while ($Row = mysqli_fetch_assoc($FlowerShopResult)) {
+                        //defined variables
+                        $FlowerShop_ID = $Row['FlowerShop_ID'];
+                        $FlowerShop_Addres = $Row['FlowerShop_Addres'];
+                        
+                        
+                        echo "<option value=$FlowerShop_ID>$FlowerShop_Addres</option>";
+
+                        
+                    }
+                }
+            ?>
+      </SELECT>
+      </dropdown>
   </table>        
 </div>
 <div  class="tf">

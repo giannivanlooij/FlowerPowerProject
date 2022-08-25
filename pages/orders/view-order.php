@@ -143,7 +143,7 @@ if (!isset($_GET['id'])) {
                                                 }
                                             }
                                         ?>
-                                        </SELECT>
+                                    </SELECT>
                                 </div>
                             </div>
                             <!-- Invoice_OrderPickedUp. the employee can set the order as picked up. -->

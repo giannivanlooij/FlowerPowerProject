@@ -9,6 +9,7 @@ if (isset($_SESSION['Customer_ID'])) {
     $Name = $_SESSION['Customer_Name'];
     $PickedUp = 0;
     $Date = date("Y-m-d");
+    $PickUpAddres = '1';
 
     //$product_ID = $values['Product_ID'];
     //$Product_Quantity = $values['Product_Quantity'];
@@ -18,13 +19,13 @@ if (isset($_SESSION['Customer_ID'])) {
 if($_GET["action"] == 'checkout')
     {
         //prepares the invoice 
-        $InvoiceQuery = "INSERT INTO invoices (Customer_ID, Invoice_Date, Invoice_OrderPickedUp) VALUES (?, ?, ?);";
+        $InvoiceQuery = "INSERT INTO invoices (Customer_ID, Invoice_Date, Invoice_OrderPickedUp, FlowerShop_ID) VALUES (?, ?, ?, ?);";
         $InvoiceStatement = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($InvoiceStatement, $InvoiceQuery)) {
         header("location: ../index.php?error=stmt2failed");
         Exit();
         }
-        mysqli_stmt_bind_param($InvoiceStatement, "sss", $ID, $Date, $PickedUp);
+        mysqli_stmt_bind_param($InvoiceStatement, "ssss", $ID, $Date, $PickedUp, $PickUpAddres);
         mysqli_stmt_execute($InvoiceStatement);
         mysqli_stmt_close($InvoiceStatement);
         echo "Invoice created";
