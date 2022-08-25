@@ -9,7 +9,7 @@ if (isset($_SESSION['Customer_ID'])) {
     $Name = $_SESSION['Customer_Name'];
     $PickedUp = 0;
     $Date = date("Y-m-d");
-    $PickUpAddres = '1';
+    $PickUpAddres = $_POST['FlowerShopAddres'];
 
     //$product_ID = $values['Product_ID'];
     //$Product_Quantity = $values['Product_Quantity'];
