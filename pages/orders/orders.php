@@ -13,7 +13,7 @@
     <tbody>
         <?php
 
-            $FetchWorkLocation = "SELECT Employee_WorksAt from Employees Where Employee_ID = $Employee_ID";
+            $FetchWorkLocation = "SELECT Employee_WorksAt from Employees Where Employee_ID = $Employee_ID;";
             $FetchResult = mysqli_query($conn, $FetchWorkLocation);
             $FetchResultCheck = mysqli_num_rows($FetchResult);
 
@@ -28,14 +28,20 @@
 
         
             $sql = "SELECT Invoice_ID, Invoice_OrderPickedUp, Invoice_Date, Customer_Name, Employee_Name, FlowerShop_Addres
-            FROM invoices
-            INNER JOIN customers
-            ON invoices.Customer_ID = customers.Customer_ID
-            INNER JOIN flowershops
-            ON invoices.FlowerShop_ID = flowershops.FlowerShop_ID
-            INNER JOIN employees
-            ON flowershops.FlowerShop_ID = employees.Employee_WorksAt
-            Where employees.Employee_WorksAt = $Employee_WorksAt";
+            From invoices
+            left outer join employees on invoices.Employee_ID = employees.Employee_WorksAt
+            inner join customers on invoices.Customer_ID = customers.Customer_ID
+            inner join flowershops on invoices.FlowerShop_ID = flowershops.FlowerShop_ID
+            WHERE Invoices.Employee_ID is null
+            
+            union
+            
+            SELECT Invoice_ID, Invoice_OrderPickedUp, Invoice_Date, Customer_Name, Employee_Name, FlowerShop_Addres
+            From flowershops
+            inner join employees on flowershops.FlowerShop_ID = employees.Employee_WorksAt
+            inner join invoices on employees.Employee_ID = invoices.Employee_ID
+            inner join customers on invoices.Customer_ID = customers.Customer_ID
+            WHERE Employees.Employee_WorksAt = 2;";
 
 
             $Result = mysqli_query($conn, $sql);
