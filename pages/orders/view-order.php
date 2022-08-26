@@ -49,7 +49,7 @@ if (!isset($_GET['id'])) {
                 <div class="card">
                     <div class="card-header"></div>
                     <div class="card-body">
-                        <form action="../../includes/update-employee-include.php?id=<?= $ID; ?> " method="POST">
+                        <form action="../../includes/update-order-include.php?id=<?= $ID; ?> " method="POST">
                             <!-- invoice_ID -->
                             <div class="row mb-3">
                                 <label for="Invoice_ID" class="col-md-4 col-form-label text-md-end">Bestelling nummer:</label>
@@ -57,7 +57,7 @@ if (!isset($_GET['id'])) {
                                     <input readonly id="Invoice_ID" type="text" class="form-control" name="Invoice_ID" placeholder="Bestelling nummer" required value="<?= $Data['Invoice_ID']; ?>">
                                 </div>
                             </div>
-                            <!-- customer name. fix with join -->
+                            <!-- customer name-->
                             <div class="row mb-3">
                                 <label for="Customer_Name" class="col-md-4 col-form-label text-md-end">Naam:</label>
                                 <div class="col-md-6">
@@ -124,7 +124,7 @@ if (!isset($_GET['id'])) {
                             <div class="row mb-3">
                                 <label for="Employee_Name" class="col-md-4 col-form-label text-md-end">Weknemer:</label>
                                 <div class="col-md-6">
-                                    <SELECT>
+                                    <SELECT value='Employee_ID'>
                                     <?php
                                             $EmployeesQuery = "SELECT * FROM employees;";
                                             $EmployeesResult = mysqli_query($conn, $EmployeesQuery);
@@ -150,7 +150,7 @@ if (!isset($_GET['id'])) {
                             <div class="row mb-3">
                                 <label for="Employee_PostalCode" class="col-md-4 col-form-label text-md-end">Afgehandeld?</label>
                                 <div class="col-md-6">
-                                    <SELECT>
+                                    <SELECT value=>
                                 <?php
         
                                     $PickedUpQuery = "SELECT Invoice_ID, Invoice_OrderPickedUp, Invoice_Date, Customer_Name, FlowerShop_Addres

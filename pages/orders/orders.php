@@ -41,7 +41,7 @@
             inner join employees on flowershops.FlowerShop_ID = employees.Employee_WorksAt
             inner join invoices on employees.Employee_ID = invoices.Employee_ID
             inner join customers on invoices.Customer_ID = customers.Customer_ID
-            WHERE Employees.Employee_WorksAt = 2;";
+            WHERE Employees.Employee_WorksAt = $Employee_WorksAt;";
 
 
             $Result = mysqli_query($conn, $sql);
