@@ -129,13 +129,13 @@
                               echo 
                               "<li style='margin-right: 8px;' class='nav-item'>" .
                                  "<form class='form-inline' >" .
-                                    "<a class='btn btn-primary' href='pages/customerpages/login.php' role='button'>login</a>" .
+                                    "<a class='btn btn-primary' href='login.php' role='button'>login</a>" .
                                  "</form>" .
                               "</li>";
                               echo
                               "<li class='nav-item'>" .
                                  "<form class='form-inline' >" .
-                                    "<a class='btn btn-primary' href='pages/customerpages/register.php' role='button'>registreer</a>" .
+                                    "<a class='btn btn-primary' href='register.php' role='button'>registreer</a>" .
                                  "</form>" .
                               "</li>";
 
