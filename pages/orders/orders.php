@@ -41,7 +41,7 @@
             inner join employees on flowershops.FlowerShop_ID = employees.Employee_WorksAt
             inner join invoices on employees.Employee_ID = invoices.Employee_ID
             inner join customers on invoices.Customer_ID = customers.Customer_ID
-            WHERE Employees.Employee_WorksAt = $Employee_WorksAt;";
+            WHERE Employees.Employee_WorksAt = $Employee_WorksAt and invoices.Invoice_OrderPickedUp = 0;";
 
 
             $Result = mysqli_query($conn, $sql);
@@ -69,7 +69,7 @@
                     "<th scope='row'>" .
                     // event-date is the styling for the invoice id 
                         "<div class='event-date'>" .
-                        $Invoice_ID .
+                        "<a  href='pages/invoices/view-invoice.php?id=" . $Invoice_ID . "''>" . "$Invoice_ID " . "</a>" .
                         "</div>" .
                     "</th>" .
                     //order date
