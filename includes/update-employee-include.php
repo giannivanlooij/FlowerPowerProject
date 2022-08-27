@@ -16,6 +16,8 @@
         $Employee_DateOfBirth = $_POST['Employee_DateOfBirth'];
         $FlowerShop_ID = $_POST['FlowerShop_ID'];
 
+        $HashedPassword = password_hash($Employee_Password, PASSWORD_DEFAULT);
+
 
         $sql = "UPDATE `employees` SET 
         `Employee_Name`='$Employee_Name',
@@ -26,7 +28,7 @@
         `Employee_PostalCode`='$Employee_PostalCode',
         `Employee_TownShip`='$Employee_TownShip',
         `Employee_Email`='$Employee_Email',
-        `Employee_Password`='$Employee_Password',
+        `Employee_Password`='$HashedPassword',
         `Employee_PhoneNumber`='$Employee_PhoneNumber',
         `Employee_DateOfBirth`='$Employee_DateOfBirth',
         `Employee_WorksAt`='$FlowerShop_ID' 
