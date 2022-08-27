@@ -97,7 +97,7 @@ if (!isset($_GET['id'])) {
                             </div>
                             <!-- FlowerShop Addres -->
                             <div class="row mb-3">
-                                <label for="Employee_WorksAt" class="col-md-4 col-form-label text-md-end">Werk locatie:</label>
+                                <label for="Employee_WorksAt" class="col-md-4 col-form-label text-md-end">Ophaal locatie:</label>
                                 <div class="col-md-6">
                                 <select id="FlowerShop_ID" class="form-control" name="FlowerShop_ID" placeholder="Werk locatie">
                                     <?php
@@ -124,7 +124,7 @@ if (!isset($_GET['id'])) {
                             <div class="row mb-3">
                                 <label for="Employee_Name" class="col-md-4 col-form-label text-md-end">Weknemer:</label>
                                 <div class="col-md-6">
-                                    <SELECT value='Employee_ID'>
+                                    <SELECT value='Employee_ID' name='Employee_ID'>
                                     <?php
                                             $EmployeesQuery = "SELECT * FROM employees;";
                                             $EmployeesResult = mysqli_query($conn, $EmployeesQuery);
@@ -150,7 +150,7 @@ if (!isset($_GET['id'])) {
                             <div class="row mb-3">
                                 <label for="Employee_PostalCode" class="col-md-4 col-form-label text-md-end">Afgehandeld?</label>
                                 <div class="col-md-6">
-                                    <SELECT value=>
+                                    <SELECT value='Invoice_OrderPickedUp' name='Invoice_OrderPickedUp'>
                                 <?php
         
                                     $PickedUpQuery = "SELECT Invoice_ID, Invoice_OrderPickedUp, Invoice_Date, Customer_Name, FlowerShop_Addres

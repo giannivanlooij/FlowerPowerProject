@@ -2,16 +2,18 @@
     include_once "databasehandler-include.php";
 
     if (isset($_GET['id']) && isset($_POST['EditForm'])) {
-        $Employee_ID = $_GET['id'];
+        $Invoice_ID = $_GET['id'];
         $EmployeeAssigned = $_POST['Employee_ID'];
+        $Invoice_OrderPickedUpAdress = $_POST['FlowerShop_ID'];
         $Invoice_OrderPickedUp = $_POST['Invoice_OrderPickedUp'];
         
 
 
-        $sql = "UPDATE `invoice` SET 
+        $sql = "UPDATE `invoices` SET 
         `Employee_ID`='$EmployeeAssigned',
+        `FlowerShop_ID`='$Invoice_OrderPickedUpAdress',
         `Invoice_OrderPickedUp`='$Invoice_OrderPickedUp'
-        WHERE Employee_ID = $Employee_ID";
+        WHERE Invoice_ID = $Invoice_ID";
 
         if ($conn->query($sql) === TRUE) {
             header("location: ../dashboard.php");
