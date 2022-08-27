@@ -14,7 +14,7 @@
       Shopping Cart
     </h1>
   </div>
-
+<form action='../../includes/shoppingcart-handler.php?action=checkout' method='post'>
   <table class="table">
       <div class="layout-inline th">
         <div class="col"></div>
@@ -78,7 +78,31 @@
               
           ?>
       </tbody>
+      <label style='font-size:15px; margin-left:5px;' for="Flowershop" class="col-md-4 col-form-label text-md-end"><b>Ophaal adress:</b></label>
+      <dropdown>
+      <SELECT id ='FlowerShopAddres' name='FlowerShopAddres'>
+        <?php
+                $FlowerShopQuery = "SELECT * FROM flowershops;";
+                $FlowerShopResult = mysqli_query($conn, $FlowerShopQuery);
+                $FlowerShopResultCheck = mysqli_num_rows($FlowerShopResult); 
+
+                if ($FlowerShopResultCheck > 0) {
+                    while ($Row = mysqli_fetch_assoc($FlowerShopResult)) {
+                        //defined variables
+                        $FlowerShop_ID = $Row['FlowerShop_ID'];
+                        $FlowerShop_Addres = $Row['FlowerShop_Addres'];
+                        
+                        
+                        echo "<option value=$FlowerShop_ID>$FlowerShop_Addres</option>";
+
+                        
+                    }
+                }
+            ?>
+      </SELECT>
+      </dropdown>
   </table>        
+  
 </div>
 <div  class="tf">
   <div  class="row layout-inline ">
@@ -87,8 +111,8 @@
     <div class="col col-price col-numeric align-center "><?php echo number_format($total,2); ?></div>
   </div>
 </div>         
-    
-    <a href="../../includes/shoppingcart-handler.php?action=checkout" class="btn btn-update">Bestel</a>
+<button type='submit' class="btn btn-update">Bestel</button>
+</form>
 
 
 

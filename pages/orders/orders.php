@@ -6,25 +6,46 @@
             <th scope="col">Datum</th>
             <th scope="col">Klant</th>
             <th scope="col">vestiging</th>
+            <th scope="col">Werknemer</th>
             <th class="text-center" scope="col">opgehaald</th>
         </tr>
     </thead>
     <tbody>
         <?php
+
+            $FetchWorkLocation = "SELECT Employee_WorksAt from Employees Where Employee_ID = $Employee_ID;";
+            $FetchResult = mysqli_query($conn, $FetchWorkLocation);
+            $FetchResultCheck = mysqli_num_rows($FetchResult);
+
+            if ($FetchResultCheck > 0) {
+                while ($Row = mysqli_fetch_assoc($FetchResult)) {
+                    //defined variables
+                    $Employee_WorksAt = $Row['Employee_WorksAt'];
+                }
+            }
+                    
+            
+
         
-            $sql = "SELECT Invoice_ID, Invoice_OrderPickedUp, Invoice_Date, Customer_Name, FlowerShop_Addres
-            FROM invoices
-            INNER JOIN customers
-            ON invoices.Customer_ID = customers.Customer_ID
-            INNER JOIN flowershops
-            ON invoices.FlowerShop_ID = flowershops.FlowerShop_ID";
+            $sql = "SELECT Invoice_ID, Invoice_OrderPickedUp, Invoice_Date, Customer_Name, Employee_Name, FlowerShop_Addres
+            From invoices
+            left outer join employees on invoices.Employee_ID = employees.Employee_WorksAt
+            inner join customers on invoices.Customer_ID = customers.Customer_ID
+            inner join flowershops on invoices.FlowerShop_ID = flowershops.FlowerShop_ID
+            WHERE Invoices.Employee_ID is null and invoices.FlowerShop_ID = $Employee_WorksAt
+            
+            union
+            
+            SELECT Invoice_ID, Invoice_OrderPickedUp, Invoice_Date, Customer_Name, Employee_Name, FlowerShop_Addres
+            From flowershops
+            inner join employees on flowershops.FlowerShop_ID = employees.Employee_WorksAt
+            inner join invoices on employees.Employee_ID = invoices.Employee_ID
+            inner join customers on invoices.Customer_ID = customers.Customer_ID
+            WHERE Employees.Employee_WorksAt = $Employee_WorksAt and invoices.Invoice_OrderPickedUp = 0;";
 
 
             $Result = mysqli_query($conn, $sql);
             $ResultCheck = mysqli_num_rows($Result);
-
-            // make a join with customers for the name of the customer
-            //and a join for the name/location of the flowershop
 
             if ($ResultCheck > 0) {
                 while ($Row = mysqli_fetch_assoc($Result)) {
@@ -33,6 +54,7 @@
                     $OrderDate = $Row['Invoice_Date'];
                     $Customer_Name = $Row['Customer_Name'];
                     $FlowerShop = $Row['FlowerShop_Addres'];
+                    $Employee_Name = $Row['Employee_Name'];
                     $OrderPickedUp = $Row['Invoice_OrderPickedUp'];
 
                     if ($OrderPickedUp == 1) {
@@ -47,7 +69,7 @@
                     "<th scope='row'>" .
                     // event-date is the styling for the invoice id 
                         "<div class='event-date'>" .
-                        $Invoice_ID .
+                        "<a  href='pages/invoices/view-invoice.php?id=" . $Invoice_ID . "''>" . "$Invoice_ID " . "</a>" .
                         "</div>" .
                     "</th>" .
                     //order date
@@ -68,7 +90,12 @@
                         $FlowerShop .
                         "</div>" .
                     "</td>" .
-                    
+                    //Employee assigned
+                    "<td>" .
+                        "<div class='r-no'>" .
+                        $Employee_Name .
+                        "</div>" .
+                    "</td>" .
                     //order picked up
                     "<td>" .
                         "<div class='r-no'>" .

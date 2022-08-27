@@ -198,18 +198,16 @@
                               <div class="detail-box">
                                  <h1>
                                     <span>
-                                    Voorbeeld
+                                    
                                     </span>
                                     <br>
-                                    voorbeeld
+                                    Flowerpower
                                  </h1>
                                  <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                                    wij maken u graag blij met onze bloemen.
                                  </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
-                                    voorbeeld
-                                    </a>
+                                    
                                  </div>
                               </div>
                            </div>
@@ -222,14 +220,12 @@
                            <div class="col-md-7 col-lg-6 ">
                               <div class="detail-box">
                                  <h1>
-                                    <span>
-                                    Sale
-                                    </span>
+                                 
                                     <br>
-                                    3de boeket gratis
+                                    bekijk onze producten
                                  </h1>
                                  <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                                    we krijgen steeds meer vraag naar nieuwe soorten boeketten en planten. bekijk wat we tot nu toe hebben
                                  </p>
                                  <div class="btn-box">
                                     <a href="pages/customerpages/productpage.php" class="btn1">
@@ -252,7 +248,7 @@
                                     Word lid
                                  </h1>
                                  <p>
-                                    wordt lid en krijg 10% korting op uw eerste bestelling.
+                                    En u kunt gelijk bij ons bestellen!
                                  </p>
                                  <div class="btn-box">
                                     <a href="pages/customerpages/register.php" class="btn1">

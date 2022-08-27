@@ -23,10 +23,10 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" scope="col">ID</th>
+                                        <th class="text-center" scope="col">Bestelling nummer</th>
                                         <th scope="col">id klant</th>
                                         <th scope="col">datum</th>
-                                        <th scope="col">picked up</th>
+                                        <th scope="col">opgehaald?</th>
                                         <th class="text-center" scope="col">medewerker</th>
                                         <th class="text-center" scope="col">winkel id</th>
                                         <th class="text-center" scope="col">opties</th>
@@ -48,6 +48,12 @@
                                                 $Invoice_OrderPickedUp = $Row['Invoice_OrderPickedUp'];
                                                 $Employee_ID = $Row['Employee_ID'];
                                                 $FlowerShop_ID = $Row['FlowerShop_ID'];
+
+                                                if ($Invoice_OrderPickedUp == 1) {
+                                                    $Invoice_OrderPickedUp = "Ja";
+                                                }else {
+                                                    $Invoice_OrderPickedUp = "nee";
+                                                }
 
                                                 // begin row
                                                 echo "<tr class='inner-box'>" .
@@ -86,8 +92,8 @@
                                                 "</td>" .
                                                 "<td>" .
                                                  "<div class='btn-group'>" .
-                                                     "<a class='btn btn-secondary' href='view-invoice.php?id=" . $Invoice_ID . "''>" . "wijzig " . "</a>" .
-                                                     "<a class='btn btn-secondary' href='../../includes/delete-invoice-include.php?id=" . $Invoice_ID . "''>" . " verwijder" . "</a>" .
+                                                     "<a class='btn btn-secondary' href='view-invoice.php?id=" . $Invoice_ID . "''>" . "bekijk " . "</a>" .
+                                                     //"<a class='btn btn-secondary' href='../../includes/delete-invoice-include.php?id=" . $Invoice_ID . "''>" . " verwijder" . "</a>" .
                                                  "</div>" .
                                                 "</td>" .
                                                 "</tr>";
