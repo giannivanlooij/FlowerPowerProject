@@ -43,7 +43,7 @@
 <html>
     <head>
         <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-        <link rel="stylesheet" href="../css/invoice-template.css">
+        <link rel="stylesheet" href="../../css/invoice-template.css">
     </head>
     <body style='max-width: 500px; margin: auto; background: white; padding: 10px;' class="c58 doc-content">
         <p style='margin-top: 25px;' class="c27"><span class="c30">FlowerPower </span></p>
