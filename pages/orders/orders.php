@@ -32,7 +32,7 @@
             left outer join employees on invoices.Employee_ID = employees.Employee_WorksAt
             inner join customers on invoices.Customer_ID = customers.Customer_ID
             inner join flowershops on invoices.FlowerShop_ID = flowershops.FlowerShop_ID
-            WHERE Invoices.Employee_ID is null
+            WHERE Invoices.Employee_ID is null and invoices.FlowerShop_ID = $Employee_WorksAt
             
             union
             

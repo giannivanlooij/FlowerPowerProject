@@ -117,14 +117,14 @@ if (!isset($_GET['id'])) {
                                 <label for="Employee_Password" class="col-md-4 col-form-label text-md-end"></label>
 
                                 <div class="col-md-6">
-                                    <input id="Employee_Password" type="password" class="form-control" name="Employee_Password" placeholder="Wachtwoord" required>     
+                                    <input id="Employee_Password" type="password" class="form-control" name="Employee_Password" placeholder=" nieuw Wachtwoord">     
                                 </div>
                             </div>
                             <!-- password confirmation -->
                             <div class="row mb-3">
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-end"></label>
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Herhaal wachtwoord" required >
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Herhaal wachtwoord">
                                 </div>
                             </div>
                             <!-- phone number -->
