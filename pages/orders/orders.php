@@ -2,6 +2,7 @@
 <table class="table">
     <thead>
         <tr>
+        <th class="text-center" scope="col">Opties</th>
             <th class="text-center" scope="col">Bestelling Nummer</th>
             <th scope="col">Datum</th>
             <th scope="col">Klant</th>
@@ -66,10 +67,16 @@
 
                     // begin row
                     echo "<tr class='inner-box'>" .
+                    "<td>" .
+                                                 "<div class='btn-group'>" .
+                                                     "<a  href='pages/invoices/view-invoice.php?id=" . $Invoice_ID . "' '>" . "factuur " . "&nbsp;" . "</a>" .
+                                                     "<a  href='pages/orders/view-order.php?id=" . $Invoice_ID . "' '>" . "wijzig " . "</a>" .
+                                                 "</div>" .
+                                                "</td>" .
                     "<th scope='row'>" .
                     // event-date is the styling for the invoice id 
                         "<div class='event-date'>" .
-                        "<a  href='pages/invoices/view-invoice.php?id=" . $Invoice_ID . "''>" . "$Invoice_ID " . "</a>" .
+                        "<a  href='pages/orders/view-order.php?id=" . $Invoice_ID . "''>" . "$Invoice_ID " . "</a>" .
                         "</div>" .
                     "</th>" .
                     //order date
