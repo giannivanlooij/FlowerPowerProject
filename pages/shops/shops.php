@@ -84,7 +84,7 @@
                                                 "</td>" .
                                                 //phonenumber
                                                 "<td>" .
-                                                    "<div class='r-no'>" ."$". $FlowerShop_PhoneNumber . "</div>" .
+                                                    "<div class='r-no'>" . $FlowerShop_PhoneNumber . "</div>" .
                                                 "</td>" .
                                                 //email
                                                 "<td>" .
