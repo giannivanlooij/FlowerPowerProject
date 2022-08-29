@@ -33,7 +33,7 @@
             left outer join employees on invoices.Employee_ID = employees.Employee_WorksAt
             inner join customers on invoices.Customer_ID = customers.Customer_ID
             inner join flowershops on invoices.FlowerShop_ID = flowershops.FlowerShop_ID
-            WHERE Invoices.Employee_ID is null and invoices.FlowerShop_ID = $Employee_WorksAt
+            WHERE invoices.Employee_ID is null and invoices.FlowerShop_ID = $Employee_WorksAt
             
             union
             
@@ -42,7 +42,7 @@
             inner join employees on flowershops.FlowerShop_ID = employees.Employee_WorksAt
             inner join invoices on employees.Employee_ID = invoices.Employee_ID
             inner join customers on invoices.Customer_ID = customers.Customer_ID
-            WHERE Employees.Employee_WorksAt = $Employee_WorksAt and invoices.Invoice_OrderPickedUp = 0;";
+            WHERE employees.Employee_WorksAt = $Employee_WorksAt and invoices.Invoice_OrderPickedUp = 0;";
 
 
             $Result = mysqli_query($conn, $sql);
@@ -68,14 +68,13 @@
                     // begin row
                     echo "<tr class='inner-box'>" .
                     "<td>" .
-                                                 "<div class='btn-group'>" .
-                                                     "<a  href='pages/invoices/view-invoice.php?id=" . $Invoice_ID . "' '>" . "factuur " . "&nbsp;" . "</a>" .
-                                                     "<a  href='pages/orders/view-order.php?id=" . $Invoice_ID . "' '>" . "wijzig " . "</a>" .
-                                                 "</div>" .
-                                                "</td>" .
+                    "<div class='btn-group'>" .
+                        "<a  href='pages/invoices/view-invoice.php?id=" . $Invoice_ID . "' '>" . "factuur " . "&nbsp;" . "</a>" .
+                        "<a  href='pages/orders/view-order.php?id=" . $Invoice_ID . "' '>" . "wijzig " . "</a>" .
+                    "</div>" .
+                "</td>" .
                     "<th scope='row'>" .
-                    // event-date is the styling for the invoice id 
-                        "<div class='event-date'>" .
+                        "<div>" .
                         "<a  href='pages/orders/view-order.php?id=" . $Invoice_ID . "''>" . "$Invoice_ID " . "</a>" .
                         "</div>" .
                     "</th>" .
