@@ -14,7 +14,7 @@
     <tbody>
         <?php
 
-            $FetchWorkLocation = "SELECT Employee_WorksAt from Employees Where Employee_ID = $Employee_ID;";
+            $FetchWorkLocation = "SELECT Employee_WorksAt from employees Where Employee_ID = $Employee_ID;";
             $FetchResult = mysqli_query($conn, $FetchWorkLocation);
             $FetchResultCheck = mysqli_num_rows($FetchResult);
 
