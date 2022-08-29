@@ -10,7 +10,6 @@
         
         $Product_Image = $_FILES["Product_Image"];
 
-        print_r ($Product_Image);
         if (empty($_FILES["Product_Image"] ["tmp_name"])) {
 
             $sql = "UPDATE `products` SET 
@@ -21,7 +20,7 @@
             WHERE Product_ID = $Product_ID";
 
             if ($conn->query($sql) === TRUE) {
-                echo "Update query successfull";
+                //echo "Update query successfull";
                 header("location: ../dashboard.php");
             } 
             
@@ -46,7 +45,7 @@
         }
 
         if ($conn->query($sql2) === TRUE) {
-            echo "image sent";
+            //echo "image sent";
             header("location: ../dashboard.php");
         } else  {
             echo "something went wrong";

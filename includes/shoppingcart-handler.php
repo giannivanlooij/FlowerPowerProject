@@ -28,7 +28,6 @@ if($_GET["action"] == 'checkout')
         mysqli_stmt_bind_param($InvoiceStatement, "ssss", $ID, $Date, $PickedUp, $PickUpAddres);
         mysqli_stmt_execute($InvoiceStatement);
         mysqli_stmt_close($InvoiceStatement);
-        echo "Invoice created";
 
 
         //fetches the id from the just generated invoice
@@ -42,7 +41,6 @@ if($_GET["action"] == 'checkout')
         if ($ResultIDCheck > 0) {
             while ($row = $ResultID->fetch_row()) {
                 $GeneratedID = $row[0] ?? false;
-                echo $GeneratedID;
                 
 
                 foreach($_SESSION["AddedToCart"] as $Keys => $values){

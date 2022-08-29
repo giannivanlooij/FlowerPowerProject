@@ -34,7 +34,6 @@
               {
                 if ($Values['Product_ID'] == $_GET['id']) 
                 {  
-                  print_r($_SESSION['AddedToCart'] [$Keys]);
                   unset($_SESSION['AddedToCart'] [$Keys]);
                   header('location: shopping-cart.php');
                 }

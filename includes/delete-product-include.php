@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
     $Delete =  mysqli_query($conn, $DeleteQuery);
 
     if ($Delete) {
-        echo "deleted";
+        //echo "deleted";
         header("location: ../pages/products/products.php?Deleted");
         Exit();
     }else{

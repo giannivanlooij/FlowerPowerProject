@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
    require_once 'functions-include.php';
 
    
-   echo $Product_Name;
+   //echo $Product_Name;
    
     
 

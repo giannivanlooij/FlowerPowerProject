@@ -34,7 +34,7 @@
         WHERE Customer_ID = $Customer_ID";
 
         if ($conn->query($sql) === TRUE) {
-            header("location: ../dashboard.php");
+            header("location: ../index.php");
         } else {
             echo "something went wrong";
         }
