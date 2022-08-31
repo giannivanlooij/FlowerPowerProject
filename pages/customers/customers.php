@@ -54,11 +54,11 @@
                                                 $Customer_LastName = $Row['Customer_LastName'];
                                                 $Customer_Addres = $Row['Customer_Addres'];
                                                 $Customer_HouseNumber = $Row['Customer_HouseNumber'];
-                                                $Customer_PostalCode = $Row['Customer_Addres'];
-                                                $Customer_TownShip = $Row['Customer_Addres'];
-                                                $Customer_Email = $Row['Customer_Addres'];
-                                                $Customer_PhoneNumber = $Row['Customer_Addres'];
-                                                $Customer_DateOfBirth = $Row['Customer_Addres'];
+                                                $Customer_PostalCode = $Row['Customer_PostalCode'];
+                                                $Customer_TownShip = $Row['Customer_TownShip'];
+                                                $Customer_Email = $Row['Customer_Email'];
+                                                $Customer_PhoneNumber = $Row['Customer_PhoneNumber'];
+                                                $Customer_DateOfBirth = $Row['Customer_DateOfBirth'];
 
                                                 // begin row
                                                 echo "<tr class='inner-box'>" .
